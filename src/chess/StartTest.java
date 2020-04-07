@@ -10,10 +10,4 @@ public class StartTest {
     public void testNothing(){
         assertEquals("Correct", 1, 1);
     }
-
-    // @Test
-    // public void testWillAlwaysFail(){
-    //     fail("Error message");
-    // }
-
 }
