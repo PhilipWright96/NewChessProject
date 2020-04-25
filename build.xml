@@ -4,7 +4,7 @@
 
     <property name="lib.dir" value="lib"/>
     
-    <property name="main-class" value="chess.Start"/>
+    <property name="main-class" value="chess.GameManager"/>
     
     <property name="src.dir" value="src"/>
     <property name="build.dir" value="build"/>
@@ -12,9 +12,9 @@
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir" value="${build.dir}/jar"/>
     
-    <property name="jar-file" value="Start.jar"/>
+    <property name="jar-file" value="GameManager.jar"/>
     
-    <path id="application" location="${jar.dir}/Start.jar"/>
+    <path id="application" location="${jar.dir}/GameManager.jar"/>
     <path id="classpath">
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
     </path>
