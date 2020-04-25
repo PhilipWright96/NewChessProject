@@ -2,14 +2,14 @@ package chess;
 
 public class Board {
     private int BOARD_WIDTH = 8;
-    private char[][] board;
+    private Piece[][] board;
 
     public Board(){
-        this.board = new char[BOARD_WIDTH][BOARD_WIDTH];
+        this.board = new Piece[BOARD_WIDTH][BOARD_WIDTH];
         for (int i = 0; i < BOARD_WIDTH; i++){
             for (int j = 0; j < BOARD_WIDTH; j++){
-                if (i == 0 || i == BOARD_WIDTH - 1){
-                    board[i][j] = 'x';
+                if (i == 1 || i == BOARD_WIDTH - 2){
+                    board[i][j] = new Pawn();
                 }
             }
         }
@@ -18,7 +18,9 @@ public class Board {
     public void showBoard(){
         for (int i = 0; i < BOARD_WIDTH; i++){
             for (int j = 0; j < BOARD_WIDTH; j++){
-                System.out.print(this.board[i][j]);
+                if (board[i][j] != null){
+                    System.out.println(board[i][j].getType());
+                }
             }
             if (i != BOARD_WIDTH - 1){
                 System.out.println();
