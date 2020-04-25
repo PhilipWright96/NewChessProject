@@ -8,7 +8,7 @@ public class Board {
         this.board = new Piece[BOARD_WIDTH][BOARD_WIDTH];
         for (int i = 0; i < BOARD_WIDTH; i++){
             for (int j = 0; j < BOARD_WIDTH; j++){
-                if (i == 1 || i == BOARD_WIDTH - 2){
+                if (i == 1 || i == BOARD_WIDTH - 3){
                     board[i][j] = new Pawn();
                 }
             }
@@ -19,7 +19,7 @@ public class Board {
         for (int i = 0; i < BOARD_WIDTH; i++){
             for (int j = 0; j < BOARD_WIDTH; j++){
                 if (board[i][j] != null){
-                    System.out.println(board[i][j].getType());
+                    System.out.print(board[i][j].getType());
                 }
             }
             if (i != BOARD_WIDTH - 1){
