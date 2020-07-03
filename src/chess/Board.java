@@ -8,8 +8,11 @@ public class Board {
         this.board = new Piece[BOARD_WIDTH][BOARD_WIDTH];
         for (int i = 0; i < BOARD_WIDTH; i++){
             for (int j = 0; j < BOARD_WIDTH; j++){
-                if (i == 1 || i == BOARD_WIDTH - 3){
-                    board[i][j] = new Pawn();
+                if (i == 1){
+                    board[i][j] = new Pawn(Piece.Teams.BLACK);
+                }
+                if (i ==  BOARD_WIDTH - 3){
+                    board[i][j] = new Pawn(Piece.Teams.WHITE);
                 }
             }
         }
