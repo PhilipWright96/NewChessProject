@@ -1,6 +1,7 @@
 package chess;
 
 import org.apache.log4j.Logger;
+import chess.board.*;
 
 public class GameManager {
     static Logger logger = Logger.getLogger(GameManager.class);

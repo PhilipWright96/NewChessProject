@@ -1,4 +1,4 @@
-package chess;
+package chess.Util;
 
 import java.awt.image.*;
 import javax.imageio.*;

@@ -1,4 +1,6 @@
-package chess;
+package chess.board;
+
+import chess.pieces.*;
 
 public class Board {
     private int BOARD_WIDTH = 8;
