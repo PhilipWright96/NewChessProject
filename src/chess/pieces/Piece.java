@@ -1,7 +1,7 @@
-package chess;
+package chess.pieces;
 
-abstract class Piece {
-    enum Teams {
+public abstract class Piece {
+    public enum Teams {
         WHITE, 
         BLACK
     }
