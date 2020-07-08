@@ -6,12 +6,12 @@ public class Pawn extends Piece{
     public Pawn(Piece.Teams team){
         this.team = team;
     }
-    public char getType(){
-       if (this.team == Piece.Teams.BLACK){
-           return 'p';
+    public Piece.Teams getType(){
+       if (this.team == Piece.Teams.SILVER){
+           return Piece.Teams.SILVER;
        }
        else {
-           return 'P';
+           return Piece.Teams.GOLD;
        }
     }
     public void move(){
