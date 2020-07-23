@@ -1,6 +1,7 @@
 package chess.pieces;
 
 import org.junit.Test;
+import chess.pieces.Piece;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +10,7 @@ public class PawnTest {
     @Test
     public void pawnObject_returnsCorrectType_whenCalledOnAWhitePawn(){
         // Given
-        Pawn testPawn = new Pawn(Piece.Teams.GOLD);
+        Piece testPawn = PieceFactory.constructPiece(Piece.Types.PAWN, Piece.Teams.GOLD);
         // When
         Piece.Teams result = testPawn.getTeam();
         // Then
@@ -19,7 +20,7 @@ public class PawnTest {
     @Test
     public void pawnObject_returnsCorrectType_whenCalledOnABlackPawn(){
         // Given
-        Pawn testPawn = new Pawn(Piece.Teams.SILVER);
+        Piece testPawn = PieceFactory.constructPiece(Piece.Types.PAWN, Piece.Teams.SILVER);
         // When
         Piece.Teams result = testPawn.getTeam();
         // Then
