@@ -11,7 +11,7 @@ public class PawnTest {
         // Given
         Pawn testPawn = new Pawn(Piece.Teams.GOLD);
         // When
-        Piece.Teams result = testPawn.getType();
+        Piece.Teams result = testPawn.getTeam();
         // Then
         assertEquals("Return type of pawn not as expected", Piece.Teams.GOLD, result);
     }
@@ -21,7 +21,7 @@ public class PawnTest {
         // Given
         Pawn testPawn = new Pawn(Piece.Teams.SILVER);
         // When
-        Piece.Teams result = testPawn.getType();
+        Piece.Teams result = testPawn.getTeam();
         // Then
         assertEquals("Return type of pawn not as expected", Piece.Teams.SILVER, result);
     }

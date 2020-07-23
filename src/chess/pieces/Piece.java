@@ -6,9 +6,11 @@ public abstract class Piece {
         GOLD
     }
 
+
+
     public Piece.Teams team;
     
-    public Piece.Teams getType(){
+    public Piece.Teams getTeam(){
         if (this.team == Piece.Teams.SILVER){
             return Piece.Teams.SILVER;
         }
