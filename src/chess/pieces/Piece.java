@@ -5,7 +5,17 @@ public abstract class Piece {
         SILVER, 
         GOLD
     }
+
+    public Piece.Teams team;
     
-    public abstract void move();
-    public abstract Piece.Teams getType();
+    public Piece.Teams getType(){
+        if (this.team == Piece.Teams.SILVER){
+            return Piece.Teams.SILVER;
+        }
+        else {
+            return Piece.Teams.GOLD;
+        }
+     }
+
+     public abstract void move();
 }
