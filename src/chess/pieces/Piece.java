@@ -6,8 +6,6 @@ public abstract class Piece {
         GOLD
     }
 
-
-
     public Piece.Teams team;
     
     public Piece.Teams getTeam(){
