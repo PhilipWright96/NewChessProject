@@ -1,8 +1,8 @@
 package chess.pieces;
 
-public class Pawn extends Piece{
+public class Bishop extends Piece{
 
-    public Pawn (Piece.Teams team){
+    public Bishop (Piece.Teams team){
         this.team = team;
     }
 
