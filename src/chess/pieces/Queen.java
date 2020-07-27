@@ -1,8 +1,8 @@
 package chess.pieces;
 
-public class Pawn extends Piece{
+public class Queen extends Piece {
 
-    public Pawn (){
+    public Queen (){
     }
 
     public void move(){

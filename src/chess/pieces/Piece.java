@@ -5,7 +5,30 @@ public abstract class Piece {
         SILVER, 
         GOLD
     }
+
+    public enum Types {
+        PAWN,
+        ROOK,
+        KNIGHT,
+        BISHOP,
+        QUEEN,
+        KING
+    }
+
+    public Piece.Teams team;
+
+    public void setTeam(Piece.Teams team){
+        this.team = team;
+    }
     
-    public abstract void move();
-    public abstract Piece.Teams getType();
+    public Piece.Teams getTeam(){
+        if (this.team == Piece.Teams.SILVER){
+            return Piece.Teams.SILVER;
+        }
+        else {
+            return Piece.Teams.GOLD;
+        }
+     }
+
+     public abstract void move();
 }

@@ -9,9 +9,9 @@ public class PawnTest {
     @Test
     public void pawnObject_returnsCorrectType_whenCalledOnAWhitePawn(){
         // Given
-        Pawn testPawn = new Pawn(Piece.Teams.GOLD);
+        Piece testPawn = PieceFactory.constructPiece(Piece.Types.PAWN, Piece.Teams.GOLD);
         // When
-        Piece.Teams result = testPawn.getType();
+        Piece.Teams result = testPawn.getTeam();
         // Then
         assertEquals("Return type of pawn not as expected", Piece.Teams.GOLD, result);
     }
@@ -19,9 +19,9 @@ public class PawnTest {
     @Test
     public void pawnObject_returnsCorrectType_whenCalledOnABlackPawn(){
         // Given
-        Pawn testPawn = new Pawn(Piece.Teams.SILVER);
+        Piece testPawn = PieceFactory.constructPiece(Piece.Types.PAWN, Piece.Teams.SILVER);
         // When
-        Piece.Teams result = testPawn.getType();
+        Piece.Teams result = testPawn.getTeam();
         // Then
         assertEquals("Return type of pawn not as expected", Piece.Teams.SILVER, result);
     }

@@ -30,11 +30,13 @@ public final class ChessSprites {
     public static final BufferedImage SILVER_BISHOP = SHEET.getSubimage(4 * SIZE, SIZE, SIZE, SIZE);
     public static final BufferedImage GOLD_PAWN     = SHEET.getSubimage(5 * SIZE, 0,    SIZE, SIZE);
     public static final BufferedImage SILVER_PAWN   = SHEET.getSubimage(5 * SIZE, SIZE, SIZE, SIZE);
-    public static final List<BufferedImage> SPRITES =
-        Collections.unmodifiableList(Arrays.asList(GOLD_QUEEN,  SILVER_QUEEN,
-                                                   GOLD_KING,   SILVER_KING,
-                                                   GOLD_ROOK,   SILVER_ROOK,
-                                                   GOLD_KNIGHT, SILVER_KNIGHT,
-                                                   GOLD_BISHOP, SILVER_BISHOP,
-                                                   GOLD_PAWN,   SILVER_PAWN));
+    public static final List<BufferedImage> SPRITES_IN_ORDER =
+        Collections.unmodifiableList(Arrays.asList(GOLD_ROOK,  SILVER_ROOK,
+                                                   GOLD_KNIGHT,   SILVER_KNIGHT,
+                                                   GOLD_BISHOP,   SILVER_BISHOP,
+                                                   GOLD_KING, SILVER_KING,
+                                                   GOLD_QUEEN, SILVER_QUEEN,
+                                                   GOLD_BISHOP,  SILVER_BISHOP,
+                                                   GOLD_KNIGHT, SILVER_KNIGHT, 
+                                                   GOLD_ROOK, SILVER_ROOK));
 }
