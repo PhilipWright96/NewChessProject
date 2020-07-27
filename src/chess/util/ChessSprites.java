@@ -34,8 +34,8 @@ public final class ChessSprites {
         Collections.unmodifiableList(Arrays.asList(GOLD_ROOK,  SILVER_ROOK,
                                                    GOLD_KNIGHT,   SILVER_KNIGHT,
                                                    GOLD_BISHOP,   SILVER_BISHOP,
-                                                   GOLD_QUEEN, SILVER_KING,
-                                                   GOLD_KING, SILVER_QUEEN,
+                                                   GOLD_KING, SILVER_KING,
+                                                   GOLD_QUEEN, SILVER_QUEEN,
                                                    GOLD_BISHOP,  SILVER_BISHOP,
                                                    GOLD_KNIGHT, SILVER_KNIGHT, 
                                                    GOLD_ROOK, SILVER_ROOK));
