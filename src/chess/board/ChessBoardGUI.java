@@ -29,10 +29,15 @@ public class ChessBoardGUI {
         }
     }
 
-        for (int l = 0; l < chessBoardGUIButtons.length; l++){
-            JButton square = chessBoardGUIButtons[l][chessBoardGUIButtons.length - 2];
-            ImageIcon icon = new ImageIcon(ChessSprites.SILVER_PAWN);
-            square.setIcon(icon);
+    public void updateBoardWithSpecialPieces(){
+        for (int l = 0, m = 0; l < chessBoardGUIButtons.length; l++, m++){
+            JButton goldSquare = chessBoardGUIButtons[l][0];
+            ImageIcon goldIcon = new ImageIcon(ChessSprites.SPRITES_IN_ORDER.get(l + m));
+            goldSquare.setIcon(goldIcon);
+
+            JButton silverSquare = chessBoardGUIButtons[l][chessBoardGUIButtons.length - 1];
+            ImageIcon silverIcon = new ImageIcon(ChessSprites.SPRITES_IN_ORDER.get(l + m + 1));
+            silverSquare.setIcon(silverIcon);
         }
     }
 
