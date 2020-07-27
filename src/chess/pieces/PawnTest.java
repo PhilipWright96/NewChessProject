@@ -1,7 +1,6 @@
 package chess.pieces;
 
 import org.junit.Test;
-import chess.pieces.Piece;
 
 import static org.junit.Assert.*;
 

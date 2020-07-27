@@ -1,5 +1,4 @@
 package chess.pieces;
-import chess.pieces.Piece.*;
 
 public class PieceFactory {
     public static Piece constructPiece (Piece.Types type, Piece.Teams team) {
