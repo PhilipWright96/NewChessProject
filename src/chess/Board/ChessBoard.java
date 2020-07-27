@@ -3,7 +3,7 @@ package chess.board;
 import chess.pieces.*;
 import java.util.ArrayList;
 
-public class ChessBoardNew {
+public class ChessBoard {
     private ChessBoardGUI chessBoardGUI = new ChessBoardGUI();
     private Piece[][] chessBoardPieces = new Piece[8][8];
 
@@ -29,7 +29,7 @@ public class ChessBoardNew {
         add(Piece.Types.ROOK);
     }};
 
-    public ChessBoardNew() {
+    public ChessBoard() {
     }
 
     public void addPiecesToBoard() {
