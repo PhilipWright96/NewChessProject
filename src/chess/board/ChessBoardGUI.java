@@ -19,10 +19,15 @@ public class ChessBoardGUI {
 
     public void updateBoardWithPawns(){
         for (int k = 0; k < chessBoardGUIButtons.length; k++){
-            JButton square = chessBoardGUIButtons[k][1];
-            ImageIcon icon = new ImageIcon(ChessSprites.GOLD_PAWN);
-            square.setIcon(icon);
+            JButton goldSquare = chessBoardGUIButtons[k][1];
+            ImageIcon goldIcon = new ImageIcon(ChessSprites.GOLD_PAWN);
+            goldSquare.setIcon(goldIcon);
+
+            JButton silverSquare = chessBoardGUIButtons[k][chessBoardGUIButtons.length - 2];
+            ImageIcon silverIcon = new ImageIcon(ChessSprites.SILVER_PAWN);
+            silverSquare.setIcon(silverIcon);
         }
+    }
 
         for (int l = 0; l < chessBoardGUIButtons.length; l++){
             JButton square = chessBoardGUIButtons[l][chessBoardGUIButtons.length - 2];
