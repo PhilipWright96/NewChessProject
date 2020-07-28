@@ -7,11 +7,12 @@ public class ChessGame {
     
     private boolean isRunning = false;
     private boolean isFinished = false; 
+    private int turnsTaken; 
 
     public void start() {
         this.board = new ChessBoard();
-        board.addPiecesToBoard();
 
+        turnsTaken = 0;
         this.isRunning = true;
     }
 
