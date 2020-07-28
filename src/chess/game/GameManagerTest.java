@@ -1,4 +1,4 @@
-package chess;
+package chess.game;
 
 import org.junit.Test;
 

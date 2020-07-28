@@ -1,4 +1,4 @@
-package chess;
+package chess.game;
 
 import org.apache.log4j.Logger;
 import chess.board.*;
