@@ -30,11 +30,8 @@ public class ChessBoard {
     }};
 
     public ChessBoard() {
-    }
-
-    public void addPiecesToBoard() {
-       addPawns();
-       addSpecialPieces();
+        addPawns();
+        addSpecialPieces();
     }
 
     private void addPawns(){
