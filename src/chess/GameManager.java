@@ -15,7 +15,7 @@ public class GameManager {
 
     private static ChessGame createChessGame(){
         Player playerSilver = new Player("Player 1", Teams.SILVER);
-        Player playerGold = new Player("Player 1", Teams.GOLD);
+        Player playerGold = new Player("Player 2", Teams.GOLD);
 
         return new ChessGame(playerSilver, playerGold);
     }
