@@ -1,10 +1,8 @@
 package chess.pieces;
 
+import chess.util.Teams;
+
 public abstract class Piece {
-    public enum Teams {
-        SILVER, 
-        GOLD
-    }
 
     public enum Types {
         PAWN,
@@ -15,18 +13,18 @@ public abstract class Piece {
         KING
     }
 
-    public Piece.Teams team;
+    public Teams team;
 
-    public void setTeam(Piece.Teams team){
+    public void setTeam(Teams team){
         this.team = team;
     }
     
-    public Piece.Teams getTeam(){
-        if (this.team == Piece.Teams.SILVER){
-            return Piece.Teams.SILVER;
+    public Teams getTeam(){
+        if (this.team == Teams.SILVER){
+            return Teams.SILVER;
         }
         else {
-            return Piece.Teams.GOLD;
+            return Teams.GOLD;
         }
      }
 

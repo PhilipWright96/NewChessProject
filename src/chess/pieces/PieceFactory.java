@@ -1,7 +1,9 @@
 package chess.pieces;
 
+import chess.util.Teams;
+
 public class PieceFactory {
-    public static Piece constructPiece (Piece.Types type, Piece.Teams team) {
+    public static Piece constructPiece (Piece.Types type, Teams team) {
         Piece chosenPiece; 
         switch (type) {
             case PAWN : 
