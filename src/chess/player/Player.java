@@ -10,5 +10,9 @@ public class Player {
         this.username = username;
         this.team = team;
     }
+
+    public Teams getTeam(){
+        return this.team;
+    }
     
 }
