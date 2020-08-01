@@ -6,6 +6,7 @@ import chess.util.Teams;
 
 public class ChessGame {
     private ChessBoard board;
+    private GameObserver observer;
 
     private Player playerSilver;
     private Player playerGold;
@@ -25,15 +26,24 @@ public class ChessGame {
         }
     }
 
-    public void start() {
+    public void attach(GameObserver observer) {
+        this.observer = observer;
+    }
+
+    public void start() throws InterruptedException {
         this.board = new ChessBoard();
 
         turnsTaken = 0;
         this.isRunning = true;
+
+        Thread.sleep(5000);
+        finish();
     }
 
-    public void finish() {
+    private void finish() {
         this.isRunning = false;
         this.isFinished = true;
+
+        observer.update();
     }
 }
