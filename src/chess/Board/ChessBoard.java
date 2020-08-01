@@ -1,6 +1,8 @@
 package chess.board;
 
 import chess.pieces.*;
+import chess.util.Teams;
+
 import java.util.ArrayList;
 
 public class ChessBoard {
@@ -30,17 +32,14 @@ public class ChessBoard {
     }};
 
     public ChessBoard() {
-    }
-
-    public void addPiecesToBoard() {
-       addPawns();
-       addSpecialPieces();
+        addPawns();
+        addSpecialPieces();
     }
 
     private void addPawns(){
         for (int k = 0; k < chessBoardPieces.length; k++){
-            chessBoardPieces[k][1] = PieceFactory.constructPiece(Piece.Types.PAWN, Piece.Teams.GOLD);
-            chessBoardPieces[k][chessBoardPieces.length - 2] = PieceFactory.constructPiece(Piece.Types.PAWN, Piece.Teams.SILVER);
+            chessBoardPieces[k][1] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);
+            chessBoardPieces[k][chessBoardPieces.length - 2] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
         }
 
         chessBoardGUI.updateBoardWithPawns();
@@ -48,8 +47,8 @@ public class ChessBoard {
 
     private void addSpecialPieces(){
         for (int l = 0; l < chessBoardPieces.length; l++){
-            chessBoardPieces[l][1] = PieceFactory.constructPiece(blackPieceOrder.get(l), Piece.Teams.GOLD);
-            chessBoardPieces[l][chessBoardPieces.length - 1] = PieceFactory.constructPiece(whitePieceOrder.get(l), Piece.Teams.SILVER);
+            chessBoardPieces[l][1] = PieceFactory.constructPiece(blackPieceOrder.get(l), Teams.GOLD);
+            chessBoardPieces[l][chessBoardPieces.length - 1] = PieceFactory.constructPiece(whitePieceOrder.get(l), Teams.SILVER);
         }
 
         chessBoardGUI.updateBoardWithSpecialPieces();
