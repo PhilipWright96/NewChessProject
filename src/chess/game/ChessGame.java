@@ -47,14 +47,24 @@ public class ChessGame {
     private void playRound() {
         Scanner userInputScanner = new Scanner(System.in);
 
-        String silverResult = playerSilver.play(userInputScanner);
+        String silverResult = getValidInputFromPlayer(userInputScanner, playerSilver);
         System.out.println("Player Silver has played " + silverResult);
 
-        String goldResult = playerGold.play(userInputScanner);
+        String goldResult = getValidInputFromPlayer(userInputScanner, playerGold);
         System.out.println("Player Gold has played " + goldResult);
         
         this.turnsTaken++;
         userInputScanner.close();
+    }
+
+    private String getValidInputFromPlayer(Scanner userInputScanner, Player player){
+        boolean inputValid = false;
+        String input = null; 
+        while (inputValid == false){
+            input = player.play(userInputScanner);
+            inputValid = InputChecker.checkPlayerInput(input);
+        }
+        return input;
     }
 
     private void finish() {
