@@ -62,7 +62,7 @@ public class ChessGame {
         String input = null; 
         while (inputValid == false){
             input = player.play(userInputScanner);
-            inputValid = InputChecker.checkPlayerInput(input);
+            inputValid = InputChecker.checkPlayerInput(input, board.getChessBoard());
         }
         return input;
     }
