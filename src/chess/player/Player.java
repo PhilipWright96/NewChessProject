@@ -1,5 +1,8 @@
 package chess.player;
 
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
 import chess.util.Teams;
 
 public class Player {
@@ -13,6 +16,22 @@ public class Player {
 
     public Teams getTeam(){
         return this.team;
+    }
+
+    public String play(Scanner userInputScanner) {
+        String response = null;
+        try {
+            while (response == null) {
+                System.out.println("Player " + team + ": Play");
+                response = userInputScanner.nextLine();
+                return response;
+            }
+        }
+        catch (IllegalStateException | NoSuchElementException e) {
+            System.out.println("Exception found.");
+            e.printStackTrace();
+        }
+        return null;
     }
     
 }
