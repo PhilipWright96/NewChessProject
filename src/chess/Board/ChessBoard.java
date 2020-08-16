@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ChessBoard {
     private ChessBoardGUI chessBoardGUI = new ChessBoardGUI();
-    private Piece[][] chessBoardPieces = new Piece[8][8];
+    private Piece[][] chessBoard = new Piece[8][8];
 
     private ArrayList<Piece.Types> whitePieceOrder = new ArrayList<Piece.Types>() {{
         add(Piece.Types.ROOK);
@@ -36,19 +36,23 @@ public class ChessBoard {
         addSpecialPieces();
     }
 
+    public Piece[][] getChessBoard(){
+        return chessBoard;
+    }
+
     private void addPawns(){
-        for (int k = 0; k < chessBoardPieces.length; k++){
-            chessBoardPieces[k][1] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);
-            chessBoardPieces[k][chessBoardPieces.length - 2] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
+        for (int k = 0; k < chessBoard.length; k++){
+            chessBoard[k][1] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);
+            chessBoard[k][chessBoard.length - 2] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
         }
 
         chessBoardGUI.updateBoardWithPawns();
     }
 
     private void addSpecialPieces(){
-        for (int l = 0; l < chessBoardPieces.length; l++){
-            chessBoardPieces[l][1] = PieceFactory.constructPiece(blackPieceOrder.get(l), Teams.GOLD);
-            chessBoardPieces[l][chessBoardPieces.length - 1] = PieceFactory.constructPiece(whitePieceOrder.get(l), Teams.SILVER);
+        for (int l = 0; l < chessBoard.length; l++){
+            chessBoard[l][0] = PieceFactory.constructPiece(blackPieceOrder.get(l), Teams.GOLD);
+            chessBoard[l][chessBoard.length - 1] = PieceFactory.constructPiece(whitePieceOrder.get(l), Teams.SILVER);
         }
 
         chessBoardGUI.updateBoardWithSpecialPieces();
