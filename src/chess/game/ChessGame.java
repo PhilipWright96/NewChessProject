@@ -1,5 +1,7 @@
 package chess.game;
 
+import java.util.Scanner;
+
 import chess.board.ChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
@@ -36,8 +38,33 @@ public class ChessGame {
         turnsTaken = 0;
         this.isRunning = true;
 
+        playRound();
+
         Thread.sleep(5000);
         finish();
+    }
+
+    private void playRound() {
+        Scanner userInputScanner = new Scanner(System.in);
+
+        String silverResult = getValidInputFromPlayer(userInputScanner, playerSilver);
+        System.out.println("Player Silver has played " + silverResult);
+
+        String goldResult = getValidInputFromPlayer(userInputScanner, playerGold);
+        System.out.println("Player Gold has played " + goldResult);
+        
+        this.turnsTaken++;
+        userInputScanner.close();
+    }
+
+    private String getValidInputFromPlayer(Scanner userInputScanner, Player player){
+        boolean inputValid = false;
+        String input = null; 
+        while (inputValid == false){
+            input = player.play(userInputScanner);
+            inputValid = InputChecker.checkPlayerInput(input, player, board.getChessBoard());
+        }
+        return input;
     }
 
     private void finish() {
