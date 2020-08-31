@@ -1,5 +1,6 @@
 package chess.board;
 
+import chess.game.ChessMove;
 import chess.pieces.*;
 import chess.util.Teams;
 
@@ -38,6 +39,16 @@ public class ChessBoard {
 
     public Piece[][] getChessBoard(){
         return chessBoard;
+    }
+
+    public void movePiece(ChessMove inputMove){
+        Piece pieceBeingMoved = getPieceBeingMovedFromBoard(inputMove);
+        chessBoard[inputMove.getMoveFromColumn()][inputMove.getMoveFromRow()] = null;
+        chessBoard[inputMove.getMoveToColumn()][inputMove.getMoveToRow()] = pieceBeingMoved;
+    }
+
+    public Piece getPieceBeingMovedFromBoard(ChessMove move){
+        return chessBoard[move.getMoveFromColumn()][move.getMoveFromRow()];
     }
 
     private void addPawns(){
