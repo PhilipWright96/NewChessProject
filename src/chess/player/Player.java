@@ -18,7 +18,7 @@ public class Player {
         return this.team;
     }
 
-    public String play(Scanner userInputScanner) {
+    public String getPlayerInput(Scanner userInputScanner) {
         String response = null;
         try {
             while (response == null) {
