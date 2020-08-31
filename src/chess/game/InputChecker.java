@@ -16,7 +16,7 @@ public class InputChecker {
     private static boolean correctInputSyntax(String input){
         boolean result = Pattern.matches(VALID_CHESS_MOVE, input);
         if (result == false){
-            System.out.println("Input : " + input + " is a invalid move. Correct input format is a1-a3. Please try again");
+            System.out.println("Input : " + input + " is a invalid move. Correct input format is (for example) a1-a3. Please try again");
         }
         return result;
     }
