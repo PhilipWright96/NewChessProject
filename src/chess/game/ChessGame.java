@@ -49,11 +49,11 @@ public class ChessGame {
 
         ChessMove silverMove = getValidInputFromPlayer(userInputScanner, playerSilver);
         movePiece(silverMove);
-        System.out.println("Player Silver has played " + silverMove);
+        System.out.println("Player Silver has played " + silverMove.getMoveFromColumn() + " " + silverMove.getMoveFromRow() + " to " + silverMove.getMoveToColumn() + " " + silverMove.getMoveToRow());
 
         ChessMove goldMove = getValidInputFromPlayer(userInputScanner, playerGold);
-        System.out.println("Player Gold has played " + goldMove);
         movePiece(goldMove);
+        System.out.println("Player Gold has played " + goldMove.getMoveFromColumn() + " " + goldMove.getMoveFromRow() + " to " + goldMove.getMoveToColumn() + " " + goldMove.getMoveToRow());
         
         this.turnsTaken++;
         userInputScanner.close();
