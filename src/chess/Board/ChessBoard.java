@@ -45,6 +45,7 @@ public class ChessBoard {
         Piece pieceBeingMoved = getPieceBeingMovedFromBoard(inputMove);
         chessBoard[inputMove.getMoveFromColumn()][inputMove.getMoveFromRow()] = null;
         chessBoard[inputMove.getMoveToColumn()][inputMove.getMoveToRow()] = pieceBeingMoved;
+        chessBoardGUI.updateBoardWithNewMove(inputMove, pieceBeingMoved);
     }
 
     public Piece getPieceBeingMovedFromBoard(ChessMove move){
