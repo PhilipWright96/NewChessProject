@@ -4,6 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import chess.game.ChessMove;
+import chess.pieces.Piece;
 import chess.util.ChessSprites;
 
 public class ChessBoardGUI {
@@ -40,6 +42,11 @@ public class ChessBoardGUI {
             silverSquare.setIcon(silverIcon);
         }
     }
+
+    public void updateBoardWithNewMove(ChessMove newMove, Piece pieceBeingMoved){
+        System.out.println(" move from col is "  + newMove.getMoveFromColumn() + " move from row is " + newMove.getMoveFromRow());
+        JButton moveFromSquare = chessBoardGUIButtons[newMove.getMoveFromColumn()][newMove.getMoveFromRow()];
+        moveFromSquare.setIcon(null);
 
     private void initializeBoardGUI(){
         arrangeGUI();
