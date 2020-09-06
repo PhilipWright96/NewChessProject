@@ -3,7 +3,7 @@ package chess.game;
 import java.util.regex.*;
 
 import chess.board.IChessBoard;
-import chess.pieces.Piece;
+import chess.pieces.IPiece;
 import chess.player.Player;
 
 public class InputChecker {
@@ -22,7 +22,7 @@ public class InputChecker {
     }
 
     private static boolean correctInputLogic(String input, Player player, IChessBoard board){
-        Piece pieceBeingMoved = board.getPieceBeingMovedFromBoard(new ChessMove(input));
+        IPiece pieceBeingMoved = board.getPieceBeingMovedFromBoard(new ChessMove(input));
 
         if (pieceBeingMoved == null){
             System.out.println("No piece found to move");

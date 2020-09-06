@@ -1,11 +1,11 @@
 package chess.board;
 
 import chess.game.ChessMove;
-import chess.pieces.Piece;
+import chess.pieces.IPiece;
 
 public interface IChessBoard {
     public void initializeChessBoard();
-    public Piece[][] getChessBoard();
+    public IPiece[][] getChessBoard();
     public void movePiece(ChessMove inputMove);
-    public Piece getPieceBeingMovedFromBoard(ChessMove move);
+    public IPiece getPieceBeingMovedFromBoard(ChessMove move);
 }
