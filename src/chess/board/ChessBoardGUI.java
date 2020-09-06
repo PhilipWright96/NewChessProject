@@ -4,7 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import chess.util.ChessSprites;
+import chess.game.ChessMove;
+import chess.pieces.Piece;
 
 public class ChessBoardGUI {
     private final JPanel GUI = new JPanel(new BorderLayout(3, 3));
@@ -39,6 +40,16 @@ public class ChessBoardGUI {
             ImageIcon silverIcon = new ImageIcon(ChessSprites.SPRITES_IN_ORDER.get(l + m + 1));
             silverSquare.setIcon(silverIcon);
         }
+    }
+
+    public void updateBoardWithNewMove(ChessMove newMove, Piece pieceBeingMoved){
+        System.out.println(" move from col is "  + newMove.getMoveFromColumn() + " move from row is " + newMove.getMoveFromRow());
+        JButton moveFromSquare = chessBoardGUIButtons[newMove.getMoveFromColumn()][newMove.getMoveFromRow()];
+        moveFromSquare.setIcon(null);
+
+        ImageIcon pieceImage = new ImageIcon(ChessSprites.getCorrespondingImageFromPiece(pieceBeingMoved));
+        JButton moveToSquare = chessBoardGUIButtons[newMove.getMoveToColumn()][newMove.getMoveToRow()];
+        moveToSquare.setIcon(pieceImage);
     }
 
     private void initializeBoardGUI(){

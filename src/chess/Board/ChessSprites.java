@@ -1,7 +1,12 @@
-package chess.util;
+package chess.board;
 
 import java.awt.image.*;
 import javax.imageio.*;
+
+import chess.pieces.Piece;
+import chess.pieces.PieceFactory;
+import chess.util.Teams;
+
 import java.net.*;
 import java.io.*;
 import java.util.*;
@@ -39,4 +44,23 @@ public final class ChessSprites {
                                                    GOLD_BISHOP,  SILVER_BISHOP,
                                                    GOLD_KNIGHT, SILVER_KNIGHT, 
                                                    GOLD_ROOK, SILVER_ROOK));
+
+    private static final HashMap<Piece, BufferedImage> pieceToImage  = new HashMap<Piece, BufferedImage>() {{ 
+        put(PieceFactory.constructPiece(Piece.Types.QUEEN, Teams.GOLD), GOLD_QUEEN);
+        put(PieceFactory.constructPiece(Piece.Types.QUEEN, Teams.SILVER), SILVER_QUEEN);
+        put(PieceFactory.constructPiece(Piece.Types.KING, Teams.GOLD), GOLD_KING);
+        put(PieceFactory.constructPiece(Piece.Types.KING, Teams.SILVER), SILVER_KING);
+        put(PieceFactory.constructPiece(Piece.Types.ROOK, Teams.GOLD), GOLD_ROOK);
+        put(PieceFactory.constructPiece(Piece.Types.ROOK, Teams.SILVER), SILVER_ROOK);
+        put(PieceFactory.constructPiece(Piece.Types.KNIGHT, Teams.GOLD), GOLD_KNIGHT);
+        put(PieceFactory.constructPiece(Piece.Types.KNIGHT, Teams.SILVER), SILVER_KNIGHT);
+        put(PieceFactory.constructPiece(Piece.Types.BISHOP, Teams.GOLD), GOLD_BISHOP);
+        put(PieceFactory.constructPiece(Piece.Types.BISHOP, Teams.SILVER), SILVER_BISHOP);
+        put(PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD), GOLD_PAWN);
+        put(PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER), SILVER_PAWN);
+    }};
+
+    public static BufferedImage getCorrespondingImageFromPiece(Piece piece){
+        return pieceToImage.get(piece);
+    }
 }

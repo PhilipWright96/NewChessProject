@@ -29,6 +29,7 @@ public class PieceFactory {
         }
 
         chosenPiece.setTeam(team);
+        chosenPiece.setType(type);
         return chosenPiece;
     }
 }
