@@ -47,7 +47,7 @@ public class ChessBoardGUI {
         JButton moveFromSquare = chessBoardGUIButtons[newMove.getMoveFromColumn()][newMove.getMoveFromRow()];
         moveFromSquare.setIcon(null);
 
-        ImageIcon pieceImage = new ImageIcon(ChessSprites.pieceToImage.get(pieceBeingMoved));
+        ImageIcon pieceImage = new ImageIcon(ChessSprites.getCorrespondingImageFromPiece(pieceBeingMoved));
         JButton moveToSquare = chessBoardGUIButtons[newMove.getMoveToColumn()][newMove.getMoveToRow()];
         moveToSquare.setIcon(pieceImage);
     }

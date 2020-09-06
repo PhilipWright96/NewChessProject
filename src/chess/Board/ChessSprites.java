@@ -45,7 +45,7 @@ public final class ChessSprites {
                                                    GOLD_KNIGHT, SILVER_KNIGHT, 
                                                    GOLD_ROOK, SILVER_ROOK));
 
-    public static final HashMap<Piece, BufferedImage> pieceToImage  = new HashMap<Piece, BufferedImage>() {{ 
+    private static final HashMap<Piece, BufferedImage> pieceToImage  = new HashMap<Piece, BufferedImage>() {{ 
         put(PieceFactory.constructPiece(Piece.Types.QUEEN, Teams.GOLD), GOLD_QUEEN);
         put(PieceFactory.constructPiece(Piece.Types.QUEEN, Teams.SILVER), SILVER_QUEEN);
         put(PieceFactory.constructPiece(Piece.Types.KING, Teams.GOLD), GOLD_KING);
@@ -59,4 +59,8 @@ public final class ChessSprites {
         put(PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD), GOLD_PAWN);
         put(PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER), SILVER_PAWN);
     }};
+
+    public static BufferedImage getCorrespondingImageFromPiece(Piece piece){
+        return pieceToImage.get(piece);
+    }
 }
