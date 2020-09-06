@@ -3,11 +3,12 @@ package chess.game;
 import java.util.Scanner;
 
 import chess.board.ChessBoard;
+import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
 
 public class ChessGame {
-    private ChessBoard board;
+    private IChessBoard board;
     private GameObserver observer;
 
     private Player playerSilver;

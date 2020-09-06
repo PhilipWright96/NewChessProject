@@ -6,7 +6,7 @@ import chess.util.Teams;
 
 import java.util.ArrayList;
 
-public class ChessBoard {
+public class ChessBoard implements IChessBoard {
     private IChessBoardGUI chessBoardGUI = new ChessBoardGUI();
     private Piece[][] chessBoard = new Piece[8][8];
 

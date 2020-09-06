@@ -2,14 +2,14 @@ package chess.game;
 
 import java.util.regex.*;
 
-import chess.board.ChessBoard;
+import chess.board.IChessBoard;
 import chess.pieces.Piece;
 import chess.player.Player;
 
 public class InputChecker {
     private static final String VALID_CHESS_MOVE = "[a-h][1-8]\\-[a-h][1-8]";
 
-    public static boolean checkPlayerInput(String input, Player player, ChessBoard board){
+    public static boolean checkPlayerInput(String input, Player player, IChessBoard board){
         return correctInputSyntax(input) && correctInputLogic(input, player, board);
     }
 
@@ -21,7 +21,7 @@ public class InputChecker {
         return result;
     }
 
-    private static boolean correctInputLogic(String input, Player player, ChessBoard board){
+    private static boolean correctInputLogic(String input, Player player, IChessBoard board){
         Piece pieceBeingMoved = board.getPieceBeingMovedFromBoard(new ChessMove(input));
 
         if (pieceBeingMoved == null){
