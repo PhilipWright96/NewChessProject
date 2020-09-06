@@ -33,6 +33,7 @@ public class ChessBoard {
     }};
 
     public ChessBoard() {
+        this.chessBoardGUI.initializeBoardGUI();
         addPawns();
         addSpecialPieces();
     }

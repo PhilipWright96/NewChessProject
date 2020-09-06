@@ -14,8 +14,14 @@ public class ChessBoardGUI {
 
     private static final String columns = "ABCDEFGH";
 
-    public ChessBoardGUI(){
-        initializeBoardGUI();
+    public void initializeBoardGUI(){
+        arrangeGUI();
+
+        createButtons();
+
+        addButtonsToBoard();
+
+        addFrameToBoard();
     }
 
     public void updateBoardWithPawns(){
@@ -50,16 +56,6 @@ public class ChessBoardGUI {
         ImageIcon pieceImage = new ImageIcon(ChessSprites.getCorrespondingImageFromPiece(pieceBeingMoved));
         JButton moveToSquare = chessBoardGUIButtons[newMove.getMoveToColumn()][newMove.getMoveToRow()];
         moveToSquare.setIcon(pieceImage);
-    }
-
-    private void initializeBoardGUI(){
-        arrangeGUI();
-
-        createButtons();
-
-        addButtonsToBoard();
-
-        addFrameToBoard();
     }
 
     private void arrangeGUI(){
