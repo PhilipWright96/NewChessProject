@@ -7,7 +7,7 @@ import chess.util.Teams;
 import java.util.ArrayList;
 
 public class ChessBoard {
-    private ChessBoardGUI chessBoardGUI = new ChessBoardGUI();
+    private IChessBoardGUI chessBoardGUI = new ChessBoardGUI();
     private Piece[][] chessBoard = new Piece[8][8];
 
     private ArrayList<Piece.Types> whitePieceOrder = new ArrayList<Piece.Types>() {{

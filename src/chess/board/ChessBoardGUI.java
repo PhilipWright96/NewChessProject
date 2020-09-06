@@ -7,7 +7,7 @@ import javax.swing.border.*;
 import chess.game.ChessMove;
 import chess.pieces.Piece;
 
-public class ChessBoardGUI {
+public class ChessBoardGUI implements IChessBoardGUI{
     private final JPanel GUI = new JPanel(new BorderLayout(3, 3));
     private JButton[][] chessBoardGUIButtons = new JButton[8][8];
     private JPanel chessBoard;
