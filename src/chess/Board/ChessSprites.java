@@ -5,6 +5,7 @@ import javax.imageio.*;
 
 import chess.pieces.Piece;
 import chess.pieces.PieceFactory;
+import chess.util.Teams;
 
 import java.net.*;
 import java.io.*;
