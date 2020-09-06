@@ -7,7 +7,7 @@ import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
 
-public class ChessGame {
+public class ChessGame implements IChessGame{
     private IChessBoard board;
     private GameObserver observer;
 

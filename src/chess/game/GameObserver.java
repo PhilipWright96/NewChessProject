@@ -1,9 +1,9 @@
 package chess.game;
 
 public class GameObserver {
-    ChessGame game;
+    IChessGame game;
     boolean hasFinished = false;
-    public GameObserver(ChessGame game){
+    public GameObserver(IChessGame game){
         this.game = game;
         this.game.attach(this);
     }
