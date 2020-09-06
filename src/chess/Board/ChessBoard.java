@@ -32,7 +32,7 @@ public class ChessBoard {
         add(Piece.Types.ROOK);
     }};
 
-    public ChessBoard() {
+    public void initializeChessBoard() {
         this.chessBoardGUI.initializeBoardGUI();
         addPawns();
         addSpecialPieces();

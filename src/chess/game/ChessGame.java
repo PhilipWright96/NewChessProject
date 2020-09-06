@@ -34,6 +34,7 @@ public class ChessGame {
 
     public void start() throws InterruptedException {
         this.board = new ChessBoard();
+        this.board.initializeChessBoard();
 
         turnsTaken = 0;
         this.isRunning = true;
