@@ -18,7 +18,7 @@ public class ChessGame {
     private boolean isFinished = false; 
     private int turnsTaken;
 
-    public ChessGame(Player playerOne, Player playerTwo){
+    public void setPlayers(Player playerOne, Player playerTwo){
         if (playerOne.getTeam() == Teams.SILVER){
             this.playerSilver = playerOne;
             this.playerGold = playerTwo;
