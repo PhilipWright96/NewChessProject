@@ -6,7 +6,6 @@ import javax.swing.border.*;
 
 import chess.game.ChessMove;
 import chess.pieces.Piece;
-import chess.util.ChessSprites;
 
 public class ChessBoardGUI {
     private final JPanel GUI = new JPanel(new BorderLayout(3, 3));
@@ -47,6 +46,11 @@ public class ChessBoardGUI {
         System.out.println(" move from col is "  + newMove.getMoveFromColumn() + " move from row is " + newMove.getMoveFromRow());
         JButton moveFromSquare = chessBoardGUIButtons[newMove.getMoveFromColumn()][newMove.getMoveFromRow()];
         moveFromSquare.setIcon(null);
+
+        ImageIcon pieceImage = new ImageIcon(ChessSprites.pieceToImage.get(pieceBeingMoved));
+        JButton moveToSquare = chessBoardGUIButtons[newMove.getMoveToColumn()][newMove.getMoveToRow()];
+        moveToSquare.setIcon(pieceImage);
+    }
 
     private void initializeBoardGUI(){
         arrangeGUI();
