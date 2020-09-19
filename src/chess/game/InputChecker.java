@@ -22,7 +22,8 @@ public class InputChecker {
     }
 
     private static boolean correctInputLogic(String input, Player player, IChessBoard board){
-        IPiece pieceBeingMoved = board.getPieceBeingMovedFromBoard(new ChessMove(input));
+        ChessMove attemptedMove = new ChessMove(input);
+        IPiece pieceBeingMoved = board.getPieceBeingMovedFromBoard(attemptedMove);
 
         if (pieceBeingMoved == null){
             System.out.println("No piece found to move");
@@ -34,7 +35,7 @@ public class InputChecker {
             return false;
         }
 
-        if (pieceBeingMoved.moveValid() == false){
+        if (pieceBeingMoved.moveValid(attemptedMove) == false){
             System.out.println("You cannot move this piece in that way");
             return false;
         }
