@@ -1,8 +1,10 @@
 package chess.pieces;
 
-public class King extends Piece{
+import chess.game.ChessMove;
 
-    public boolean moveValid(){
+public class King extends Piece {
+
+    public boolean moveValid(ChessMove move){
         return true;
     }
 }
