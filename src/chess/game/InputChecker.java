@@ -34,6 +34,11 @@ public class InputChecker {
             return false;
         }
 
+        if (pieceBeingMoved.moveValid() == false){
+            System.out.println("You cannot move this piece in that way");
+            return false;
+        }
+
         return true;
     }
 }
