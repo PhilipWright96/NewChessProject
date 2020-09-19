@@ -30,7 +30,6 @@ public class Pawn extends Piece{
             else if (move.getMoveFromRow() - 1 == move.getMoveToRow()){
                 return true;
             }
-            return false;
         }
         else {
             if (hasMoved == false && move.getMoveFromRow() + 2 == move.getMoveToRow()){
@@ -39,7 +38,7 @@ public class Pawn extends Piece{
             else if (move.getMoveFromRow() + 1 == move.getMoveToRow()){
                 return true;
             }
-            return false;
         }
+        return false;
     }
 }
