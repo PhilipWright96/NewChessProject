@@ -1,7 +1,8 @@
 package chess.pieces;
 
 public class Queen extends Piece {
-    
-    public void move(){
+
+    public boolean moveValid(){
+        return true;
     }
 }

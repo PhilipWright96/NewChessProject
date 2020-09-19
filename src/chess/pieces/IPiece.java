@@ -10,5 +10,5 @@ public interface IPiece {
     public Teams getTeam();
     public void setType(Types type);
     public Types getType();
-    public abstract void move();
+    public abstract boolean moveValid();
 }

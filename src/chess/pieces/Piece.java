@@ -56,5 +56,5 @@ public abstract class Piece implements IPiece {
          return this.type;
      }
 
-     public abstract void move();
+     public abstract boolean moveValid();
 }
