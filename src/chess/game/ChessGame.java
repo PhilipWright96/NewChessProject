@@ -13,6 +13,8 @@ public class ChessGame implements IChessGame{
 
     private Player playerSilver;
     private Player playerGold;
+
+    private Scanner userInputScanner = new Scanner(System.in);
     
     private boolean isRunning = false;
     private boolean isFinished = false; 
@@ -40,15 +42,16 @@ public class ChessGame implements IChessGame{
         turnsTaken = 0;
         this.isRunning = true;
 
-        playRound();
+        for (int i = 0; i < 5; i++){
+            playRound();
+        }
+        this.userInputScanner.close();
 
         Thread.sleep(5000);
         finish();
     }
 
     private void playRound() {
-        Scanner userInputScanner = new Scanner(System.in);
-
         ChessMove silverMove = getValidInputFromPlayer(userInputScanner, playerSilver);
         movePiece(silverMove);
         System.out.println("Player Silver has played " + silverMove.getMoveFromColumn() + " " + silverMove.getMoveFromRow() + " to " + silverMove.getMoveToColumn() + " " + silverMove.getMoveToRow());
@@ -58,7 +61,6 @@ public class ChessGame implements IChessGame{
         System.out.println("Player Gold has played " + goldMove.getMoveFromColumn() + " " + goldMove.getMoveFromRow() + " to " + goldMove.getMoveToColumn() + " " + goldMove.getMoveToRow());
         
         this.turnsTaken++;
-        userInputScanner.close();
     }
 
     private ChessMove getValidInputFromPlayer(Scanner userInputScanner, Player player){
