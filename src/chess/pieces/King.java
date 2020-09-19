@@ -8,6 +8,7 @@ public class King extends Piece {
         if (rowChangeValid(move) && columnChangeValid(move)){
             return true;
         }
+        System.out.println("Error: Incorrect move logic for king");
         return false;
     }
 
