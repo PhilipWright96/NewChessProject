@@ -12,6 +12,7 @@ public class Pawn extends Piece{
             hasMoved = true;
             return true;
         }
+        System.out.println("Error: Incorrect move logic for pawn");
         return false;
     }
 
