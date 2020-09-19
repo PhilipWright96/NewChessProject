@@ -5,8 +5,11 @@ import chess.util.Teams;
 
 public class Pawn extends Piece{
 
+    private boolean hasMoved = false;
+
     public boolean moveValid(ChessMove move){
         if (checkCorrectColumn(move) && checkCorrectRow(move)){
+            hasMoved = true;
             return true;
         }
         return false;
@@ -21,13 +24,19 @@ public class Pawn extends Piece{
 
     private boolean checkCorrectRow(ChessMove move){
         if (getTeam() == Teams.SILVER){
-            if (move.getMoveFromRow() - 1 == move.getMoveToRow()){
+            if (hasMoved == false && move.getMoveFromRow() - 2 == move.getMoveToRow()){
+                return true;
+            }
+            else if (move.getMoveFromRow() - 1 == move.getMoveToRow()){
                 return true;
             }
             return false;
         }
         else {
-            if (move.getMoveFromRow() + 1 == move.getMoveToRow()){
+            if (hasMoved == false && move.getMoveFromRow() + 2 == move.getMoveToRow()){
+                return true;
+            }
+            else if (move.getMoveFromRow() + 1 == move.getMoveToRow()){
                 return true;
             }
             return false;
