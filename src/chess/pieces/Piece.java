@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import chess.util.Teams;
 
-public abstract class Piece {
+public abstract class Piece implements IPiece {
 
     public enum Types {
         PAWN,

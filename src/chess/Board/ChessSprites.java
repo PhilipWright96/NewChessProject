@@ -3,6 +3,7 @@ package chess.board;
 import java.awt.image.*;
 import javax.imageio.*;
 
+import chess.pieces.IPiece;
 import chess.pieces.Piece;
 import chess.pieces.PieceFactory;
 import chess.util.Teams;
@@ -60,7 +61,7 @@ public final class ChessSprites {
         put(PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER), SILVER_PAWN);
     }};
 
-    public static BufferedImage getCorrespondingImageFromPiece(Piece piece){
+    public static BufferedImage getCorrespondingImageFromPiece(IPiece piece){
         return pieceToImage.get(piece);
     }
 }

@@ -5,17 +5,23 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import chess.game.ChessMove;
-import chess.pieces.Piece;
+import chess.pieces.IPiece;
 
-public class ChessBoardGUI {
+public class ChessBoardGUI implements IChessBoardGUI{
     private final JPanel GUI = new JPanel(new BorderLayout(3, 3));
     private JButton[][] chessBoardGUIButtons = new JButton[8][8];
     private JPanel chessBoard;
 
     private static final String columns = "ABCDEFGH";
 
-    public ChessBoardGUI(){
-        initializeBoardGUI();
+    public void initializeBoardGUI(){
+        arrangeGUI();
+
+        createButtons();
+
+        addButtonsToBoard();
+
+        addFrameToBoard();
     }
 
     public void updateBoardWithPawns(){
@@ -42,7 +48,7 @@ public class ChessBoardGUI {
         }
     }
 
-    public void updateBoardWithNewMove(ChessMove newMove, Piece pieceBeingMoved){
+    public void updateBoardWithNewMove(ChessMove newMove, IPiece pieceBeingMoved){
         System.out.println(" move from col is "  + newMove.getMoveFromColumn() + " move from row is " + newMove.getMoveFromRow());
         JButton moveFromSquare = chessBoardGUIButtons[newMove.getMoveFromColumn()][newMove.getMoveFromRow()];
         moveFromSquare.setIcon(null);
@@ -50,16 +56,6 @@ public class ChessBoardGUI {
         ImageIcon pieceImage = new ImageIcon(ChessSprites.getCorrespondingImageFromPiece(pieceBeingMoved));
         JButton moveToSquare = chessBoardGUIButtons[newMove.getMoveToColumn()][newMove.getMoveToRow()];
         moveToSquare.setIcon(pieceImage);
-    }
-
-    private void initializeBoardGUI(){
-        arrangeGUI();
-
-        createButtons();
-
-        addButtonsToBoard();
-
-        addFrameToBoard();
     }
 
     private void arrangeGUI(){

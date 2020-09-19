@@ -3,11 +3,12 @@ package chess.game;
 import java.util.Scanner;
 
 import chess.board.ChessBoard;
+import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
 
-public class ChessGame {
-    private ChessBoard board;
+public class ChessGame implements IChessGame{
+    private IChessBoard board;
     private GameObserver observer;
 
     private Player playerSilver;
@@ -17,7 +18,7 @@ public class ChessGame {
     private boolean isFinished = false; 
     private int turnsTaken;
 
-    public ChessGame(Player playerOne, Player playerTwo){
+    public void setPlayers(Player playerOne, Player playerTwo){
         if (playerOne.getTeam() == Teams.SILVER){
             this.playerSilver = playerOne;
             this.playerGold = playerTwo;
@@ -34,6 +35,7 @@ public class ChessGame {
 
     public void start() throws InterruptedException {
         this.board = new ChessBoard();
+        this.board.initializeChessBoard();
 
         turnsTaken = 0;
         this.isRunning = true;
