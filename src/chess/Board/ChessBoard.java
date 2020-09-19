@@ -10,23 +10,12 @@ public class ChessBoard implements IChessBoard {
     private IChessBoardGUI chessBoardGUI = new ChessBoardGUI();
     private IPiece[][] chessBoard = new Piece[8][8];
 
-    private ArrayList<Piece.Types> whitePieceOrder = new ArrayList<Piece.Types>() {{
+    private ArrayList<Piece.Types> pieceOrder = new ArrayList<Piece.Types>() {{
         add(Piece.Types.ROOK);
         add(Piece.Types.KNIGHT);
         add(Piece.Types.BISHOP);
         add(Piece.Types.QUEEN);
         add(Piece.Types.KING);
-        add(Piece.Types.BISHOP);
-        add(Piece.Types.KNIGHT);
-        add(Piece.Types.ROOK);
-    }};
-
-    private ArrayList<Piece.Types> blackPieceOrder = new ArrayList<Piece.Types>() {{
-        add(Piece.Types.ROOK);
-        add(Piece.Types.KNIGHT);
-        add(Piece.Types.BISHOP);
-        add(Piece.Types.KING);
-        add(Piece.Types.QUEEN);
         add(Piece.Types.BISHOP);
         add(Piece.Types.KNIGHT);
         add(Piece.Types.ROOK);
@@ -64,8 +53,8 @@ public class ChessBoard implements IChessBoard {
 
     private void addSpecialPieces(){
         for (int l = 0; l < chessBoard.length; l++){
-            chessBoard[l][0] = PieceFactory.constructPiece(blackPieceOrder.get(l), Teams.GOLD);
-            chessBoard[l][chessBoard.length - 1] = PieceFactory.constructPiece(whitePieceOrder.get(l), Teams.SILVER);
+            chessBoard[l][0] = PieceFactory.constructPiece(pieceOrder.get(l), Teams.GOLD);
+            chessBoard[l][chessBoard.length - 1] = PieceFactory.constructPiece(pieceOrder.get(l), Teams.SILVER);
         }
 
         chessBoardGUI.updateBoardWithSpecialPieces();
