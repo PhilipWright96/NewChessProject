@@ -13,28 +13,24 @@ public class King extends Piece {
     }
 
     private boolean rowChangeValid(ChessMove move){
-        if (move.getMoveFromRow() == move.getMoveToRow()){
-            return true;
-        }
-        if (move.getMoveFromRow() + 1 == move.getMoveToRow()){
-            return true;
-        }
-        if (move.getMoveFromRow() - 1 == move.getMoveToRow()){
+        if (getRowChangeNum(move) == 0 || getRowChangeNum(move) == 1){
             return true;
         }
         return false;
     }
 
     private boolean columnChangeValid(ChessMove move){
-        if (move.getMoveFromColumn() == move.getMoveToColumn()){
-            return true;
-        }
-        if (move.getMoveFromColumn() + 1 == move.getMoveToColumn()){
-            return true;
-        }
-        if (move.getMoveFromColumn() - 1 == move.getMoveToColumn()){
+        if (getColumnChangeNum(move) == 0 || getColumnChangeNum(move) == 1){
             return true;
         }
         return false;
+    }
+
+    private int getRowChangeNum(ChessMove move){
+        return Math.abs(move.getMoveFromRow() - move.getMoveToRow());
+    }
+
+    private int getColumnChangeNum(ChessMove move){
+        return Math.abs(move.getMoveFromColumn() - move.getMoveToColumn());
     }
 }
