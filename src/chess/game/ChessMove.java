@@ -35,4 +35,12 @@ public class ChessMove {
     public int getMoveToRow(){
         return this.moveToRow;
     }
+
+    public int getRowChangeNum(){
+        return Math.abs(getMoveFromRow() - getMoveToRow());
+    }
+
+    public int getColumnChangeNum(){
+        return Math.abs(getMoveFromColumn() - getMoveToColumn());
+    }
 }
