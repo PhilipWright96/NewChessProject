@@ -2,6 +2,7 @@ package chess.pieces;
 
 import java.util.Objects;
 
+import chess.game.ChessMove;
 import chess.util.Teams;
 
 public abstract class Piece implements IPiece {
@@ -56,5 +57,5 @@ public abstract class Piece implements IPiece {
          return this.type;
      }
 
-     public abstract void move();
+     public abstract boolean moveValid(ChessMove move);
 }
