@@ -42,6 +42,10 @@ public class ChessBoard implements IChessBoard {
         return chessBoard[move.getMoveFromColumn()][move.getMoveFromRow()];
     }
 
+    public IPiece getPieceBeingTakenFromBoard(ChessMove move){
+        return chessBoard[move.getMoveToColumn()][move.getMoveToRow()];
+    }
+
     private void addPawns(){
         for (int k = 0; k < chessBoard.length; k++){
             chessBoard[k][1] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);

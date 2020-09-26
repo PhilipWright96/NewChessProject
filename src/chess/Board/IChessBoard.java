@@ -8,4 +8,5 @@ public interface IChessBoard {
     public IPiece[][] getChessBoard();
     public void movePiece(ChessMove inputMove);
     public IPiece getPieceBeingMovedFromBoard(ChessMove move);
+    public IPiece getPieceBeingMovedToBoard(ChessMove move);
 }
