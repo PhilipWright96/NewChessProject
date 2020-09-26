@@ -23,7 +23,7 @@ public class InputChecker {
 
     private static boolean correctInputLogic(String input, Player player, IChessBoard board){
         ChessMove attemptedMove = new ChessMove(input);
-        IPiece pieceBeingMoved = board.getPieceBeingMovedFromBoard(attemptedMove);
+        IPiece pieceBeingMoved = board.getPieceBeingMoved(attemptedMove);
 
         if (pieceBeingMoved == null){
             System.out.println("No piece found to move");
@@ -45,6 +45,19 @@ public class InputChecker {
             return false;
         }
 
+        if (moveTakingPieceOfSameTeam(attemptedMove, player, board)){
+            System.out.println("You cannot take a piece of the same team");
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean moveTakingPieceOfSameTeam(ChessMove move, Player player, IChessBoard board){
+        IPiece pieceBeingTaken = board.getPieceBeingTaken(move);
+        if (pieceBeingTaken == null || player.getTeam() != pieceBeingTaken.getTeam()){
+            return false;
+        }
         return true;
     }
 }
