@@ -29,6 +29,7 @@ public class InputChecker {
             System.out.println("You must move your piece to a new square");
             return false;
         }
+        
         if (pieceBeingMoved == null){
             System.out.println("No piece found to move");
             return false;
@@ -39,7 +40,7 @@ public class InputChecker {
             return false;
         }
 
-        if (pieceBeingMoved.moveValid(attemptedMove) == false){
+        if (!pieceBeingMoved.moveValid(attemptedMove)){
             System.out.println("You cannot move this piece in that way");
             return false;
         }
