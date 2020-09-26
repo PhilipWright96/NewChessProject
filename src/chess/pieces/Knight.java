@@ -11,6 +11,7 @@ public class Knight extends Piece {
         else if (move.getRowChangeNum() == 2 && move.getColumnChangeNum() == 1){
             return true;
         }
+        System.out.println("Incorrect move logic for knight");
         return false;
     }
 }
