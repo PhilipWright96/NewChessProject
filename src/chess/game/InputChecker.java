@@ -25,15 +25,15 @@ public class InputChecker {
         ChessMove attemptedMove = new ChessMove(input);
         IPiece pieceBeingMoved = board.getPieceBeingMovedFromBoard(attemptedMove);
 
-        if (!attemptedMove.moveToNewSquare()){
-            System.out.println("You must move your piece to a new square");
-            return false;
-        }
-        
         if (pieceBeingMoved == null){
             System.out.println("No piece found to move");
             return false;
         };
+
+        if (!attemptedMove.moveToNewSquare()){
+            System.out.println("You must move your piece to a new square");
+            return false;
+        }
 
         if (pieceBeingMoved.getTeam() != player.getTeam()){
             System.out.println("You may only move your own pieces");
