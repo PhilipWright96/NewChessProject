@@ -43,4 +43,8 @@ public class ChessMove {
     public int getColumnChangeNum(){
         return Math.abs(getMoveFromColumn() - getMoveToColumn());
     }
+
+    public boolean moveValid(){
+        return getMoveFromRow() != getMoveToRow() || getMoveFromColumn() != getMoveToColumn();
+    }
 }
