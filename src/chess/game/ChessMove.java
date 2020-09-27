@@ -54,4 +54,11 @@ public class ChessMove {
         }
         return false;
     }
+
+    public boolean isVertical(){
+        if (getMoveFromColumn() != getMoveToColumn()){
+            return true;
+        }
+        return false;
+    }
 }
