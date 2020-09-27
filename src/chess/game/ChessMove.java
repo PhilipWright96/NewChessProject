@@ -47,4 +47,11 @@ public class ChessMove {
     public boolean moveToNewSquare(){
         return getMoveFromRow() != getMoveToRow() || getMoveFromColumn() != getMoveToColumn();
     }
+
+    public boolean isStraight(){
+        if (getMoveFromColumn() == getMoveToColumn() || getMoveFromRow() == getMoveToRow()){
+            return true;
+        }
+        return false;
+    }
 }
