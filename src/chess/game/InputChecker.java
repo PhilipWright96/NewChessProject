@@ -50,7 +50,7 @@ public class InputChecker {
             return false;
         }
 
-        if (pieceBlockingAttemptedMove(attemptedMove, board, pieceBeingMoved)){
+        if (!pathForAttemptedMoveClear(attemptedMove, board, pieceBeingMoved)){
             System.out.println("You cannot move through a piece");
             return false;
         }
@@ -66,7 +66,7 @@ public class InputChecker {
         return true;
     }
 
-    private static boolean pieceBlockingAttemptedMove(ChessMove move, IChessBoard board, IPiece piece){
+    private static boolean pathForAttemptedMoveClear(ChessMove move, IChessBoard board, IPiece piece){
         return board.pathForMoveClear(move);
     }
 }
