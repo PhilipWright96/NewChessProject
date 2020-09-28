@@ -47,6 +47,18 @@ public class ChessBoard implements IChessBoard {
     }
 
     public boolean pathForMoveClear(ChessMove move){
+        if (move.isStraight()){
+            if (move.isHorizontal()){
+                if (pieceBlockingHorizontalMove(move)){
+                    return false;
+                }
+            }
+            else {
+                if (pieceBlockingVerticalMove(move)){
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
@@ -67,4 +79,45 @@ public class ChessBoard implements IChessBoard {
 
         chessBoardGUI.updateBoardWithSpecialPieces();
     }
+
+    private boolean pieceBlockingHorizontalMove(ChessMove move){
+        if (move.getMoveFromColumn() < move.getMoveToColumn()){
+            System.out.println("Right");
+            for (int i = move.getMoveFromColumn() + 1; i < move.getMoveToColumn(); i++){
+                if (chessBoard[i][move.getMoveFromRow()] != null){
+                    return true;
+                }
+            }
+        }
+        else {
+            System.out.println("Left");
+            for (int i = move.getMoveFromColumn() - 1; i > move.getMoveToColumn(); i--){
+                if (chessBoard[i][move.getMoveFromRow()] != null){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean pieceBlockingVerticalMove(ChessMove move){
+        if (move.getMoveFromRow() < move.getMoveToRow()){
+            System.out.println("Down");
+            for (int i = move.getMoveFromRow() + 1; i < move.getMoveToRow(); i++){
+                if (chessBoard[move.getMoveFromColumn()][i] != null){
+                    return true;
+                }
+            }
+        }
+        else {
+            System.out.println("Up");
+            for (int i = move.getMoveFromRow() - 1; i > move.getMoveToRow(); i--){
+                if (chessBoard[move.getMoveFromColumn()][i] != null){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
 }
