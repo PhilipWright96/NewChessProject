@@ -55,7 +55,7 @@ public class ChessMove {
         return false;
     }
 
-    public boolean isVertical(){
+    public boolean isHorizontal(){
         if (getMoveFromColumn() != getMoveToColumn()){
             return true;
         }
