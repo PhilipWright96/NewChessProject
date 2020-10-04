@@ -67,6 +67,6 @@ public class InputChecker {
     }
 
     private static boolean pathForAttemptedMoveClear(ChessMove move, IChessBoard board, IPiece piece){
-        return board.pathForMoveClear(move);
+        return ClearPathChecker.pathForMoveClear(move, board.getChessBoard());
     }
 }
