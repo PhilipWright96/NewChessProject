@@ -4,6 +4,7 @@ import java.util.regex.*;
 
 import chess.board.IChessBoard;
 import chess.pieces.IPiece;
+import chess.pieces.Piece.Types;
 import chess.player.Player;
 
 public class InputChecker {
@@ -67,6 +68,9 @@ public class InputChecker {
     }
 
     private static boolean pathForAttemptedMoveClear(ChessMove move, IChessBoard board, IPiece piece){
+        if (piece.getType() == Types.KNIGHT){
+            return true;
+        }
         return ClearPathChecker.pathForMoveClear(move, board.getChessBoard());
     }
 }
