@@ -1,10 +1,11 @@
 package chess.pieces;
 
+import chess.board.IChessBoard;
 import chess.game.ChessMove;
 
 public class Rook extends Piece {
 
-    public boolean moveValid(ChessMove move){
+    public boolean moveValid(ChessMove move, IChessBoard chessBoard){
         if (columnMoved(move) && rowMoved(move)){
             System.out.println("Error: Incorrect move logic for rook");
             return false;

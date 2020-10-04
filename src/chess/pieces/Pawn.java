@@ -1,5 +1,6 @@
 package chess.pieces;
 
+import chess.board.IChessBoard;
 import chess.game.ChessMove;
 import chess.util.Teams;
 
@@ -7,7 +8,7 @@ public class Pawn extends Piece{
 
     private boolean hasMoved = false;
 
-    public boolean moveValid(ChessMove move){
+    public boolean moveValid(ChessMove move, IChessBoard chessBoard){
         if (checkCorrectColumn(move) && checkCorrectRow(move)){
             hasMoved = true;
             return true;

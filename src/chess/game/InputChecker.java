@@ -41,7 +41,7 @@ public class InputChecker {
             return false;
         }
 
-        if (!pieceBeingMoved.moveValid(attemptedMove)){
+        if (!pieceBeingMoved.moveValid(attemptedMove, board)){
             System.out.println("You cannot move this piece in that way");
             return false;
         }

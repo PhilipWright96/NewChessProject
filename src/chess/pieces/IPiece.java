@@ -1,6 +1,7 @@
 package chess.pieces;
 
 import chess.game.ChessMove;
+import chess.board.IChessBoard;
 import chess.pieces.Piece.Types;
 import chess.util.Teams;
 
@@ -11,5 +12,5 @@ public interface IPiece {
     public Teams getTeam();
     public void setType(Types type);
     public Types getType();
-    public abstract boolean moveValid(ChessMove move);
+    public abstract boolean moveValid(ChessMove move, IChessBoard chessBoard);
 }
