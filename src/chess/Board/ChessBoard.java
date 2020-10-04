@@ -59,6 +59,11 @@ public class ChessBoard implements IChessBoard {
                 }
             }
         }
+        else {
+            if (pieceBlockingDiagonalMove(move)){
+                return false;
+            }
+        }
         return true;
     }
 
@@ -114,6 +119,52 @@ public class ChessBoard implements IChessBoard {
             for (int i = move.getMoveFromRow() - 1; i > move.getMoveToRow(); i--){
                 if (chessBoard[move.getMoveFromColumn()][i] != null){
                     return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean pieceBlockingDiagonalMove(ChessMove move){
+        System.out.println("Move from row is " + move.getMoveFromRow() + " move from col is " + move.getMoveFromColumn());
+        System.out.println("Move to row is " + move.getMoveToRow() + " move to col is " + move.getMoveToColumn());
+
+        // If moving up
+        if (move.getMoveFromRow() > move.getMoveToRow()){
+            // If moving right
+            if (move.getMoveFromColumn() < move.getMoveToColumn()){
+                for (int i = move.getMoveFromRow() - 1, j = move.getMoveFromColumn() + 1; i > move.getMoveToRow(); i--, j++){
+                    if (chessBoard[j][i] != null){
+                        return true;
+                    }
+                }
+            }
+            // Else moving left
+            else {
+                for (int row = move.getMoveFromRow() - 1, col = move.getMoveFromColumn() - 1; row > move.getMoveToRow(); row--, col--){
+                    if (chessBoard[col][row] != null){
+                        return true;
+                    }
+                }
+            }
+        }
+        // Else moving down
+        else {
+            // if moving right 
+            if (move.getMoveFromColumn() < move.getMoveToColumn()){
+                for (int row = move.getMoveFromRow() + 1, col = move.getMoveFromColumn() + 1; row < move.getMoveToRow(); row++, col++){
+                    if (chessBoard[col][row] != null){
+                        return true;
+                    }
+                }
+            }
+            // Else moving left
+            else {
+                for (int row = move.getMoveFromRow() + 1, col = move.getMoveFromColumn() - 1; row < move.getMoveToRow(); row++, col--){
+                    System.out.println("Checking row is " + row + " Checking col is " + col);
+                    if (chessBoard[col][row] != null){
+                        return true;
+                    }
                 }
             }
         }
