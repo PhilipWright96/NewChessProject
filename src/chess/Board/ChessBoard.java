@@ -86,18 +86,23 @@ public class ChessBoard implements IChessBoard {
     }
 
     private boolean pieceBlockingHorizontalMove(ChessMove move){
-        if (move.getMoveFromColumn() < move.getMoveToColumn()){
-            System.out.println("Right");
-            for (int i = move.getMoveFromColumn() + 1; i < move.getMoveToColumn(); i++){
-                if (chessBoard[i][move.getMoveFromRow()] != null){
+        int moveFromRow = move.getMoveFromRow();
+        int moveFromCol = move.getMoveFromColumn();
+
+        int moveToCol = move.getMoveToColumn();
+
+        // If moving right
+        if (moveFromCol < moveToCol){
+            for (int col = moveFromCol + 1; col < moveToCol; col++){
+                if (chessBoard[col][moveFromRow] != null){
                     return true;
                 }
             }
         }
+        // Else moving left
         else {
-            System.out.println("Left");
-            for (int i = move.getMoveFromColumn() - 1; i > move.getMoveToColumn(); i--){
-                if (chessBoard[i][move.getMoveFromRow()] != null){
+            for (int col = moveFromCol - 1; col > moveToCol; col--){
+                if (chessBoard[col][moveFromRow] != null){
                     return true;
                 }
             }
@@ -106,18 +111,23 @@ public class ChessBoard implements IChessBoard {
     }
 
     private boolean pieceBlockingVerticalMove(ChessMove move){
-        if (move.getMoveFromRow() < move.getMoveToRow()){
-            System.out.println("Down");
-            for (int i = move.getMoveFromRow() + 1; i < move.getMoveToRow(); i++){
-                if (chessBoard[move.getMoveFromColumn()][i] != null){
+        int moveFromRow = move.getMoveFromRow();
+        int moveFromCol = move.getMoveFromColumn();
+
+        int moveToRow = move.getMoveToRow();
+
+        // If moving down
+        if (moveFromRow < moveToRow){
+            for (int row = moveFromRow + 1; row < moveToRow; row++){
+                if (chessBoard[moveFromCol][row] != null){
                     return true;
                 }
             }
         }
+        // Else moving up
         else {
-            System.out.println("Up");
-            for (int i = move.getMoveFromRow() - 1; i > move.getMoveToRow(); i--){
-                if (chessBoard[move.getMoveFromColumn()][i] != null){
+            for (int row = moveFromRow - 1; row > moveToRow; row--){
+                if (chessBoard[moveFromCol][row] != null){
                     return true;
                 }
             }
@@ -132,15 +142,12 @@ public class ChessBoard implements IChessBoard {
         int moveToRow = move.getMoveToRow();
         int moveToCol = move.getMoveToColumn();
 
-        System.out.println("Move from row is " + moveFromRow + " move from col is " + move.getMoveFromColumn());
-        System.out.println("Move to row is " + moveToRow + " move to col is " + move.getMoveToColumn());
-
         // If moving up
         if (moveFromRow > moveToRow){
             // If moving right
             if (moveFromCol < moveToCol){
-                for (int i = moveFromRow - 1, j = moveFromCol + 1; i > moveToRow; i--, j++){
-                    if (chessBoard[j][i] != null){
+                for (int row = moveFromRow - 1, col = moveFromCol + 1; row > moveToRow; row--, col++){
+                    if (chessBoard[col][row] != null){
                         return true;
                     }
                 }
@@ -167,7 +174,6 @@ public class ChessBoard implements IChessBoard {
             // Else moving left
             else {
                 for (int row = moveFromRow + 1, col = moveFromCol - 1; row < moveToRow; row++, col--){
-                    System.out.println("Checking row is " + row + " Checking col is " + col);
                     if (chessBoard[col][row] != null){
                         return true;
                     }
