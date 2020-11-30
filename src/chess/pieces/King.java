@@ -1,10 +1,11 @@
 package chess.pieces;
 
+import chess.board.IChessBoard;
 import chess.game.ChessMove;
 
 public class King extends Piece {
 
-    public boolean moveValid(ChessMove move){
+    public boolean moveValid(ChessMove move, IChessBoard chessBoard){
         if (rowChangeValid(move) && columnChangeValid(move)){
             return true;
         }

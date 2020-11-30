@@ -32,14 +32,18 @@ public class ChessBoard implements IChessBoard {
     }
 
     public void movePiece(ChessMove inputMove){
-        IPiece pieceBeingMoved = getPieceBeingMovedFromBoard(inputMove);
+        IPiece pieceBeingMoved = getPieceBeingMoved(inputMove);
         chessBoard[inputMove.getMoveFromColumn()][inputMove.getMoveFromRow()] = null;
         chessBoard[inputMove.getMoveToColumn()][inputMove.getMoveToRow()] = pieceBeingMoved;
         chessBoardGUI.updateBoardWithNewMove(inputMove, pieceBeingMoved);
     }
 
-    public IPiece getPieceBeingMovedFromBoard(ChessMove move){
+    public IPiece getPieceBeingMoved(ChessMove move){
         return chessBoard[move.getMoveFromColumn()][move.getMoveFromRow()];
+    }
+
+    public IPiece getPieceBeingTaken(ChessMove move){
+        return chessBoard[move.getMoveToColumn()][move.getMoveToRow()];
     }
 
     private void addPawns(){
@@ -59,4 +63,5 @@ public class ChessBoard implements IChessBoard {
 
         chessBoardGUI.updateBoardWithSpecialPieces();
     }
+    
 }
