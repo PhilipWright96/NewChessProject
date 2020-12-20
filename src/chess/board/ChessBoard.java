@@ -7,6 +7,7 @@ import chess.util.Teams;
 import java.util.ArrayList;
 
 public class ChessBoard implements IChessBoard {
+
     private IChessBoardGUI chessBoardGUI = new ChessBoardGUI();
     private IPiece[][] chessBoard = new Piece[8][8];
 
@@ -22,7 +23,7 @@ public class ChessBoard implements IChessBoard {
     }};
 
     public void initializeChessBoard() {
-        this.chessBoardGUI.initializeBoardGUI();
+        chessBoardGUI.initializeBoardGUI();
         addPawns();
         addSpecialPieces();
     }
