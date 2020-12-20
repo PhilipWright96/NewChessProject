@@ -1,7 +1,5 @@
 package chess;
 
-import org.apache.log4j.Logger;
-
 import chess.game.ChessGame;
 import chess.game.GameObserver;
 import chess.game.IChessGame;
@@ -9,7 +7,6 @@ import chess.player.Player;
 import chess.util.Teams;
 
 public class GameManager {
-    static Logger logger = Logger.getLogger(GameManager.class);
     static GameObserver observer;
     public static void main(String[] args) throws InterruptedException {
         IChessGame game = createChessGame();
