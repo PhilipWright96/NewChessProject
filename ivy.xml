@@ -5,5 +5,7 @@
     </configurations>
     <dependencies>
         <dependency org="junit" name="junit" rev="4.12" conf="binaries->default" />
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+        <dependency org="org.mockito" name="mockito-all" rev="1.9.5"/>
     </dependencies>
 </ivy-module>
