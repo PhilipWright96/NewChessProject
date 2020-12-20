@@ -30,16 +30,6 @@
              src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.5.0-rc1/ivy-2.5.0-rc1.jar" />
     </target>
 
-    <target name="download-libraries" description="Install ivy">
-        <mkdir dir="${lib.dir}" />
-        <get dest="${lib.dir}/commons-logging-1.2.jar"
-             src="http://search.maven.org/remotecontent?filepath=commons-logging/commons-logging/1.2/commons-logging-1.2.jar" />
-        <get dest="${lib.dir}/fontbox-2.0.19.jar"
-             src="http://search.maven.org/remotecontent?filepath=org/apache/pdfbox/fontbox/2.0.19/fontbox-2.0.19.jar" />
-        <get dest="${lib.dir}/pdfbox-2.0.19.jar"
-             src="http://search.maven.org/remotecontent?filepath=org/apache/pdfbox/pdfbox/2.0.19/pdfbox-2.0.19.jar" />
-    </target>
-
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
