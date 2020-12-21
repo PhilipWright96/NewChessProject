@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import chess.board.ChessBoard;
 import chess.board.IChessBoard;
+import chess.board.ChessBoardGUI;
 import chess.player.Player;
 import chess.util.Teams;
 
@@ -22,30 +23,30 @@ public class ChessGame implements IChessGame{
 
     public void setPlayers(Player playerOne, Player playerTwo){
         if (playerOne.getTeam() == Teams.SILVER){
-            this.playerSilver = playerOne;
-            this.playerGold = playerTwo;
+            playerSilver = playerOne;
+            playerGold = playerTwo;
         }
         else {
-            this.playerSilver = playerTwo;
-            this.playerGold = playerOne;
+            playerSilver = playerTwo;
+            playerGold = playerOne;
         }
     }
 
     public void attach(GameObserver observer) {
-        this.observer = observer;
+        observer = observer;
     }
 
     public void start() throws InterruptedException {
-        this.board = new ChessBoard();
-        this.board.initializeChessBoard();
+        board = new ChessBoard(new ChessBoardGUI());
+        board.initializeChessBoard();
 
         turnsTaken = 0;
-        this.isRunning = true;
+        isRunning = true;
 
         for (int i = 0; i < 5; i++){
             playRound();
         }
-        this.userInputScanner.close();
+        userInputScanner.close();
 
         Thread.sleep(5000);
         finish();
@@ -60,7 +61,7 @@ public class ChessGame implements IChessGame{
         movePiece(goldMove);
         System.out.println("Player Gold has played " + goldMove.getMoveFromColumn() + " " + goldMove.getMoveFromRow() + " to " + goldMove.getMoveToColumn() + " " + goldMove.getMoveToRow());
         
-        this.turnsTaken++;
+        turnsTaken++;
     }
 
     private ChessMove getValidInputFromPlayer(Scanner userInputScanner, Player player){
@@ -78,8 +79,8 @@ public class ChessGame implements IChessGame{
     }
 
     private void finish() {
-        this.isRunning = false;
-        this.isFinished = true;
+        isRunning = false;
+        isFinished = true;
 
         observer.update();
     }
