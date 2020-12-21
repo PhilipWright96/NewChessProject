@@ -5,8 +5,8 @@
     </configurations>
     <dependencies>
         <dependency org="junit" name="junit" rev="4.12" conf="binaries->default" />
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-        <dependency org="org.mockito" name="mockito-all" rev="1.10.19"/>
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+        <dependency org="org.mockito" name="mockito-core" rev="3.6.28"/>
         <!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito2 -->
         <dependency org="org.powermock" name="powermock-api-mockito2" rev="2.0.2"/> 
         <!-- https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4 -->
