@@ -11,7 +11,7 @@ public class ChessBoard implements IChessBoard {
     private IChessBoardGUI chessBoardGUI;
     private IPiece[][] chessBoard = new Piece[8][8];
 
-    private ArrayList<Piece.Types> pieceOrder = new ArrayList<Piece.Types>() {{
+    public static ArrayList<Piece.Types> pieceOrder = new ArrayList<Piece.Types>() {{
         add(Piece.Types.ROOK);
         add(Piece.Types.KNIGHT);
         add(Piece.Types.BISHOP);
