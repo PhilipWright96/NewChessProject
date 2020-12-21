@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ChessBoard implements IChessBoard {
 
-    private IChessBoardGUI chessBoardGUI = new ChessBoardGUI();
+    private IChessBoardGUI chessBoardGUI;
     private IPiece[][] chessBoard = new Piece[8][8];
 
     private ArrayList<Piece.Types> pieceOrder = new ArrayList<Piece.Types>() {{
@@ -21,6 +21,10 @@ public class ChessBoard implements IChessBoard {
         add(Piece.Types.KNIGHT);
         add(Piece.Types.ROOK);
     }};
+
+    public ChessBoard(IChessBoardGUI boardGUI){
+        chessBoardGUI = boardGUI;
+    }
 
     public void initializeChessBoard() {
         chessBoardGUI.initializeBoardGUI();
