@@ -20,8 +20,7 @@ public class GameManager {
         Player playerSilver = new Player("Player 1", Teams.SILVER);
         Player playerGold = new Player("Player 2", Teams.GOLD);
 
-        IChessGame game = new ChessGame();
-        game.setPlayers(playerSilver, playerGold);
+        IChessGame game = new ChessGame(playerSilver, playerGold);
 
         setObserver(game);
         return game;

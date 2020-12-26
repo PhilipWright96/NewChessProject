@@ -21,7 +21,7 @@ public class ChessGame implements IChessGame{
     private boolean isFinished = false; 
     private int turnsTaken;
 
-    public void setPlayers(Player playerOne, Player playerTwo){
+    public ChessGame(Player playerOne, Player playerTwo){
         if (playerOne.getTeam() == Teams.SILVER){
             playerSilver = playerOne;
             playerGold = playerTwo;
@@ -33,7 +33,7 @@ public class ChessGame implements IChessGame{
     }
 
     public void attach(GameObserver observer) {
-        observer = observer;
+        this.observer = observer;
     }
 
     public void start() throws InterruptedException {
