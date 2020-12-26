@@ -2,13 +2,16 @@ package chess.game;
 
 import org.junit.Test;
 
+import chess.player.Player;
+
 import static org.junit.Assert.*;
 
 public class GameObserverTest {
     @Test
     public void update_setsHasFinishedToTrue(){
         // Given
-        GameObserver observer = new GameObserver(new ChessGame());
+        ChessGame game = new ChessGame(new Player("1", null), new Player("2", null));
+        GameObserver observer = new GameObserver(game);
         // When
         observer.update();
         // Then
@@ -18,7 +21,9 @@ public class GameObserverTest {
     @Test
     public void hasFinished_returnsCorrectValue(){
         // Given
-        GameObserver observer = new GameObserver(new ChessGame());
+        ChessGame game = new ChessGame(new Player("1", null), new Player("2", null));
+        GameObserver observer = new GameObserver(game);
+
         // Then
         assertEquals("hasFinished method not returning correct value", false, observer.hasFinished());
     }
