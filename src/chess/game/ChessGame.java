@@ -36,7 +36,7 @@ public class ChessGame implements IChessGame{
         this.observer = observer;
     }
 
-    public void start() throws InterruptedException {
+    public void playGame() throws InterruptedException {
         board = new ChessBoard(new ChessBoardGUI());
         board.initializeChessBoard();
 

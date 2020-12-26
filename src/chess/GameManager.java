@@ -10,7 +10,7 @@ public class GameManager {
     static GameObserver observer;
     public static void main(String[] args) throws InterruptedException {
         IChessGame game = createChessGame();
-        game.start();
+        game.playGame();
         if (observer.hasFinished()){
             System.out.println("Game finished");
         }
