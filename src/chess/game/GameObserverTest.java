@@ -2,6 +2,8 @@ package chess.game;
 
 import org.junit.Test;
 
+import chess.board.ChessBoard;
+import chess.board.ChessBoardGUI;
 import chess.player.Player;
 
 import static org.junit.Assert.*;
@@ -10,7 +12,7 @@ public class GameObserverTest {
     @Test
     public void update_setsHasFinishedToTrue(){
         // Given
-        ChessGame game = new ChessGame(new Player("1", null), new Player("2", null));
+        ChessGame game = new ChessGame(new Player("1", null), new Player("2", null), new ChessBoard(new ChessBoardGUI()));
         GameObserver observer = new GameObserver(game);
         // When
         observer.update();
@@ -21,7 +23,7 @@ public class GameObserverTest {
     @Test
     public void hasFinished_returnsCorrectValue(){
         // Given
-        ChessGame game = new ChessGame(new Player("1", null), new Player("2", null));
+        ChessGame game = new ChessGame(new Player("1", null), new Player("2", null), new ChessBoard(new ChessBoardGUI()));
         GameObserver observer = new GameObserver(game);
 
         // Then
