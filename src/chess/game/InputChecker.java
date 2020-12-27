@@ -1,5 +1,6 @@
 package chess.game;
 
+import java.util.Scanner;
 import java.util.regex.*;
 
 import chess.board.IChessBoard;
@@ -10,7 +11,17 @@ import chess.player.Player;
 public class InputChecker {
     private static final String VALID_CHESS_MOVE = "[a-h][1-8]\\-[a-h][1-8]";
 
-    public static boolean checkPlayerInput(String input, Player player, IChessBoard board){
+    public static ChessMove getValidInputFromPlayer(Scanner userInputScanner, Player player, IChessBoard board){
+        boolean inputValid = false;
+        String input = null; 
+        while (inputValid == false){
+            input = player.getPlayerInput(userInputScanner);
+            inputValid = InputChecker.checkPlayerInput(input, player, board);
+        }
+        return new ChessMove(input);
+    }
+
+    private static boolean checkPlayerInput(String input, Player player, IChessBoard board){
         return correctInputSyntax(input) && correctInputLogic(input, player, board);
     }
 
