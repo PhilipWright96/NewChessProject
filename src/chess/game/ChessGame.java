@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import chess.board.ChessBoard;
 import chess.board.IChessBoard;
-import chess.board.ChessBoardGUI;
 import chess.player.Player;
 import chess.util.Teams;
 
@@ -21,7 +20,7 @@ public class ChessGame implements IChessGame{
     private boolean isFinished = false; 
     private int turnsTaken;
 
-    public ChessGame(Player playerOne, Player playerTwo){
+    public ChessGame(Player playerOne, Player playerTwo, ChessBoard board){
         if (playerOne.getTeam() == Teams.SILVER){
             playerSilver = playerOne;
             playerGold = playerTwo;
@@ -30,6 +29,7 @@ public class ChessGame implements IChessGame{
             playerSilver = playerTwo;
             playerGold = playerOne;
         }
+        this.board = board;
     }
 
     public void attach(GameObserver observer) {
@@ -37,7 +37,6 @@ public class ChessGame implements IChessGame{
     }
 
     public void playGame() throws InterruptedException {
-        board = new ChessBoard(new ChessBoardGUI());
         board.initializeChessBoard();
 
         turnsTaken = 0;
