@@ -53,25 +53,14 @@ public class ChessGame implements IChessGame{
     }
 
     private void playRound() {
-        ChessMove silverMove = getValidInputFromPlayer(userInputScanner, playerSilver);
+        ChessMove silverMove = InputChecker.getValidInputFromPlayer(userInputScanner, playerSilver, board);
         board.movePiece(silverMove);
         System.out.println("Player Silver has played " + silverMove.getMoveFromColumn() + " " + silverMove.getMoveFromRow() + " to " + silverMove.getMoveToColumn() + " " + silverMove.getMoveToRow());
-
-        ChessMove goldMove = getValidInputFromPlayer(userInputScanner, playerGold);
+        ChessMove goldMove = InputChecker.getValidInputFromPlayer(userInputScanner, playerGold, board);
         board.movePiece(goldMove);
         System.out.println("Player Gold has played " + goldMove.getMoveFromColumn() + " " + goldMove.getMoveFromRow() + " to " + goldMove.getMoveToColumn() + " " + goldMove.getMoveToRow());
         
         turnsTaken++;
-    }
-
-    private ChessMove getValidInputFromPlayer(Scanner userInputScanner, Player player){
-        boolean inputValid = false;
-        String input = null; 
-        while (inputValid == false){
-            input = player.getPlayerInput(userInputScanner);
-            inputValid = InputChecker.checkPlayerInput(input, player, board);
-        }
-        return new ChessMove(input);
     }
 
     private void finish() {
