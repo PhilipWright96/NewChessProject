@@ -1,8 +1,5 @@
 package chess.game;
 
-import java.util.Scanner;
-
-import chess.board.ChessBoard;
 import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
@@ -46,9 +43,13 @@ public class ChessGame implements IChessGame{
         for (int i = 0; i < 5; i++){
             playRound();
         }
+
         inputChecker.closeScanner();
 
-        finish();
+        isRunning = false;
+        isFinished = true;
+
+        observer.update();
     }
 
     private void playRound() {
@@ -60,12 +61,5 @@ public class ChessGame implements IChessGame{
         System.out.println("Player Gold has played " + goldMove.getMoveFromColumn() + " " + goldMove.getMoveFromRow() + " to " + goldMove.getMoveToColumn() + " " + goldMove.getMoveToRow());
         
         turnsTaken++;
-    }
-
-    private void finish() {
-        isRunning = false;
-        isFinished = true;
-
-        observer.update();
     }
 }
