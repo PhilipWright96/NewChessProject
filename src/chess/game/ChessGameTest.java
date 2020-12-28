@@ -2,14 +2,11 @@ package chess.game;
 
 import org.junit.Test;
 
-import chess.board.ChessBoard;
 import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-
 
 public class ChessGameTest {
     @Test
@@ -48,6 +45,5 @@ public class ChessGameTest {
         verify(mockBoard, times(5)).movePiece(mockGoldMove);
 
         verify(mockInputChecker).closeScanner();
-
     }
 }
