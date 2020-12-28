@@ -11,21 +11,21 @@ import chess.player.Player;
 public class InputChecker {
     private static final String VALID_CHESS_MOVE = "[a-h][1-8]\\-[a-h][1-8]";
 
-    public static ChessMove getValidInputFromPlayer(Scanner userInputScanner, Player player, IChessBoard board){
+    public ChessMove getValidInputFromPlayer(Scanner userInputScanner, Player player, IChessBoard board){
         boolean inputValid = false;
         String input = null; 
         while (inputValid == false){
             input = player.getPlayerInput(userInputScanner);
-            inputValid = InputChecker.checkPlayerInput(input, player, board);
+            inputValid = checkPlayerInput(input, player, board);
         }
         return new ChessMove(input);
     }
 
-    private static boolean checkPlayerInput(String input, Player player, IChessBoard board){
+    private boolean checkPlayerInput(String input, Player player, IChessBoard board){
         return correctInputSyntax(input) && correctInputLogic(input, player, board);
     }
 
-    private static boolean correctInputSyntax(String input){
+    private boolean correctInputSyntax(String input){
         boolean result = Pattern.matches(VALID_CHESS_MOVE, input);
         if (result == false){
             System.out.println("Input : " + input + " is a invalid move. Correct input format is (for example) a1-a3. Please try again");
@@ -33,7 +33,7 @@ public class InputChecker {
         return result;
     }
 
-    private static boolean correctInputLogic(String input, Player player, IChessBoard board){
+    private boolean correctInputLogic(String input, Player player, IChessBoard board){
         ChessMove attemptedMove = new ChessMove(input);
         IPiece pieceBeingMoved = board.getPieceBeingMoved(attemptedMove);
 
@@ -70,7 +70,7 @@ public class InputChecker {
         return true;
     }
 
-    private static boolean moveTakingPieceOfSameTeam(ChessMove move, Player player, IChessBoard board){
+    private boolean moveTakingPieceOfSameTeam(ChessMove move, Player player, IChessBoard board){
         IPiece pieceBeingTaken = board.getPieceBeingTaken(move);
         if (pieceBeingTaken == null || player.getTeam() != pieceBeingTaken.getTeam()){
             return false;
@@ -78,7 +78,7 @@ public class InputChecker {
         return true;
     }
 
-    private static boolean pathForAttemptedMoveClear(ChessMove move, IChessBoard board, IPiece piece){
+    private boolean pathForAttemptedMoveClear(ChessMove move, IChessBoard board, IPiece piece){
         if (piece.getType() == Types.KNIGHT){
             return true;
         }
