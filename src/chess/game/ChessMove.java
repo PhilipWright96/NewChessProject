@@ -12,28 +12,28 @@ public class ChessMove {
         char[] inputArray = input.toCharArray();
 
         char[] moveFrom = Arrays.copyOfRange(inputArray, 0, 2);
-        this.moveFromColumn = moveFrom[0] - 97;
-        this.moveFromRow = Character.getNumericValue(moveFrom[1] - 1);
+        moveFromColumn = moveFrom[0] - 97;
+        moveFromRow = Character.getNumericValue(moveFrom[1] - 1);
 
         char[] moveTo = Arrays.copyOfRange(inputArray, 3, 5);
-        this.moveToColumn = moveTo[0] - 97;
-        this.moveToRow = Character.getNumericValue(moveTo[1] - 1);
+        moveToColumn = moveTo[0] - 97;
+        moveToRow = Character.getNumericValue(moveTo[1] - 1);
     }
 
     public int getMoveFromColumn(){
-        return this.moveFromColumn;
+        return moveFromColumn;
     }
 
     public int getMoveFromRow(){
-        return this.moveFromRow;
+        return moveFromRow;
     }
 
     public int getMoveToColumn(){
-        return this.moveToColumn;
+        return moveToColumn;
     }
 
     public int getMoveToRow(){
-        return this.moveToRow;
+        return moveToRow;
     }
 
     public int getRowChangeNum(){
