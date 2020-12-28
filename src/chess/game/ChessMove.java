@@ -37,26 +37,26 @@ public class ChessMove {
     }
 
     public int getRowChangeNum(){
-        return Math.abs(getMoveFromRow() - getMoveToRow());
+        return Math.abs(moveFromRow - moveToRow);
     }
 
     public int getColumnChangeNum(){
-        return Math.abs(getMoveFromColumn() - getMoveToColumn());
+        return Math.abs(moveFromColumn - moveToColumn);
     }
 
     public boolean moveToNewSquare(){
-        return getMoveFromRow() != getMoveToRow() || getMoveFromColumn() != getMoveToColumn();
+        return moveFromRow != moveToRow || moveFromColumn != moveToColumn;
     }
 
     public boolean isStraight(){
-        if (getMoveFromColumn() == getMoveToColumn() || getMoveFromRow() == getMoveToRow()){
+        if (moveFromColumn == moveToColumn || moveFromRow == moveToRow){
             return true;
         }
         return false;
     }
 
     public boolean isHorizontal(){
-        if (getMoveFromColumn() != getMoveToColumn()){
+        if (moveFromColumn != moveToColumn){
             return true;
         }
         return false;
