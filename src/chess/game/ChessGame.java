@@ -14,14 +14,13 @@ public class ChessGame implements IChessGame{
     private Player playerSilver;
     private Player playerGold;
 
-    private Scanner userInputScanner = new Scanner(System.in);
     private InputChecker inputChecker;
     
     private boolean isRunning = false;
     private boolean isFinished = false; 
     private int turnsTaken;
 
-    public ChessGame(Player playerOne, Player playerTwo, ChessBoard board, InputChecker inputChecker){
+    public ChessGame(Player playerOne, Player playerTwo, IChessBoard board, InputChecker inputChecker){
         if (playerOne.getTeam() == Teams.SILVER){
             playerSilver = playerOne;
             playerGold = playerTwo;
@@ -47,17 +46,16 @@ public class ChessGame implements IChessGame{
         for (int i = 0; i < 5; i++){
             playRound();
         }
-        userInputScanner.close();
+        inputChecker.closeScanner();
 
-        Thread.sleep(5000);
         finish();
     }
 
     private void playRound() {
-        ChessMove silverMove = inputChecker.getValidInputFromPlayer(userInputScanner, playerSilver, board);
+        ChessMove silverMove = inputChecker.getValidInputFromPlayer(playerSilver, board);
         board.movePiece(silverMove);
         System.out.println("Player Silver has played " + silverMove.getMoveFromColumn() + " " + silverMove.getMoveFromRow() + " to " + silverMove.getMoveToColumn() + " " + silverMove.getMoveToRow());
-        ChessMove goldMove = inputChecker.getValidInputFromPlayer(userInputScanner, playerGold, board);
+        ChessMove goldMove = inputChecker.getValidInputFromPlayer(playerGold, board);
         board.movePiece(goldMove);
         System.out.println("Player Gold has played " + goldMove.getMoveFromColumn() + " " + goldMove.getMoveFromRow() + " to " + goldMove.getMoveToColumn() + " " + goldMove.getMoveToRow());
         

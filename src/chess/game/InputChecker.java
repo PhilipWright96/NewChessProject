@@ -10,8 +10,14 @@ import chess.player.Player;
 
 public class InputChecker {
     private static final String VALID_CHESS_MOVE = "[a-h][1-8]\\-[a-h][1-8]";
+    private Scanner userInputScanner;
 
-    public ChessMove getValidInputFromPlayer(Scanner userInputScanner, Player player, IChessBoard board){
+
+    public InputChecker(){
+        userInputScanner = new Scanner(System.in);
+    }
+
+    public ChessMove getValidInputFromPlayer(Player player, IChessBoard board){
         boolean inputValid = false;
         String input = null; 
         while (inputValid == false){
@@ -19,6 +25,10 @@ public class InputChecker {
             inputValid = checkPlayerInput(input, player, board);
         }
         return new ChessMove(input);
+    }
+
+    public void closeScanner(){
+        userInputScanner.close();
     }
 
     private boolean checkPlayerInput(String input, Player player, IChessBoard board){
