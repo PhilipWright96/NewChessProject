@@ -5,6 +5,7 @@ import chess.board.ChessBoardGUI;
 import chess.game.ChessGame;
 import chess.game.GameObserver;
 import chess.game.IChessGame;
+import chess.game.InputChecker;
 import chess.game.InputRetriever;
 import chess.player.Player;
 import chess.util.Teams;
@@ -23,7 +24,7 @@ public class GameManager {
         Player playerSilver = new Player("Player 1", Teams.SILVER);
         Player playerGold = new Player("Player 2", Teams.GOLD);
         ChessBoard board = new ChessBoard(new ChessBoardGUI());
-        InputRetriever inputRetriever = new InputRetriever();
+        InputRetriever inputRetriever = new InputRetriever(new InputChecker());
 
         IChessGame game = new ChessGame(playerSilver, playerGold, board, inputRetriever);
 
