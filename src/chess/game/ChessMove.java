@@ -44,7 +44,7 @@ public class ChessMove {
         return Math.abs(moveFromColumn - moveToColumn);
     }
 
-    public boolean moveToNewSquare(){
+    public boolean isMovingToNewSquare(){
         return moveFromRow != moveToRow || moveFromColumn != moveToColumn;
     }
 

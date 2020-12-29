@@ -52,7 +52,7 @@ public class InputChecker {
             return false;
         };
 
-        if (!attemptedMove.moveToNewSquare()){
+        if (!attemptedMove.isMovingToNewSquare()){
             System.out.println("You must move your piece to a new square");
             return false;
         }
