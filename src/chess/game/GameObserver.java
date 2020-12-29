@@ -9,10 +9,10 @@ public class GameObserver {
     }
 
     public void update(){
-        this.hasFinished = true;
+        hasFinished = true;
     }
 
     public boolean hasFinished() {
-        return this.hasFinished;
+        return hasFinished;
     }
 }
