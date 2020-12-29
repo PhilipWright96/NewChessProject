@@ -11,13 +11,13 @@ public class ChessGame implements IChessGame{
     private Player playerSilver;
     private Player playerGold;
 
-    private InputChecker inputChecker;
+    private InputRetriever inputRetriever;
     
     private boolean isRunning = false;
     private boolean isFinished = false; 
     private int turnsTaken;
 
-    public ChessGame(Player playerOne, Player playerTwo, IChessBoard board, InputChecker inputChecker){
+    public ChessGame(Player playerOne, Player playerTwo, IChessBoard board, InputRetriever inputRetriever){
         if (playerOne.getTeam() == Teams.SILVER){
             playerSilver = playerOne;
             playerGold = playerTwo;
@@ -27,7 +27,7 @@ public class ChessGame implements IChessGame{
             playerGold = playerOne;
         }
         this.board = board;
-        this.inputChecker = inputChecker;
+        this.inputRetriever = inputRetriever;
     }
 
     public void attach(GameObserver observer) {
@@ -44,7 +44,7 @@ public class ChessGame implements IChessGame{
             playRound();
         }
 
-        inputChecker.closeScanner();
+        inputRetriever.closeScanner();
 
         isRunning = false;
         isFinished = true;
@@ -53,10 +53,10 @@ public class ChessGame implements IChessGame{
     }
 
     private void playRound() {
-        ChessMove silverMove = inputChecker.getValidInputFromPlayer(playerSilver, board);
+        ChessMove silverMove = inputRetriever.getValidInputFromPlayer(playerSilver, board);
         board.movePiece(silverMove);
         System.out.println("Player Silver has played " + silverMove.getMoveFromColumn() + " " + silverMove.getMoveFromRow() + " to " + silverMove.getMoveToColumn() + " " + silverMove.getMoveToRow());
-        ChessMove goldMove = inputChecker.getValidInputFromPlayer(playerGold, board);
+        ChessMove goldMove = inputRetriever.getValidInputFromPlayer(playerGold, board);
         board.movePiece(goldMove);
         System.out.println("Player Gold has played " + goldMove.getMoveFromColumn() + " " + goldMove.getMoveFromRow() + " to " + goldMove.getMoveToColumn() + " " + goldMove.getMoveToRow());
         

@@ -8,12 +8,12 @@ import chess.pieces.IPiece;
 import chess.pieces.Piece.Types;
 import chess.player.Player;
 
-public class InputChecker {
+public class InputRetriever {
     private static final String VALID_CHESS_MOVE = "[a-h][1-8]\\-[a-h][1-8]";
     private Scanner userInputScanner;
 
 
-    public InputChecker(){
+    public InputRetriever(){
         userInputScanner = new Scanner(System.in);
     }
 

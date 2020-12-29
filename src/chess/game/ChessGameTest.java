@@ -16,16 +16,16 @@ public class ChessGameTest {
         IChessBoard mockBoard = mock(IChessBoard.class);
         Player mockPlayerSilver = mock(Player.class);
         Player mockPlayerGold = mock(Player.class);
-        InputChecker mockInputChecker = mock(InputChecker.class);
+        InputRetriever mockInputRetriever = mock(InputRetriever.class);
 
         ChessMove mockSilverMove = mock(ChessMove.class);
         ChessMove mockGoldMove = mock(ChessMove.class);
 
         when(mockPlayerSilver.getTeam()).thenReturn(Teams.SILVER);
-        when(mockInputChecker.getValidInputFromPlayer(mockPlayerSilver, mockBoard)).thenReturn(mockSilverMove);
-        when(mockInputChecker.getValidInputFromPlayer(mockPlayerGold, mockBoard)).thenReturn(mockGoldMove);
+        when(mockInputRetriever.getValidInputFromPlayer(mockPlayerSilver, mockBoard)).thenReturn(mockSilverMove);
+        when(mockInputRetriever.getValidInputFromPlayer(mockPlayerGold, mockBoard)).thenReturn(mockGoldMove);
 
-        ChessGame game = new ChessGame(mockPlayerSilver, mockPlayerGold, mockBoard, mockInputChecker);
+        ChessGame game = new ChessGame(mockPlayerSilver, mockPlayerGold, mockBoard, mockInputRetriever);
 
         // When
         try {
@@ -38,12 +38,12 @@ public class ChessGameTest {
         // Then
         verify(mockBoard).initializeChessBoard();
 
-        verify(mockInputChecker, times(5)).getValidInputFromPlayer(mockPlayerSilver, mockBoard);
-        verify(mockInputChecker, times(5)).getValidInputFromPlayer(mockPlayerGold, mockBoard);
+        verify(mockInputRetriever, times(5)).getValidInputFromPlayer(mockPlayerSilver, mockBoard);
+        verify(mockInputRetriever, times(5)).getValidInputFromPlayer(mockPlayerGold, mockBoard);
 
         verify(mockBoard, times(5)).movePiece(mockSilverMove);
         verify(mockBoard, times(5)).movePiece(mockGoldMove);
 
-        verify(mockInputChecker).closeScanner();
+        verify(mockInputRetriever).closeScanner();
     }
 }
