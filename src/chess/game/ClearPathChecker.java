@@ -102,7 +102,7 @@ public class ClearPathChecker {
         }
         // Else moving down
         else {
-            // if moving right 
+            // If moving right 
             if (moveFromCol < moveToCol){
                 for (int row = moveFromRow + 1, col = moveFromCol + 1; row < moveToRow; row++, col++){
                     if (chessBoard[col][row] != null){
