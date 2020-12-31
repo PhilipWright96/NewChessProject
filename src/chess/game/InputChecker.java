@@ -9,7 +9,13 @@ import chess.player.Player;
 
 
 public class InputChecker {
+    private ClearPathChecker pathChecker;
+
     private static final String VALID_CHESS_MOVE = "[a-h][1-8]\\-[a-h][1-8]";
+
+    public InputChecker(ClearPathChecker pathChecker){
+        this.pathChecker = pathChecker;
+    }
 
     public boolean checkPlayerInput(String input, Player player, IChessBoard board){
         return correctInputSyntax(input) && correctInputLogic(input, player, board);
@@ -72,6 +78,6 @@ public class InputChecker {
         if (piece.getType() == Types.KNIGHT){
             return true;
         }
-        return ClearPathChecker.pathForMoveClear(move, board.getChessBoard());
+        return pathChecker.pathForMoveClear(move, board.getChessBoard());
     }
 }
