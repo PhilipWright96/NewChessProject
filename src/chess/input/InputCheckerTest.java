@@ -12,13 +12,18 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class InputCheckerTest {
+
     ClearPathChecker mockPathChecker = mock(ClearPathChecker.class); 
+    Player mockPlayer = mock(Player.class);
+    IChessBoard mockBoard = mock(IChessBoard.class);
+    IPiece mockPiece = mock(IPiece.class);
+    IPiece mockPieceBeingTaken = mock(IPiece.class);
+  
+    String dummyInput = "d7-d5"; 
 
     @Test
     public void checkPlayerInput_withIncorrectInputSyntaxGiven_returnsFalse(){
         // Given
-        Player mockPlayer = mock(Player.class);
-        IChessBoard mockBoard = mock(IChessBoard.class);   
 
         // When
         InputChecker checker = new InputChecker(mockPathChecker);
@@ -31,10 +36,6 @@ public class InputCheckerTest {
     @Test
     public void checkPlayerInput_withNoMatchingPieceFoundOnBoard_returnsFalse(){
         // Given
-        Player mockPlayer = mock(Player.class);
-        IChessBoard mockBoard = mock(IChessBoard.class);
-        String dummyInput = "d7-d6";
-
         when(mockBoard.getPieceBeingMoved(any())).thenReturn(null);
 
         // When
@@ -48,10 +49,7 @@ public class InputCheckerTest {
     @Test
     public void checkPlayerInput_withGivenMoveNotActuallyMovingPiece_returnsFalse(){
         // Given
-        Player mockPlayer = mock(Player.class);
-        IChessBoard mockBoard = mock(IChessBoard.class);
-        String dummyInput = "d7-d7";
-        IPiece mockPiece = mock(IPiece.class);
+        dummyInput = "d7-d7";
 
         when(mockBoard.getPieceBeingMoved(any())).thenReturn(mockPiece);
 
@@ -66,11 +64,6 @@ public class InputCheckerTest {
     @Test
     public void checkPlayerInput_withPlayerAttemptingToMoveOtherTeamsPiece_returnsFalse(){
         // Given
-        Player mockPlayer = mock(Player.class);
-        IChessBoard mockBoard = mock(IChessBoard.class);
-        String dummyInput = "d7-d5";
-        IPiece mockPiece = mock(IPiece.class);
-
         when(mockBoard.getPieceBeingMoved(any())).thenReturn(mockPiece);
         when(mockPiece.getTeam()).thenReturn(Teams.GOLD);
         when(mockPlayer.getTeam()).thenReturn(Teams.SILVER);
@@ -88,11 +81,6 @@ public class InputCheckerTest {
     @Test
     public void checkPlayerInput_withPieceBeingMovedIncorrectly_returnsFalse(){
         // Given
-        Player mockPlayer = mock(Player.class);
-        IChessBoard mockBoard = mock(IChessBoard.class);
-        String dummyInput = "d7-d5";
-        IPiece mockPiece = mock(IPiece.class);
-
         when(mockBoard.getPieceBeingMoved(any())).thenReturn(mockPiece);
         when(mockPiece.getTeam()).thenReturn(Teams.SILVER);
         when(mockPlayer.getTeam()).thenReturn(Teams.SILVER);
@@ -110,12 +98,6 @@ public class InputCheckerTest {
     @Test
     public void checkPlayerInput_withPieceTakingPieceOfSameTeam_returnsFalse(){
         // Given
-        Player mockPlayer = mock(Player.class);
-        IChessBoard mockBoard = mock(IChessBoard.class);
-        String dummyInput = "d7-d5";
-        IPiece mockPiece = mock(IPiece.class);
-        IPiece mockPieceBeingTaken = mock(IPiece.class);
-
         when(mockBoard.getPieceBeingMoved(any())).thenReturn(mockPiece);
         when(mockPiece.getTeam()).thenReturn(Teams.SILVER);
         when(mockPlayer.getTeam()).thenReturn(Teams.SILVER);
@@ -136,11 +118,6 @@ public class InputCheckerTest {
     @Test
     public void checkPlayerInput_withPathForAttemptedMoveNotClear_returnsFalse(){
         // Given
-        Player mockPlayer = mock(Player.class);
-        IChessBoard mockBoard = mock(IChessBoard.class);
-        String dummyInput = "d7-d5";
-        IPiece mockPiece = mock(IPiece.class);
-        IPiece mockPieceBeingTaken = mock(IPiece.class);
         IPiece[][] mockPieceBoard = new IPiece[1][1];
 
         when(mockBoard.getPieceBeingMoved(any())).thenReturn(mockPiece);
@@ -166,12 +143,6 @@ public class InputCheckerTest {
     @Test
     public void checkPlayerInput_withKnightBeingMoved_returnsTrue(){
         // Given
-        Player mockPlayer = mock(Player.class);
-        IChessBoard mockBoard = mock(IChessBoard.class);
-        String dummyInput = "d7-d5";
-        IPiece mockPiece = mock(IPiece.class);
-        IPiece mockPieceBeingTaken = mock(IPiece.class);
-
         when(mockBoard.getPieceBeingMoved(any())).thenReturn(mockPiece);
         when(mockPiece.getTeam()).thenReturn(Teams.SILVER);
         when(mockPlayer.getTeam()).thenReturn(Teams.SILVER);
