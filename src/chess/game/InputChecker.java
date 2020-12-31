@@ -62,10 +62,10 @@ public class InputChecker {
 
     private boolean moveTakingPieceOfSameTeam(ChessMove move, Player player, IChessBoard board){
         IPiece pieceBeingTaken = board.getPieceBeingTaken(move);
-        if (pieceBeingTaken == null || player.getTeam() != pieceBeingTaken.getTeam()){
-            return false;
+        if (pieceBeingTaken != null && player.getTeam() == pieceBeingTaken.getTeam()){
+            return true;
         }
-        return true;
+        return false;
     }
 
     private boolean pathForAttemptedMoveClear(ChessMove move, IChessBoard board, IPiece piece){
