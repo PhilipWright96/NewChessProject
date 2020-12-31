@@ -3,7 +3,7 @@ package chess.game;
 import chess.pieces.IPiece;
 
 public class ClearPathChecker {
-    public static boolean pathForMoveClear(ChessMove move, IPiece[][] chessBoard){
+    public boolean pathForMoveClear(ChessMove move, IPiece[][] chessBoard){
         if (move.isStraight()){
             if (move.isHorizontal()){
                 if (pieceBlockingHorizontalMove(move, chessBoard)){
@@ -24,7 +24,7 @@ public class ClearPathChecker {
         return true;
     }
 
-    private static boolean pieceBlockingHorizontalMove(ChessMove move, IPiece[][] chessBoard){
+    private boolean pieceBlockingHorizontalMove(ChessMove move, IPiece[][] chessBoard){
         int moveFromRow = move.getMoveFromRow();
         int moveFromCol = move.getMoveFromColumn();
 
@@ -49,7 +49,7 @@ public class ClearPathChecker {
         return false;
     }
 
-    private static boolean pieceBlockingVerticalMove(ChessMove move, IPiece[][] chessBoard){
+    private boolean pieceBlockingVerticalMove(ChessMove move, IPiece[][] chessBoard){
         int moveFromRow = move.getMoveFromRow();
         int moveFromCol = move.getMoveFromColumn();
 
@@ -74,7 +74,7 @@ public class ClearPathChecker {
         return false;
     }
 
-    private static boolean pieceBlockingDiagonalMove(ChessMove move, IPiece[][] chessBoard){
+    private boolean pieceBlockingDiagonalMove(ChessMove move, IPiece[][] chessBoard){
         int moveFromRow = move.getMoveFromRow();
         int moveFromCol = move.getMoveFromColumn();
 
