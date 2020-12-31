@@ -18,7 +18,7 @@ public class InputCheckerTest {
         IChessBoard mockBoard = mock(IChessBoard.class);    
 
         // When
-        InputChecker checker = new InputChecker();
+        InputChecker checker = new InputChecker(new ClearPathChecker());
         boolean result = checker.checkPlayerInput("badSyntax", mockPlayer, mockBoard);
 
         // Then
@@ -35,7 +35,7 @@ public class InputCheckerTest {
         when(mockBoard.getPieceBeingMoved(any())).thenReturn(null);
 
         // When
-        InputChecker checker = new InputChecker();
+        InputChecker checker = new InputChecker(new ClearPathChecker());
         boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
 
         // Then
@@ -53,7 +53,7 @@ public class InputCheckerTest {
         when(mockBoard.getPieceBeingMoved(any())).thenReturn(mockPiece);
 
         // When
-        InputChecker checker = new InputChecker();
+        InputChecker checker = new InputChecker(new ClearPathChecker());
         boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
 
         // Then
@@ -73,7 +73,7 @@ public class InputCheckerTest {
         when(mockPlayer.getTeam()).thenReturn(Teams.SILVER);
 
         // When
-        InputChecker checker = new InputChecker();
+        InputChecker checker = new InputChecker(new ClearPathChecker());
         boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
 
         // Then
@@ -96,7 +96,7 @@ public class InputCheckerTest {
         when(mockPiece.moveValid(any(), eq(mockBoard))).thenReturn(false);
 
         // When
-        InputChecker checker = new InputChecker();
+        InputChecker checker = new InputChecker(new ClearPathChecker());
         boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
 
         // Then
@@ -121,7 +121,7 @@ public class InputCheckerTest {
         when(mockPieceBeingTaken.getTeam()).thenReturn(Teams.SILVER);
 
         // When
-        InputChecker checker = new InputChecker();
+        InputChecker checker = new InputChecker(new ClearPathChecker());
         boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
 
         // Then
