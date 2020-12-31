@@ -1,6 +1,7 @@
-package chess.game;
+package chess.input;
 
 import chess.pieces.IPiece;
+import chess.game.ChessMove;
 
 public class ClearPathChecker {
     public boolean pathForMoveClear(ChessMove move, IPiece[][] chessBoard){

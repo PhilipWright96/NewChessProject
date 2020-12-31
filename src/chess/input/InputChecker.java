@@ -1,4 +1,4 @@
-package chess.game;
+package chess.input;
 
 import java.util.regex.Pattern;
 
@@ -6,6 +6,7 @@ import chess.board.IChessBoard;
 import chess.pieces.IPiece;
 import chess.pieces.Piece.Types;
 import chess.player.Player;
+import chess.game.ChessMove;
 
 
 public class InputChecker {

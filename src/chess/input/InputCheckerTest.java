@@ -1,4 +1,4 @@
-package chess.game;
+package chess.input;
 
 import org.junit.Test;
 

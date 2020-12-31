@@ -1,9 +1,10 @@
-package chess.game;
+package chess.input;
 
 import org.junit.Test;
 
 import chess.board.IChessBoard;
 import chess.player.Player;
+import chess.game.ChessMove;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;

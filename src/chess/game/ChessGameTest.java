@@ -5,6 +5,7 @@ import org.junit.Test;
 import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
+import chess.input.InputRetriever;
 
 import static org.mockito.Mockito.*;
 

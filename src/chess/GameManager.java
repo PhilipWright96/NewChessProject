@@ -5,7 +5,7 @@ import chess.board.ChessBoardGUI;
 import chess.game.ChessGame;
 import chess.game.GameObserver;
 import chess.game.IChessGame;
-import chess.game.InputRetriever;
+import chess.input.InputRetriever;
 import chess.input.InputManager;
 import chess.player.Player;
 import chess.util.Teams;

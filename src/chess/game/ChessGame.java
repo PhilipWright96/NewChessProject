@@ -3,6 +3,7 @@ package chess.game;
 import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
+import chess.input.InputRetriever;
 
 public class ChessGame implements IChessGame{
     private IChessBoard board;

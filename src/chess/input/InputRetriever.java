@@ -1,9 +1,10 @@
-package chess.game;
+package chess.input;
 
 import java.util.Scanner;
 
 import chess.board.IChessBoard;
 import chess.player.Player;
+import chess.game.ChessMove;
 
 public class InputRetriever {
     private Scanner userInputScanner;
