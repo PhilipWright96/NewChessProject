@@ -10,7 +10,7 @@ public class Pawn extends Piece{
     private boolean hasTakenPiece = false;
 
     public boolean moveValid(ChessMove move, IChessBoard chessBoard){
-        if (checkCorrectColumn(move, chessBoard) && checkCorrectRow(move)){
+        if (correctColumn(move, chessBoard) && correctRow(move)){
             hasMoved = true;
             return true;
         }
@@ -18,7 +18,7 @@ public class Pawn extends Piece{
         return false;
     }
 
-    private boolean checkCorrectColumn(ChessMove move, IChessBoard chessBoard){
+    private boolean correctColumn(ChessMove move, IChessBoard chessBoard){
         if (move.getMoveFromColumn() == move.getMoveToColumn()){
             return true;
         }
@@ -67,7 +67,7 @@ public class Pawn extends Piece{
         return false;
     }
 
-    private boolean checkCorrectRow(ChessMove move){
+    private boolean correctRow(ChessMove move){
         if (getTeam() == Teams.SILVER){
             if ((hasMoved == false || hasTakenPiece == false) && move.getMoveFromRow() - 2 == move.getMoveToRow()){
                 return true;
