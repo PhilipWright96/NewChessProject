@@ -1,17 +1,15 @@
 package chess.input;
 
-import java.util.Scanner;
-
 import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.game.ChessMove;
 
 public class InputRetriever {
-    private Scanner userInputScanner;
+    private ScannerWrapper userInputScanner;
     private InputChecker inputChecker;
 
     public InputRetriever(InputChecker inputChecker){
-        userInputScanner = new Scanner(System.in);
+        userInputScanner = new ScannerWrapper();
         this.inputChecker = inputChecker;
     }
 
