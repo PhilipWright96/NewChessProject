@@ -1,7 +1,7 @@
 package chess;
 
+import chess.board.BoardManager;
 import chess.board.ChessBoard;
-import chess.board.ChessBoardGUI;
 import chess.game.ChessGame;
 import chess.game.GameObserver;
 import chess.game.IChessGame;
@@ -23,7 +23,7 @@ public class GameManager {
     private static IChessGame createChessGame(){
         Player playerSilver = new Player("Player 1", Teams.SILVER);
         Player playerGold = new Player("Player 2", Teams.GOLD);
-        ChessBoard board = new ChessBoard(new ChessBoardGUI());
+        ChessBoard board = new BoardManager().buildBoard();
         InputRetriever inputRetriever = new InputManager().buildRetriever();
 
         IChessGame game = new ChessGame(playerSilver, playerGold, board, inputRetriever);
