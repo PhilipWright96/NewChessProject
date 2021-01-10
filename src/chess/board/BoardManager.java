@@ -2,6 +2,7 @@ package chess.board;
 
 public class BoardManager {
     public ChessBoard buildBoard(){
-        return new ChessBoard(new ChessBoardGUI());
+        ChessBoardGUI boardGUI = new ChessBoardGUI(new GUISetter());
+        return new ChessBoard(boardGUI);
     }
 }
