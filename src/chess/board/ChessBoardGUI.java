@@ -2,7 +2,6 @@ package chess.board;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.*;
 
 import chess.game.ChessMove;
 import chess.pieces.IPiece;
@@ -13,8 +12,6 @@ public class ChessBoardGUI implements IChessBoardGUI{
     private JPanel chessBoard = new JPanel(new GridLayout(0, 9));
     private GUISetter guiSetter;
 
-    private static final String columns = "ABCDEFGH";
-
     public ChessBoardGUI(GUISetter guiSetter){
         this.guiSetter = guiSetter;
     }
@@ -24,9 +21,9 @@ public class ChessBoardGUI implements IChessBoardGUI{
 
         guiSetter.arrangeButtons(chessBoardGUIButtons);
 
-        addButtonsToBoard();
+        guiSetter.addButtonsToBoard(chessBoard, chessBoardGUIButtons);
 
-        addFrameToBoard();
+        guiSetter.addFrameToBoard(GUI);
     }
 
     public void updateBoardWithPawns(){
@@ -61,38 +58,5 @@ public class ChessBoardGUI implements IChessBoardGUI{
         ImageIcon pieceImage = new ImageIcon(ChessSprites.getCorrespondingImageFromPiece(pieceBeingMoved));
         JButton moveToSquare = chessBoardGUIButtons[newMove.getMoveToColumn()][newMove.getMoveToRow()];
         moveToSquare.setIcon(pieceImage);
-    }
-
-    private void addButtonsToBoard(){
-        chessBoard.add(new JLabel(""));
-        for (int k = 0; k < 8; k++){
-            chessBoard.add(new JLabel(columns.substring(k, k + 1), SwingConstants.CENTER));
-        }
-        for (int k = 0; k < 8; k++){
-            for (int l = 0; l < 8; l++){
-                switch (l) {
-                    case 0: 
-                        chessBoard.add(new JLabel("" + (k + 1), SwingConstants.CENTER));
-                    default: 
-                        chessBoard.add(chessBoardGUIButtons[l][k]);
-                }
-            }
-        }
-    }
-
-    private void addFrameToBoard(){
-        JFrame frame = new JFrame("Chess");
-        frame.add(getGUI());
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLocationByPlatform(true);
-
-        frame.pack();
-
-        frame.setMinimumSize(frame.getSize());
-        frame.setVisible(true);
-    }
-
-    private JComponent getGUI(){
-        return GUI;
     }
 }
