@@ -5,6 +5,8 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 public class GUISetter {
+
+    private static final String columns = "ABCDEFGH";
     
     public void arrangeGUIScreen(JPanel GUI, JPanel chessBoard){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -38,4 +40,34 @@ public class GUISetter {
             }
         }
     }
+
+    public void addButtonsToBoard(JPanel chessBoard, JButton[][] chessBoardGUIButtons){
+        chessBoard.add(new JLabel(""));
+        for (int k = 0; k < 8; k++){
+            chessBoard.add(new JLabel(columns.substring(k, k + 1), SwingConstants.CENTER));
+        }
+        for (int k = 0; k < 8; k++){
+            for (int l = 0; l < 8; l++){
+                switch (l) {
+                    case 0: 
+                        chessBoard.add(new JLabel("" + (k + 1), SwingConstants.CENTER));
+                    default: 
+                        chessBoard.add(chessBoardGUIButtons[l][k]);
+                }
+            }
+        }
+    }
+
+    public void addFrameToBoard(JPanel GUI){
+        JFrame frame = new JFrame("Chess");
+        frame.add(GUI);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLocationByPlatform(true);
+
+        frame.pack();
+
+        frame.setMinimumSize(frame.getSize());
+        frame.setVisible(true);
+    }
+
 }
