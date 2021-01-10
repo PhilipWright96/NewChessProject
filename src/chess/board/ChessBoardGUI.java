@@ -22,7 +22,7 @@ public class ChessBoardGUI implements IChessBoardGUI{
     public void initializeBoardGUI(){
         guiSetter.arrangeGUIScreen(GUI, chessBoard);
 
-        createButtons();
+        guiSetter.arrangeButtons(chessBoardGUIButtons);
 
         addButtonsToBoard();
 
@@ -61,24 +61,6 @@ public class ChessBoardGUI implements IChessBoardGUI{
         ImageIcon pieceImage = new ImageIcon(ChessSprites.getCorrespondingImageFromPiece(pieceBeingMoved));
         JButton moveToSquare = chessBoardGUIButtons[newMove.getMoveToColumn()][newMove.getMoveToRow()];
         moveToSquare.setIcon(pieceImage);
-    }
-
-    private void createButtons(){
-        Insets buttonMargin = new Insets(0, 0, 0, 0);
-        for (int i = 0; i < chessBoardGUIButtons.length; i++){
-            for (int j = 0; j < chessBoardGUIButtons[i].length; j++){
-                JButton button = new JButton();
-                button.setMargin(buttonMargin);
-
-                if (( j % 2 == 1 && i % 2 == 1) || (j % 2 == 0 && i % 2 == 0)){
-                    button.setBackground(Color.WHITE);
-                }
-                else {
-                    button.setBackground(Color.BLACK);
-                }
-                chessBoardGUIButtons[j][i] = button;
-            }
-        }
     }
 
     private void addButtonsToBoard(){
