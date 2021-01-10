@@ -10,12 +10,17 @@ import chess.pieces.IPiece;
 public class ChessBoardGUI implements IChessBoardGUI{
     private final JPanel GUI = new JPanel(new BorderLayout(3, 3));
     private JButton[][] chessBoardGUIButtons = new JButton[8][8];
-    private JPanel chessBoard;
+    private JPanel chessBoard = new JPanel(new GridLayout(0, 9));
+    private GUISetter guiSetter;
 
     private static final String columns = "ABCDEFGH";
 
+    public ChessBoardGUI(GUISetter guiSetter){
+        this.guiSetter = guiSetter;
+    }
+
     public void initializeBoardGUI(){
-        arrangeGUI();
+        guiSetter.arrangeGUIScreen(GUI, chessBoard);
 
         createButtons();
 
@@ -56,22 +61,6 @@ public class ChessBoardGUI implements IChessBoardGUI{
         ImageIcon pieceImage = new ImageIcon(ChessSprites.getCorrespondingImageFromPiece(pieceBeingMoved));
         JButton moveToSquare = chessBoardGUIButtons[newMove.getMoveToColumn()][newMove.getMoveToRow()];
         moveToSquare.setIcon(pieceImage);
-    }
-
-    private void arrangeGUI(){
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int height = screenSize.height * 2 / 3;
-        int width = screenSize.height * 2 / 3;
-        GUI.setPreferredSize(new Dimension(width, height));
-
-        GUI.setBorder(new EmptyBorder(5, 5, 5, 5));
-        JToolBar tools = new JToolBar();
-        tools.setFloatable(false);
-        GUI.add(tools, BorderLayout.PAGE_START);
-
-        chessBoard = new JPanel(new GridLayout(0, 9));
-        chessBoard.setBorder(new LineBorder(Color.BLACK));
-        GUI.add(chessBoard);
     }
 
     private void createButtons(){
