@@ -7,6 +7,7 @@ import chess.pieces.IPiece;
 
 import static org.mockito.Mockito.*;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
@@ -26,7 +27,7 @@ public class ChessBoardGUITest {
         verify(mockGUISetter).arrangeGUIScreen(any(JPanel.class), any(JPanel.class));
         verify(mockGUISetter).arrangeButtons(any());
         verify(mockGUISetter).addButtonsToBoard(any(JPanel.class), any());
-        verify(mockGUISetter).addFrameToBoard(any(JPanel.class));
+        verify(mockGUISetter).addFrameToBoard(any(JPanel.class), any(JFrame.class));
     }
 
     @Test
