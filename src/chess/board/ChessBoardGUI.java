@@ -25,7 +25,8 @@ public class ChessBoardGUI implements IChessBoardGUI{
 
         guiSetter.addButtonsToBoard(chessBoard, chessBoardGUIButtons);
 
-        guiSetter.addFrameToBoard(GUI);
+        JFrame frame = new JFrame("Chess");
+        guiSetter.addFrameToBoard(GUI, frame);
     }
 
     public void updateBoardWithPawns(){

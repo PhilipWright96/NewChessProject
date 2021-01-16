@@ -58,8 +58,7 @@ public class GUISetter {
         }
     }
 
-    public void addFrameToBoard(JPanel GUI){
-        JFrame frame = new JFrame("Chess");
+    public void addFrameToBoard(JPanel GUI, JFrame frame){
         frame.add(GUI);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationByPlatform(true);
