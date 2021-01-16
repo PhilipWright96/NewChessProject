@@ -31,7 +31,6 @@ public class GUIUpdater {
     }
 
     public void updateBoardWithNewMove(JButton[][] chessBoardGUIButtons, ChessMove newMove, IPiece pieceBeingMoved){
-        System.out.println(" move from col is "  + newMove.getMoveFromColumn() + " move from row is " + newMove.getMoveFromRow());
         JButton moveFromSquare = chessBoardGUIButtons[newMove.getMoveFromColumn()][newMove.getMoveFromRow()];
         moveFromSquare.setIcon(null);
 
