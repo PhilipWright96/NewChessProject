@@ -1,6 +1,6 @@
 
 
-<project name="Chess" basedir="." default="main">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="Chess" basedir="." default="main">
 
     <property name="lib.dir" value="lib"/>
     
@@ -18,6 +18,17 @@
     <path id="classpath">
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
     </path>
+
+    <target name="resolve" description="retrieve dependencies with ivy">
+        <ivy:retrieve />
+    </target>
+
+
+    <target name="ivy" description="Install ivy">
+        <mkdir dir="${user.home}/.ant/lib" />
+        <get dest="${user.home}/.ant/lib/ivy.jar"
+             src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.5.0-rc1/ivy-2.5.0-rc1.jar" />
+    </target>
 
     <target name="clean">
         <delete dir="${build.dir}"/>

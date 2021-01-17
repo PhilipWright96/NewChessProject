@@ -1,0 +1,11 @@
+<ivy-module version="2.0">
+    <info organisation="" module="" />
+    <configurations>
+        <conf name="binaries" />
+    </configurations>
+    <dependencies>
+        <dependency org="junit" name="junit" rev="4.12" conf="binaries->default" />
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+        <dependency org="org.mockito" name="mockito-core" rev="3.6.28"/>
+    </dependencies>
+</ivy-module>

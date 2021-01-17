@@ -17,8 +17,8 @@ public abstract class Piece implements IPiece {
         KING
     }
 
-    public Teams team;
-    public Types type;
+    private Teams team;
+    private Types type;
 
     public int hashCode() {
         return Objects.hash(this.team, this.type);

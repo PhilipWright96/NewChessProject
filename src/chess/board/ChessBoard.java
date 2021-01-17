@@ -7,10 +7,11 @@ import chess.util.Teams;
 import java.util.ArrayList;
 
 public class ChessBoard implements IChessBoard {
-    private IChessBoardGUI chessBoardGUI = new ChessBoardGUI();
-    private IPiece[][] chessBoard = new Piece[8][8];
 
-    private ArrayList<Piece.Types> pieceOrder = new ArrayList<Piece.Types>() {{
+    private IChessBoardGUI chessBoardGUI;
+    private IPiece[][] chessBoard;
+
+    public static ArrayList<Piece.Types> pieceOrder = new ArrayList<Piece.Types>() {{
         add(Piece.Types.ROOK);
         add(Piece.Types.KNIGHT);
         add(Piece.Types.BISHOP);
@@ -21,8 +22,13 @@ public class ChessBoard implements IChessBoard {
         add(Piece.Types.ROOK);
     }};
 
+    public ChessBoard(IChessBoardGUI boardGUI){
+        chessBoardGUI = boardGUI;
+        chessBoard = new Piece[8][8];
+    }
+
     public void initializeChessBoard() {
-        this.chessBoardGUI.initializeBoardGUI();
+        chessBoardGUI.initializeBoardGUI();
         addPawns();
         addSpecialPieces();
     }

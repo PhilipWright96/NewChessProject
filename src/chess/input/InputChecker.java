@@ -1,20 +1,28 @@
-package chess.game;
+package chess.input;
 
-import java.util.regex.*;
+import java.util.regex.Pattern;
 
 import chess.board.IChessBoard;
 import chess.pieces.IPiece;
 import chess.pieces.Piece.Types;
 import chess.player.Player;
+import chess.game.ChessMove;
+
 
 public class InputChecker {
+    private ClearPathChecker pathChecker;
+
     private static final String VALID_CHESS_MOVE = "[a-h][1-8]\\-[a-h][1-8]";
 
-    public static boolean checkPlayerInput(String input, Player player, IChessBoard board){
+    public InputChecker(ClearPathChecker pathChecker){
+        this.pathChecker = pathChecker;
+    }
+
+    public boolean checkPlayerInput(String input, Player player, IChessBoard board){
         return correctInputSyntax(input) && correctInputLogic(input, player, board);
     }
 
-    private static boolean correctInputSyntax(String input){
+    private boolean correctInputSyntax(String input){
         boolean result = Pattern.matches(VALID_CHESS_MOVE, input);
         if (result == false){
             System.out.println("Input : " + input + " is a invalid move. Correct input format is (for example) a1-a3. Please try again");
@@ -22,7 +30,7 @@ public class InputChecker {
         return result;
     }
 
-    private static boolean correctInputLogic(String input, Player player, IChessBoard board){
+    private boolean correctInputLogic(String input, Player player, IChessBoard board){
         ChessMove attemptedMove = new ChessMove(input);
         IPiece pieceBeingMoved = board.getPieceBeingMoved(attemptedMove);
 
@@ -31,7 +39,7 @@ public class InputChecker {
             return false;
         };
 
-        if (!attemptedMove.moveToNewSquare()){
+        if (!attemptedMove.isMovingToNewSquare()){
             System.out.println("You must move your piece to a new square");
             return false;
         }
@@ -59,18 +67,18 @@ public class InputChecker {
         return true;
     }
 
-    private static boolean moveTakingPieceOfSameTeam(ChessMove move, Player player, IChessBoard board){
+    private boolean moveTakingPieceOfSameTeam(ChessMove move, Player player, IChessBoard board){
         IPiece pieceBeingTaken = board.getPieceBeingTaken(move);
-        if (pieceBeingTaken == null || player.getTeam() != pieceBeingTaken.getTeam()){
-            return false;
+        if (pieceBeingTaken != null && player.getTeam() == pieceBeingTaken.getTeam()){
+            return true;
         }
-        return true;
+        return false;
     }
 
-    private static boolean pathForAttemptedMoveClear(ChessMove move, IChessBoard board, IPiece piece){
+    private boolean pathForAttemptedMoveClear(ChessMove move, IChessBoard board, IPiece piece){
         if (piece.getType() == Types.KNIGHT){
             return true;
         }
-        return ClearPathChecker.pathForMoveClear(move, board.getChessBoard());
+        return pathChecker.pathForMoveClear(move, board.getChessBoard());
     }
 }

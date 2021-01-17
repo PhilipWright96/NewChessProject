@@ -1,11 +1,9 @@
 package chess.game;
 
-import java.util.Scanner;
-
-import chess.board.ChessBoard;
 import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
+import chess.input.InputRetriever;
 
 public class ChessGame implements IChessGame{
     private IChessBoard board;
@@ -14,73 +12,55 @@ public class ChessGame implements IChessGame{
     private Player playerSilver;
     private Player playerGold;
 
-    private Scanner userInputScanner = new Scanner(System.in);
+    private InputRetriever inputRetriever;
     
     private boolean isRunning = false;
     private boolean isFinished = false; 
     private int turnsTaken;
 
-    public void setPlayers(Player playerOne, Player playerTwo){
+    public ChessGame(Player playerOne, Player playerTwo, IChessBoard board, InputRetriever inputRetriever){
         if (playerOne.getTeam() == Teams.SILVER){
-            this.playerSilver = playerOne;
-            this.playerGold = playerTwo;
+            playerSilver = playerOne;
+            playerGold = playerTwo;
         }
         else {
-            this.playerSilver = playerTwo;
-            this.playerGold = playerOne;
+            playerSilver = playerTwo;
+            playerGold = playerOne;
         }
+        this.board = board;
+        this.inputRetriever = inputRetriever;
     }
 
     public void attach(GameObserver observer) {
         this.observer = observer;
     }
 
-    public void start() throws InterruptedException {
-        this.board = new ChessBoard();
-        this.board.initializeChessBoard();
+    public void playGame() throws InterruptedException {
+        board.initializeChessBoard();
 
         turnsTaken = 0;
-        this.isRunning = true;
+        isRunning = true;
 
         for (int i = 0; i < 5; i++){
             playRound();
         }
-        this.userInputScanner.close();
 
-        Thread.sleep(5000);
-        finish();
+        inputRetriever.closeScanner();
+
+        isRunning = false;
+        isFinished = true;
+
+        observer.update();
     }
 
     private void playRound() {
-        ChessMove silverMove = getValidInputFromPlayer(userInputScanner, playerSilver);
-        movePiece(silverMove);
+        ChessMove silverMove = inputRetriever.getValidInputFromPlayer(playerSilver, board);
+        board.movePiece(silverMove);
         System.out.println("Player Silver has played " + silverMove.getMoveFromColumn() + " " + silverMove.getMoveFromRow() + " to " + silverMove.getMoveToColumn() + " " + silverMove.getMoveToRow());
-
-        ChessMove goldMove = getValidInputFromPlayer(userInputScanner, playerGold);
-        movePiece(goldMove);
+        ChessMove goldMove = inputRetriever.getValidInputFromPlayer(playerGold, board);
+        board.movePiece(goldMove);
         System.out.println("Player Gold has played " + goldMove.getMoveFromColumn() + " " + goldMove.getMoveFromRow() + " to " + goldMove.getMoveToColumn() + " " + goldMove.getMoveToRow());
         
-        this.turnsTaken++;
-    }
-
-    private ChessMove getValidInputFromPlayer(Scanner userInputScanner, Player player){
-        boolean inputValid = false;
-        String input = null; 
-        while (inputValid == false){
-            input = player.getPlayerInput(userInputScanner);
-            inputValid = InputChecker.checkPlayerInput(input, player, board);
-        }
-        return new ChessMove(input);
-    }
-
-    private void movePiece(ChessMove inputMove){
-        board.movePiece(inputMove);
-    }
-
-    private void finish() {
-        this.isRunning = false;
-        this.isFinished = true;
-
-        observer.update();
+        turnsTaken++;
     }
 }

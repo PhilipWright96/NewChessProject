@@ -1,8 +1,8 @@
 package chess.player;
 
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
+import chess.input.ScannerWrapper;
 import chess.util.Teams;
 
 public class Player {
@@ -18,7 +18,7 @@ public class Player {
         return this.team;
     }
 
-    public String getPlayerInput(Scanner userInputScanner) {
+    public String getPlayerInput(ScannerWrapper userInputScanner) {
         String response = null;
         try {
             while (response == null) {

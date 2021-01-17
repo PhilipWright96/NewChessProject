@@ -3,23 +3,18 @@ package chess.game;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
 
 public class GameObserverTest {
     @Test
     public void update_setsHasFinishedToTrue(){
         // Given
-        GameObserver observer = new GameObserver(new ChessGame());
+        ChessGame mockGame = mock(ChessGame.class);
+        GameObserver observer = new GameObserver(mockGame);
         // When
         observer.update();
         // Then
         assertEquals("hasFinished property not set to true", true, observer.hasFinished);
-    }
-
-    @Test
-    public void hasFinished_returnsCorrectValue(){
-        // Given
-        GameObserver observer = new GameObserver(new ChessGame());
-        // Then
-        assertEquals("hasFinished method not returning correct value", false, observer.hasFinished());
     }
 }
