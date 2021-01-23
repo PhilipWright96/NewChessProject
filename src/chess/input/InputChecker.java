@@ -79,6 +79,6 @@ public class InputChecker {
         if (piece.getType() == Types.KNIGHT){
             return true;
         }
-        return pathChecker.pathForMoveClear(move, board.getChessBoard());
+        return pathChecker.pathForMoveClear(move, board.getPieceArray());
     }
 }

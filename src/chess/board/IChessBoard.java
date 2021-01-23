@@ -5,7 +5,7 @@ import chess.pieces.IPiece;
 
 public interface IChessBoard {
     public void initializeChessBoard();
-    public IPiece[][] getChessBoard();
+    public IPiece[][] getPieceArray();
     public void movePiece(ChessMove inputMove);
     public IPiece getPieceBeingMoved(ChessMove move);
     public IPiece getPieceBeingTaken(ChessMove move);

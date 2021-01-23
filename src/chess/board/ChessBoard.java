@@ -34,7 +34,7 @@ public class ChessBoard implements IChessBoard {
         addSpecialPieces();
     }
 
-    public IPiece[][] getChessBoard(){
+    public IPiece[][] getPieceArray(){
         return pieceArray;
     }
 
