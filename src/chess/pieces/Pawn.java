@@ -22,7 +22,7 @@ public class Pawn extends Piece{
         if (move.getMoveFromColumn() == move.getMoveToColumn()){
             return true;
         }
-        IPiece[][] piecesArray = chessBoard.getChessBoard();
+        IPiece[][] piecesArray = chessBoard.getPieceArray();
 
         System.out.println("Move from col is " + move.getMoveFromColumn() + " Move from row is " + move.getMoveFromRow());
         System.out.println("Move to col is " + move.getMoveToColumn() + " Move to row is " + move.getMoveToRow());

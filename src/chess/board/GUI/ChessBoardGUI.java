@@ -1,4 +1,4 @@
-package chess.board;
+package chess.board.GUI;
 
 import java.awt.*;
 import javax.swing.*;

@@ -3,13 +3,14 @@ package chess.board;
 import chess.game.ChessMove;
 import chess.pieces.*;
 import chess.util.Teams;
+import chess.board.GUI.*;
 
 import java.util.ArrayList;
 
 public class ChessBoard implements IChessBoard {
 
     private IChessBoardGUI chessBoardGUI;
-    private IPiece[][] chessBoard;
+    private IPiece[][] pieceArray;
 
     public static ArrayList<Piece.Types> pieceOrder = new ArrayList<Piece.Types>() {{
         add(Piece.Types.ROOK);
@@ -24,7 +25,7 @@ public class ChessBoard implements IChessBoard {
 
     public ChessBoard(IChessBoardGUI boardGUI){
         chessBoardGUI = boardGUI;
-        chessBoard = new Piece[8][8];
+        pieceArray = new Piece[8][8];
     }
 
     public void initializeChessBoard() {
@@ -33,38 +34,38 @@ public class ChessBoard implements IChessBoard {
         addSpecialPieces();
     }
 
-    public IPiece[][] getChessBoard(){
-        return chessBoard;
+    public IPiece[][] getPieceArray(){
+        return pieceArray;
     }
 
     public void movePiece(ChessMove inputMove){
         IPiece pieceBeingMoved = getPieceBeingMoved(inputMove);
-        chessBoard[inputMove.getMoveFromColumn()][inputMove.getMoveFromRow()] = null;
-        chessBoard[inputMove.getMoveToColumn()][inputMove.getMoveToRow()] = pieceBeingMoved;
+        pieceArray[inputMove.getMoveFromColumn()][inputMove.getMoveFromRow()] = null;
+        pieceArray[inputMove.getMoveToColumn()][inputMove.getMoveToRow()] = pieceBeingMoved;
         chessBoardGUI.updateBoardWithNewMove(inputMove, pieceBeingMoved);
     }
 
     public IPiece getPieceBeingMoved(ChessMove move){
-        return chessBoard[move.getMoveFromColumn()][move.getMoveFromRow()];
+        return pieceArray[move.getMoveFromColumn()][move.getMoveFromRow()];
     }
 
     public IPiece getPieceBeingTaken(ChessMove move){
-        return chessBoard[move.getMoveToColumn()][move.getMoveToRow()];
+        return pieceArray[move.getMoveToColumn()][move.getMoveToRow()];
     }
 
     private void addPawns(){
-        for (int k = 0; k < chessBoard.length; k++){
-            chessBoard[k][1] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);
-            chessBoard[k][chessBoard.length - 2] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
+        for (int k = 0; k < pieceArray.length; k++){
+            pieceArray[k][1] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);
+            pieceArray[k][pieceArray.length - 2] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
         }
 
         chessBoardGUI.updateBoardWithPawns();
     }
 
     private void addSpecialPieces(){
-        for (int l = 0; l < chessBoard.length; l++){
-            chessBoard[l][0] = PieceFactory.constructPiece(pieceOrder.get(l), Teams.GOLD);
-            chessBoard[l][chessBoard.length - 1] = PieceFactory.constructPiece(pieceOrder.get(l), Teams.SILVER);
+        for (int l = 0; l < pieceArray.length; l++){
+            pieceArray[l][0] = PieceFactory.constructPiece(pieceOrder.get(l), Teams.GOLD);
+            pieceArray[l][pieceArray.length - 1] = PieceFactory.constructPiece(pieceOrder.get(l), Teams.SILVER);
         }
 
         chessBoardGUI.updateBoardWithSpecialPieces();

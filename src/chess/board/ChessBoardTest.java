@@ -7,6 +7,7 @@ import chess.pieces.IPiece;
 import chess.pieces.Piece;
 import chess.pieces.PieceFactory;
 import chess.util.Teams;
+import chess.board.GUI.*;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -23,7 +24,7 @@ public class ChessBoardTest {
         // Given
         // When
         board.initializeChessBoard();
-        IPiece[][] returnedBoard = board.getChessBoard();
+        IPiece[][] returnedBoard = board.getPieceArray();
 
         // Then
         verify(mockGui).initializeBoardGUI();
@@ -46,7 +47,7 @@ public class ChessBoardTest {
 
         // Given
         IPiece pieceOnBoard = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
-        board.getChessBoard()[3][6] = pieceOnBoard;
+        board.getPieceArray()[3][6] = pieceOnBoard;
 
         when(mockMove.getMoveFromColumn()).thenReturn(3);
         when(mockMove.getMoveFromRow()).thenReturn(6);
@@ -65,7 +66,7 @@ public class ChessBoardTest {
 
         // Given
         IPiece pieceOnBoard = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
-        board.getChessBoard()[3][5] = pieceOnBoard;
+        board.getPieceArray()[3][5] = pieceOnBoard;
 
         when(mockMove.getMoveToColumn()).thenReturn(3);
         when(mockMove.getMoveToRow()).thenReturn(5);
@@ -84,7 +85,7 @@ public class ChessBoardTest {
 
         // Given
         IPiece pieceBeingMoved = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
-        board.getChessBoard()[3][6] = pieceBeingMoved;
+        board.getPieceArray()[3][6] = pieceBeingMoved;
 
         when(mockMove.getMoveFromColumn()).thenReturn(3);
         when(mockMove.getMoveFromRow()).thenReturn(6);
@@ -98,11 +99,11 @@ public class ChessBoardTest {
         // Then
         verify(mockMove, times(2)).getMoveFromColumn();
         verify(mockMove, times(2)).getMoveFromRow();
-        assertEquals(null, board.getChessBoard()[3][6]);
+        assertEquals(null, board.getPieceArray()[3][6]);
         
         verify(mockMove).getMoveToColumn();
         verify(mockMove).getMoveToRow();
-        assertEquals(pieceBeingMoved, board.getChessBoard()[3][5]);
+        assertEquals(pieceBeingMoved, board.getPieceArray()[3][5]);
 
         verify(mockGui).updateBoardWithNewMove(mockMove, pieceBeingMoved);
     }

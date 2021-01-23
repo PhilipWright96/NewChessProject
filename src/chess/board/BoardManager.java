@@ -1,4 +1,5 @@
 package chess.board;
+import chess.board.GUI.*;
 
 public class BoardManager {
     public ChessBoard buildBoard(){
