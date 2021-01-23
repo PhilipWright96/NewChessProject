@@ -7,6 +7,7 @@ import chess.pieces.IPiece;
 import chess.pieces.Piece;
 import chess.pieces.PieceFactory;
 import chess.util.Teams;
+import chess.board.GUI.*;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;

@@ -3,6 +3,7 @@ package chess.board;
 import chess.game.ChessMove;
 import chess.pieces.*;
 import chess.util.Teams;
+import chess.board.GUI.*;
 
 import java.util.ArrayList;
 
