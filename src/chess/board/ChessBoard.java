@@ -12,7 +12,7 @@ public class ChessBoard implements IChessBoard {
 
     private IChessBoardGUI chessBoardGUI;
     private IPiece[][] pieceArray;
-    private HashMap<IPiece, Coordinates> pieceToCoordinates; 
+    private PieceToCoordinates allPiecesToCoordinates; 
 
 
     public static ArrayList<Piece.Types> pieceOrder = new ArrayList<Piece.Types>() {{
@@ -29,7 +29,7 @@ public class ChessBoard implements IChessBoard {
     public ChessBoard(IChessBoardGUI boardGUI){
         chessBoardGUI = boardGUI;
         pieceArray = new Piece[8][8];
-        pieceToCoordinates = new HashMap<IPiece, Coordinates>();
+        allPiecesToCoordinates = new PieceToCoordinates();
     }
 
     public void initializeChessBoard() {
@@ -46,6 +46,10 @@ public class ChessBoard implements IChessBoard {
         IPiece pieceBeingMoved = getPieceBeingMoved(inputMove);
         pieceArray[inputMove.getMoveFromColumn()][inputMove.getMoveFromRow()] = null;
         pieceArray[inputMove.getMoveToColumn()][inputMove.getMoveToRow()] = pieceBeingMoved;
+        
+        Coordinates movedPieceCoordinates = pieceToCoordinates.get(pieceBeingMoved);
+        movedPieceCoordinates.setRowAndColumnCoordinates(inputMove.getMoveToRow(), inputMove.getMoveToColumn());
+        
         chessBoardGUI.updateBoardWithNewMove(inputMove, pieceBeingMoved);
     }
 
@@ -61,11 +65,11 @@ public class ChessBoard implements IChessBoard {
         for (int k = 0; k < pieceArray.length; k++){
             Piece goldPawn = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);
             pieceArray[k][1] = goldPawn;
-            pieceToCoordinates.put(goldPawn, new Coordinates(k, 1));
+            allPiecesToCoordinates.storePieceWithCoordinates(goldPawn, k, 1);
 
             Piece silverPawn = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
             pieceArray[k][pieceArray.length - 2] = silverPawn;
-            pieceToCoordinates.put(silverPawn, new Coordinates(k, pieceArray.length - 2));
+            allPiecesToCoordinates.storePieceWithCoordinates(silverPawn, k, pieceArray.length - 2);
         }
 
         chessBoardGUI.updateBoardWithPawns();
@@ -75,15 +79,34 @@ public class ChessBoard implements IChessBoard {
         for (int l = 0; l < pieceArray.length; l++){
             Piece goldPiece = PieceFactory.constructPiece(pieceOrder.get(l), Teams.GOLD);
             pieceArray[l][0] = goldPiece;
-            pieceToCoordinates.put(goldPiece, new Coordinates(l, 0));
+            allPiecesToCoordinates.storePieceWithCoordinates(goldPiece, l, 0);
 
             Piece silverPiece = PieceFactory.constructPiece(pieceOrder.get(l), Teams.SILVER);
             pieceArray[l][pieceArray.length - 1] = silverPiece;
-            pieceToCoordinates.put(silverPiece, new Coordinates(l, pieceArray.length - 1));
-
+            allPiecesToCoordinates.storePieceWithCoordinates(silverPiece, l, pieceArray.length - 1);
         }
 
         chessBoardGUI.updateBoardWithSpecialPieces();
+    }
+
+    private class PieceToCoordinates {
+        private HashMap<IPiece, Coordinates> silverPieceToCoordinates;
+        private HashMap<IPiece, Coordinates> goldPieceToCoordinates;
+
+        public PieceToCoordinates(){
+            this.silverPieceToCoordinates = new HashMap<IPiece, Coordinates>();
+            this.goldPieceToCoordinates = new HashMap<IPiece, Coordinates>();
+        }
+
+        public void storePieceWithCoordinates(IPiece piece, int rowCoordinate, int columnCoordinate){
+            Coordinates coordinates = new Coordinates(rowCoordinate, columnCoordinate);
+            if (piece.getTeam() == Teams.SILVER){
+                silverPieceToCoordinates.put(piece, coordinates);
+            }
+            else {
+                goldPieceToCoordinates.put(piece, coordinates);
+            }
+        }
     }
 
     private class Coordinates {
@@ -101,6 +124,11 @@ public class ChessBoard implements IChessBoard {
 
         public int getColumnCoordinate(){
             return this.columnCoordinate;
+        }
+
+        public void setRowAndColumnCoordinates(int rowCoordinate, int columnCoordinate){
+            this.rowCoordinate = rowCoordinate;
+            this.columnCoordinate = columnCoordinate;
         }
     }
 }
