@@ -47,8 +47,7 @@ public class ChessBoard implements IChessBoard {
         pieceArray[inputMove.getMoveFromColumn()][inputMove.getMoveFromRow()] = null;
         pieceArray[inputMove.getMoveToColumn()][inputMove.getMoveToRow()] = pieceBeingMoved;
         
-        Coordinates movedPieceCoordinates = pieceToCoordinates.get(pieceBeingMoved);
-        movedPieceCoordinates.setRowAndColumnCoordinates(inputMove.getMoveToRow(), inputMove.getMoveToColumn());
+        allPiecesToCoordinates.updatePieceWithNewCoordinates(pieceBeingMoved, inputMove.getMoveToRow(), inputMove.getMoveToColumn());
         
         chessBoardGUI.updateBoardWithNewMove(inputMove, pieceBeingMoved);
     }
@@ -105,6 +104,16 @@ public class ChessBoard implements IChessBoard {
             }
             else {
                 goldPieceToCoordinates.put(piece, coordinates);
+            }
+        }
+
+        public void updatePieceWithNewCoordinates(IPiece piece, int rowCoordinate, int columnCoordinate){
+            Coordinates newCoordinates = new Coordinates(rowCoordinate, columnCoordinate);
+            if (piece.getTeam() == Teams.SILVER){
+                silverPieceToCoordinates.put(piece, newCoordinates);
+            }
+            else {
+                goldPieceToCoordinates.put(piece, newCoordinates);
             }
         }
     }
