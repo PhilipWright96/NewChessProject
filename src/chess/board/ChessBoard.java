@@ -6,11 +6,14 @@ import chess.util.Teams;
 import chess.board.GUI.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ChessBoard implements IChessBoard {
 
     private IChessBoardGUI chessBoardGUI;
     private IPiece[][] pieceArray;
+    private HashMap<IPiece, Coordinates> pieceToCoordinates; 
+
 
     public static ArrayList<Piece.Types> pieceOrder = new ArrayList<Piece.Types>() {{
         add(Piece.Types.ROOK);
@@ -26,6 +29,7 @@ public class ChessBoard implements IChessBoard {
     public ChessBoard(IChessBoardGUI boardGUI){
         chessBoardGUI = boardGUI;
         pieceArray = new Piece[8][8];
+        pieceToCoordinates = new HashMap<IPiece, Coordinates>();
     }
 
     public void initializeChessBoard() {
@@ -55,8 +59,13 @@ public class ChessBoard implements IChessBoard {
 
     private void addPawns(){
         for (int k = 0; k < pieceArray.length; k++){
-            pieceArray[k][1] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);
-            pieceArray[k][pieceArray.length - 2] = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
+            Piece goldPawn = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);
+            pieceArray[k][1] = goldPawn;
+            pieceToCoordinates.put(goldPawn, new Coordinates(k, 1));
+
+            Piece silverPawn = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.SILVER);
+            pieceArray[k][pieceArray.length - 2] = silverPawn;
+            pieceToCoordinates.put(silverPawn, new Coordinates(k, pieceArray.length - 2));
         }
 
         chessBoardGUI.updateBoardWithPawns();
@@ -64,11 +73,34 @@ public class ChessBoard implements IChessBoard {
 
     private void addSpecialPieces(){
         for (int l = 0; l < pieceArray.length; l++){
-            pieceArray[l][0] = PieceFactory.constructPiece(pieceOrder.get(l), Teams.GOLD);
-            pieceArray[l][pieceArray.length - 1] = PieceFactory.constructPiece(pieceOrder.get(l), Teams.SILVER);
+            Piece goldPiece = PieceFactory.constructPiece(pieceOrder.get(l), Teams.GOLD);
+            pieceArray[l][0] = goldPiece;
+            pieceToCoordinates.put(goldPiece, new Coordinates(l, 0));
+
+            Piece silverPiece = PieceFactory.constructPiece(pieceOrder.get(l), Teams.SILVER);
+            pieceArray[l][pieceArray.length - 1] = silverPiece;
+            pieceToCoordinates.put(silverPiece, new Coordinates(l, pieceArray.length - 1));
+
         }
 
         chessBoardGUI.updateBoardWithSpecialPieces();
     }
-    
+
+    private class Coordinates {
+        private int rowCoordinate;
+        private int columnCoordinate;
+
+        public Coordinates(int rowCoordinate, int columnCoordinate){
+            this.rowCoordinate = rowCoordinate;
+            this.columnCoordinate = columnCoordinate;
+        }
+
+        public int getRowCoordinate(){
+            return this.rowCoordinate;
+        }
+
+        public int getColumnCoordinate(){
+            return this.columnCoordinate;
+        }
+    }
 }
