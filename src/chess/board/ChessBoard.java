@@ -96,12 +96,12 @@ public class ChessBoard implements IChessBoard {
         private HashMap<IPiece, Coordinates> silverPieceToCoordinates;
         private HashMap<IPiece, Coordinates> goldPieceToCoordinates;
 
-        public PieceToCoordinates(){
+        private PieceToCoordinates(){
             this.silverPieceToCoordinates = new HashMap<IPiece, Coordinates>();
             this.goldPieceToCoordinates = new HashMap<IPiece, Coordinates>();
         }
 
-        public void storePieceWithCoordinates(IPiece piece, int rowCoordinate, int columnCoordinate){
+        private void storePieceWithCoordinates(IPiece piece, int rowCoordinate, int columnCoordinate){
             Coordinates coordinates = new Coordinates(rowCoordinate, columnCoordinate);
             if (piece.getTeam() == Teams.SILVER){
                 silverPieceToCoordinates.put(piece, coordinates);
@@ -111,7 +111,7 @@ public class ChessBoard implements IChessBoard {
             }
         }
 
-        public void updatePieceWithNewCoordinates(IPiece piece, int rowCoordinate, int columnCoordinate){
+        private void updatePieceWithNewCoordinates(IPiece piece, int rowCoordinate, int columnCoordinate){
             Coordinates newCoordinates = new Coordinates(rowCoordinate, columnCoordinate);
             if (piece.getTeam() == Teams.SILVER){
                 silverPieceToCoordinates.put(piece, newCoordinates);
@@ -126,20 +126,20 @@ public class ChessBoard implements IChessBoard {
         private int rowCoordinate;
         private int columnCoordinate;
 
-        public Coordinates(int rowCoordinate, int columnCoordinate){
+        private Coordinates(int rowCoordinate, int columnCoordinate){
             this.rowCoordinate = rowCoordinate;
             this.columnCoordinate = columnCoordinate;
         }
 
-        public int getRowCoordinate(){
+        private int getRowCoordinate(){
             return this.rowCoordinate;
         }
 
-        public int getColumnCoordinate(){
+        private int getColumnCoordinate(){
             return this.columnCoordinate;
         }
 
-        public void setRowAndColumnCoordinates(int rowCoordinate, int columnCoordinate){
+        private void setRowAndColumnCoordinates(int rowCoordinate, int columnCoordinate){
             this.rowCoordinate = rowCoordinate;
             this.columnCoordinate = columnCoordinate;
         }
