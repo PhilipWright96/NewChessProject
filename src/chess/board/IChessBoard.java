@@ -9,4 +9,5 @@ public interface IChessBoard {
     public void movePiece(ChessMove inputMove);
     public IPiece getPieceBeingMoved(ChessMove move);
     public IPiece getPieceBeingTaken(ChessMove move);
+    public ChessBoard.PieceToCoordinates getPieceToCoordinatesMap();
 }

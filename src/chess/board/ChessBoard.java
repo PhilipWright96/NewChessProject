@@ -60,6 +60,10 @@ public class ChessBoard implements IChessBoard {
         return pieceArray[move.getMoveToColumn()][move.getMoveToRow()];
     }
 
+    public PieceToCoordinates getPieceToCoordinatesMap(){
+        return allPiecesToCoordinates;
+    }
+
     private void addPawns(){
         for (int k = 0; k < pieceArray.length; k++){
             Piece goldPawn = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);
@@ -88,7 +92,7 @@ public class ChessBoard implements IChessBoard {
         chessBoardGUI.updateBoardWithSpecialPieces();
     }
 
-    private class PieceToCoordinates {
+    public class PieceToCoordinates {
         private HashMap<IPiece, Coordinates> silverPieceToCoordinates;
         private HashMap<IPiece, Coordinates> goldPieceToCoordinates;
 
