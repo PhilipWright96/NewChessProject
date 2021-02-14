@@ -20,6 +20,13 @@ public class ChessMove {
         moveToRow = Character.getNumericValue(moveTo[1] - 1);
     }
 
+    public ChessMove(int moveFromColumn, int moveFromRow, int moveToColumn, int moveToRow){
+        this.moveFromColumn = moveFromColumn;
+        this.moveFromRow = moveFromRow;
+        this.moveToColumn = moveToColumn;
+        this.moveToRow = moveToRow;
+    }
+
     public int getMoveFromColumn(){
         return moveFromColumn;
     }
