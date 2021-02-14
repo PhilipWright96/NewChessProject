@@ -82,19 +82,19 @@ public class ChessBoard implements IChessBoard {
         for (int l = 0; l < pieceArray.length; l++){
             Piece goldPiece = PieceFactory.constructPiece(pieceOrder.get(l), Teams.GOLD);
             pieceArray[l][0] = goldPiece;
-            allPiecesToCoordinates.storePieceWithCoordinates(goldPiece, l, 0);
+            allPiecesToCoordinates.storePieceWithCoordinates(goldPiece, 0, l);
 
             Piece silverPiece = PieceFactory.constructPiece(pieceOrder.get(l), Teams.SILVER);
             pieceArray[l][pieceArray.length - 1] = silverPiece;
-            allPiecesToCoordinates.storePieceWithCoordinates(silverPiece, l, pieceArray.length - 1);
+            allPiecesToCoordinates.storePieceWithCoordinates(silverPiece, pieceArray.length - 1, l);
         }
 
         chessBoardGUI.updateBoardWithSpecialPieces();
     }
 
     public class PieceToCoordinates {
-        private HashMap<IPiece, Coordinates> silverPieceToCoordinates;
-        private HashMap<IPiece, Coordinates> goldPieceToCoordinates;
+        public HashMap<IPiece, Coordinates> silverPieceToCoordinates;
+        public HashMap<IPiece, Coordinates> goldPieceToCoordinates;
 
         private PieceToCoordinates(){
             this.silverPieceToCoordinates = new HashMap<IPiece, Coordinates>();
@@ -122,7 +122,7 @@ public class ChessBoard implements IChessBoard {
         }
     }
 
-    private class Coordinates {
+    public class Coordinates {
         private int rowCoordinate;
         private int columnCoordinate;
 
@@ -131,11 +131,11 @@ public class ChessBoard implements IChessBoard {
             this.columnCoordinate = columnCoordinate;
         }
 
-        private int getRowCoordinate(){
+        public int getRowCoordinate(){
             return this.rowCoordinate;
         }
 
-        private int getColumnCoordinate(){
+        public int getColumnCoordinate(){
             return this.columnCoordinate;
         }
 
