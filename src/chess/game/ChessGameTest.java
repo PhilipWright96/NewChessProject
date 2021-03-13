@@ -18,15 +18,16 @@ public class ChessGameTest {
         Player mockPlayerSilver = mock(Player.class);
         Player mockPlayerGold = mock(Player.class);
         InputRetriever mockInputRetriever = mock(InputRetriever.class);
+        ICheckChecker mockCheckChecker = mock(ICheckChecker.class);
 
         ChessMove mockSilverMove = mock(ChessMove.class);
         ChessMove mockGoldMove = mock(ChessMove.class);
 
         when(mockPlayerSilver.getTeam()).thenReturn(Teams.SILVER);
-        when(mockInputRetriever.getValidInputFromPlayer(mockPlayerSilver, mockBoard)).thenReturn(mockSilverMove);
-        when(mockInputRetriever.getValidInputFromPlayer(mockPlayerGold, mockBoard)).thenReturn(mockGoldMove);
+        when(mockInputRetriever.getValidInputFromPlayer(mockPlayerSilver, mockBoard, mockCheckChecker)).thenReturn(mockSilverMove);
+        when(mockInputRetriever.getValidInputFromPlayer(mockPlayerGold, mockBoard, mockCheckChecker)).thenReturn(mockGoldMove);
 
-        ChessGame game = new ChessGame(mockPlayerSilver, mockPlayerGold, mockBoard, mockInputRetriever);
+        ChessGame game = new ChessGame(mockPlayerSilver, mockPlayerGold, mockBoard, mockInputRetriever, mockCheckChecker);
 
         // When
         try {
@@ -39,11 +40,14 @@ public class ChessGameTest {
         // Then
         verify(mockBoard).initializeChessBoard();
 
-        verify(mockInputRetriever, times(5)).getValidInputFromPlayer(mockPlayerSilver, mockBoard);
-        verify(mockInputRetriever, times(5)).getValidInputFromPlayer(mockPlayerGold, mockBoard);
+        verify(mockInputRetriever, times(5)).getValidInputFromPlayer(mockPlayerSilver, mockBoard, mockCheckChecker);
+        verify(mockInputRetriever, times(5)).getValidInputFromPlayer(mockPlayerGold, mockBoard, mockCheckChecker);
 
         verify(mockBoard, times(5)).movePiece(mockSilverMove);
         verify(mockBoard, times(5)).movePiece(mockGoldMove);
+
+        verify(mockCheckChecker, times(5)).opposingKingInCheck(mockPlayerSilver, mockBoard);
+        verify(mockCheckChecker, times(5)).opposingKingInCheck(mockPlayerGold, mockBoard);
 
         verify(mockInputRetriever).closeScanner();
     }
