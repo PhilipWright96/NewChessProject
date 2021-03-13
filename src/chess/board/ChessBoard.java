@@ -111,7 +111,7 @@ public class ChessBoard implements IChessBoard {
             }
         }
 
-        private void updatePieceWithNewCoordinates(IPiece piece, int rowCoordinate, int columnCoordinate){
+        public void updatePieceWithNewCoordinates(IPiece piece, int rowCoordinate, int columnCoordinate){
             Coordinates newCoordinates = new Coordinates(rowCoordinate, columnCoordinate);
             if (piece.getTeam() == Teams.SILVER){
                 silverPieceToCoordinates.put(piece, newCoordinates);
