@@ -54,7 +54,7 @@ public class ChessGame implements IChessGame{
     }
 
     private void playRound() {
-        CheckChecker checkChecker = new CheckChecker();
+        ICheckChecker checkChecker = new CheckChecker();
         ChessMove silverMove = inputRetriever.getValidInputFromPlayer(playerSilver, board, checkChecker);
         board.movePiece(silverMove);
         if (checkChecker.opposingKingInCheck(playerSilver, board)){
