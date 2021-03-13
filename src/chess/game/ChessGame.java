@@ -13,12 +13,13 @@ public class ChessGame implements IChessGame{
     private Player playerGold;
 
     private InputRetriever inputRetriever;
+    private ICheckChecker checkChecker;
     
     private boolean isRunning = false;
     private boolean isFinished = false; 
     private int turnsTaken;
 
-    public ChessGame(Player playerOne, Player playerTwo, IChessBoard board, InputRetriever inputRetriever){
+    public ChessGame(Player playerOne, Player playerTwo, IChessBoard board, InputRetriever inputRetriever, ICheckChecker checkChecker){
         if (playerOne.getTeam() == Teams.SILVER){
             playerSilver = playerOne;
             playerGold = playerTwo;
@@ -54,7 +55,6 @@ public class ChessGame implements IChessGame{
     }
 
     private void playRound() {
-        ICheckChecker checkChecker = new CheckChecker();
         ChessMove silverMove = inputRetriever.getValidInputFromPlayer(playerSilver, board, checkChecker);
         board.movePiece(silverMove);
         if (checkChecker.opposingKingInCheck(playerSilver, board)){
