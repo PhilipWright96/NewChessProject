@@ -2,6 +2,7 @@ package chess.input;
 
 import chess.board.IChessBoard;
 import chess.player.Player;
+import chess.game.CheckChecker;
 import chess.game.ChessMove;
 
 public class InputRetriever {
@@ -13,12 +14,12 @@ public class InputRetriever {
         this.inputChecker = inputChecker;
     }
 
-    public ChessMove getValidInputFromPlayer(Player player, IChessBoard board){
+    public ChessMove getValidInputFromPlayer(Player player, IChessBoard board, CheckChecker checkChecker){
         boolean inputValid = false;
         String input = null; 
         while (inputValid == false){
             input = player.getPlayerInput(userInputScanner);
-            inputValid = inputChecker.checkPlayerInput(input, player, board);
+            inputValid = inputChecker.checkPlayerInput(input, player, board, checkChecker);
         }
         return new ChessMove(input);
     }
