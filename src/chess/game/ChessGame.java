@@ -30,6 +30,7 @@ public class ChessGame implements IChessGame{
         }
         this.board = board;
         this.inputRetriever = inputRetriever;
+        this.checkChecker = checkChecker;
     }
 
     public void attach(GameObserver observer) {
