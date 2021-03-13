@@ -6,6 +6,7 @@ import chess.board.IChessBoard;
 import chess.pieces.IPiece;
 import chess.pieces.Piece.Types;
 import chess.player.Player;
+import chess.game.CheckChecker;
 import chess.game.ChessMove;
 
 
@@ -18,8 +19,8 @@ public class InputChecker {
         this.pathChecker = pathChecker;
     }
 
-    public boolean checkPlayerInput(String input, Player player, IChessBoard board){
-        return correctInputSyntax(input) && correctInputLogic(input, player, board);
+    public boolean checkPlayerInput(String input, Player player, IChessBoard board, CheckChecker checkChecker){
+        return correctInputSyntax(input) && correctInputLogic(input, player, board, checkChecker);
     }
 
     private boolean correctInputSyntax(String input){
@@ -30,7 +31,7 @@ public class InputChecker {
         return result;
     }
 
-    private boolean correctInputLogic(String input, Player player, IChessBoard board){
+    private boolean correctInputLogic(String input, Player player, IChessBoard board, CheckChecker checkChecker){
         ChessMove attemptedMove = new ChessMove(input);
         IPiece pieceBeingMoved = board.getPieceBeingMoved(attemptedMove);
 
@@ -64,6 +65,12 @@ public class InputChecker {
             return false;
         }
 
+        if (movePuttingOwnKingInCheck(attemptedMove, player, board, checkChecker)){
+            System.out.println("You cannot make a move that puts your king in check");
+            return false;
+
+        }
+
         return true;
     }
 
@@ -80,5 +87,9 @@ public class InputChecker {
             return true;
         }
         return pathChecker.pathForMoveClear(move, board.getPieceArray());
+    }
+
+    private boolean movePuttingOwnKingInCheck(ChessMove move, Player player, IChessBoard board, CheckChecker checkChecker){
+        return checkChecker.ownKingInCheck(move, player, board);
     }
 }
