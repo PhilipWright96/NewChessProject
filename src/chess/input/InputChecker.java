@@ -6,8 +6,8 @@ import chess.board.IChessBoard;
 import chess.pieces.IPiece;
 import chess.pieces.Piece.Types;
 import chess.player.Player;
-import chess.game.CheckChecker;
 import chess.game.ChessMove;
+import chess.game.ICheckChecker;
 
 
 public class InputChecker {
@@ -19,7 +19,7 @@ public class InputChecker {
         this.pathChecker = pathChecker;
     }
 
-    public boolean checkPlayerInput(String input, Player player, IChessBoard board, CheckChecker checkChecker){
+    public boolean checkPlayerInput(String input, Player player, IChessBoard board, ICheckChecker checkChecker){
         return correctInputSyntax(input) && correctInputLogic(input, player, board, checkChecker);
     }
 
@@ -31,7 +31,7 @@ public class InputChecker {
         return result;
     }
 
-    private boolean correctInputLogic(String input, Player player, IChessBoard board, CheckChecker checkChecker){
+    private boolean correctInputLogic(String input, Player player, IChessBoard board, ICheckChecker checkChecker){
         ChessMove attemptedMove = new ChessMove(input);
         IPiece pieceBeingMoved = board.getPieceBeingMoved(attemptedMove);
 
@@ -89,7 +89,7 @@ public class InputChecker {
         return pathChecker.pathForMoveClear(move, board.getPieceArray());
     }
 
-    private boolean movePuttingOwnKingInCheck(ChessMove move, Player player, IChessBoard board, CheckChecker checkChecker){
+    private boolean movePuttingOwnKingInCheck(ChessMove move, Player player, IChessBoard board, ICheckChecker checkChecker){
         return checkChecker.ownKingInCheck(move, player, board);
     }
 }
