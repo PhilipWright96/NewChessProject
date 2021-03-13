@@ -7,13 +7,14 @@ import chess.board.ChessBoard;
 import chess.board.IChessBoard;
 import chess.board.ChessBoard.PieceToCoordinates;
 import chess.input.ClearPathChecker;
+import chess.game.ICheckChecker;
 import chess.pieces.IPiece;
 import chess.pieces.PieceFactory;
 import chess.pieces.Piece.Types;
 import chess.player.Player;
 import chess.util.Teams;
 
-public class CheckChecker {
+public class CheckChecker implements ICheckChecker {
     public boolean ownKingInCheck(ChessMove move, Player playerMoving, IChessBoard board){
         ChessBoard.PieceToCoordinates pieceToCoordinatesMap = board.getPieceToCoordinatesMap();
         ChessBoard.Coordinates ownKingCoordinates;
