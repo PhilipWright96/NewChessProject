@@ -153,7 +153,7 @@ public class InputCheckerTest {
         when(mockBoard.getPieceBeingTaken(any())).thenReturn(mockPieceBeingTaken);
         when(mockPieceBeingTaken.getTeam()).thenReturn(Teams.GOLD);
         when(mockPiece.getType()).thenReturn(Types.KNIGHT);
-        when(mockCheckChecker.ownKingInCheck(any(ChessMove.class), eq(mockPlayer), eq(mockBoard))).thenReturn(false);
+        when(mockCheckChecker.ownKingInCheck(any(ChessMove.class), eq(mockPlayer), eq(mockBoard), any(ClearPathChecker.class))).thenReturn(false);
 
         // When
         InputChecker checker = new InputChecker(mockPathChecker);

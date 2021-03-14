@@ -5,6 +5,7 @@ import org.junit.Test;
 import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
+import chess.input.ClearPathChecker;
 import chess.input.InputRetriever;
 
 import static org.mockito.Mockito.*;
@@ -46,8 +47,8 @@ public class ChessGameTest {
         verify(mockBoard, times(5)).movePiece(mockSilverMove);
         verify(mockBoard, times(5)).movePiece(mockGoldMove);
 
-        verify(mockCheckChecker, times(5)).opposingKingInCheck(mockPlayerSilver, mockBoard);
-        verify(mockCheckChecker, times(5)).opposingKingInCheck(mockPlayerGold, mockBoard);
+        verify(mockCheckChecker, times(5)).opposingKingInCheck(eq(mockPlayerSilver), eq(mockBoard), any(ClearPathChecker.class));
+        verify(mockCheckChecker, times(5)).opposingKingInCheck(eq(mockPlayerGold), eq(mockBoard), any(ClearPathChecker.class));
 
         verify(mockInputRetriever).closeScanner();
     }
