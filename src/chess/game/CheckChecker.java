@@ -7,7 +7,6 @@ import chess.board.ChessBoard;
 import chess.board.IChessBoard;
 import chess.board.ChessBoard.PieceToCoordinates;
 import chess.input.ClearPathChecker;
-import chess.game.ICheckChecker;
 import chess.pieces.IPiece;
 import chess.pieces.PieceFactory;
 import chess.pieces.Piece.Types;
@@ -15,7 +14,7 @@ import chess.player.Player;
 import chess.util.Teams;
 
 public class CheckChecker implements ICheckChecker {
-    public boolean ownKingInCheck(ChessMove move, Player playerMoving, IChessBoard board){
+    public boolean ownKingInCheck(ChessMove move, Player playerMoving, IChessBoard board, ClearPathChecker pathChecker){
         ChessBoard.PieceToCoordinates pieceToCoordinatesMap = board.getPieceToCoordinatesMap();
         ChessBoard.Coordinates ownKingCoordinates;
         HashMap<IPiece, ChessBoard.Coordinates> otherPlayerPiecesToCoords;
@@ -23,8 +22,6 @@ public class CheckChecker implements ICheckChecker {
 
         temporaryMovePiece(move, board);
         
-        ClearPathChecker pathChecker = new ClearPathChecker();
-
         if (playerMoving.getTeam() == Teams.SILVER){
             ownKingCoordinates = pieceToCoordinatesMap.silverPieceToCoordinates.get(PieceFactory.constructPiece(Types.KING, Teams.SILVER));
             otherPlayerPiecesToCoords = pieceToCoordinatesMap.goldPieceToCoordinates;
@@ -40,12 +37,10 @@ public class CheckChecker implements ICheckChecker {
         return ownKingInCheck;
     }
 
-    public boolean opposingKingInCheck(Player playerMoving, IChessBoard board){
+    public boolean opposingKingInCheck(Player playerMoving, IChessBoard board, ClearPathChecker pathChecker){
         ChessBoard.PieceToCoordinates pieceToCoordinatesMap = board.getPieceToCoordinatesMap();
         ChessBoard.Coordinates opposingKingCoordinates;
         HashMap<IPiece, ChessBoard.Coordinates> movingPlayerPiecesToCoords;
-
-        ClearPathChecker pathChecker = new ClearPathChecker();
 
         if (playerMoving.getTeam() == Teams.SILVER){
             opposingKingCoordinates = pieceToCoordinatesMap.goldPieceToCoordinates.get(PieceFactory.constructPiece(Types.KING, Teams.GOLD));
