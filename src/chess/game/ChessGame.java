@@ -3,6 +3,7 @@ package chess.game;
 import chess.board.IChessBoard;
 import chess.player.Player;
 import chess.util.Teams;
+import chess.input.ClearPathChecker;
 import chess.input.InputRetriever;
 
 public class ChessGame implements IChessGame{
@@ -58,7 +59,7 @@ public class ChessGame implements IChessGame{
     private void playRound() {
         ChessMove silverMove = inputRetriever.getValidInputFromPlayer(playerSilver, board, checkChecker);
         board.movePiece(silverMove);
-        if (checkChecker.opposingKingInCheck(playerSilver, board)){
+        if (checkChecker.opposingKingInCheck(playerSilver, board, new ClearPathChecker())){
             System.out.println("Silver put gold in check");
         };
 
@@ -66,7 +67,7 @@ public class ChessGame implements IChessGame{
 
         ChessMove goldMove = inputRetriever.getValidInputFromPlayer(playerGold, board, checkChecker);
         board.movePiece(goldMove);
-        if (checkChecker.opposingKingInCheck(playerGold, board)){
+        if (checkChecker.opposingKingInCheck(playerGold, board, new ClearPathChecker())){
             System.out.println("Gold put silver in check");
         };
 

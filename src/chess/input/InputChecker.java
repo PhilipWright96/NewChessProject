@@ -90,6 +90,6 @@ public class InputChecker {
     }
 
     private boolean movePuttingOwnKingInCheck(ChessMove move, Player player, IChessBoard board, ICheckChecker checkChecker){
-        return checkChecker.ownKingInCheck(move, player, board);
+        return checkChecker.ownKingInCheck(move, player, board, pathChecker);
     }
 }
