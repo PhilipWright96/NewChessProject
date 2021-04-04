@@ -5,7 +5,6 @@ import java.util.Map;
 
 import chess.board.ChessBoard;
 import chess.board.IChessBoard;
-import chess.board.ChessBoard.PieceToCoordinates;
 import chess.input.ClearPathChecker;
 import chess.pieces.IPiece;
 import chess.pieces.PieceFactory;
