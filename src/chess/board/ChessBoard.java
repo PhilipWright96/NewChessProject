@@ -42,14 +42,24 @@ public class ChessBoard implements IChessBoard {
         return pieceArray;
     }
 
-    public void movePiece(ChessMove inputMove){
+    public void movePiece(ChessMove inputMove, boolean updateGUI){
         IPiece pieceBeingMoved = getPieceBeingMoved(inputMove);
         pieceArray[inputMove.getMoveFromColumn()][inputMove.getMoveFromRow()] = null;
         pieceArray[inputMove.getMoveToColumn()][inputMove.getMoveToRow()] = pieceBeingMoved;
         
         allPiecesToCoordinates.updatePieceWithNewCoordinates(pieceBeingMoved, inputMove.getMoveToRow(), inputMove.getMoveToColumn());
         
-        chessBoardGUI.updateBoardWithNewMove(inputMove, pieceBeingMoved);
+        if (updateGUI){
+            chessBoardGUI.updateBoardWithNewMove(inputMove, pieceBeingMoved);
+        }
+    }
+
+    public void undoMovePiece(ChessMove move){
+        IPiece pieceAlreadyMoved = pieceArray[move.getMoveToColumn()][move.getMoveToRow()];
+        pieceArray[move.getMoveToColumn()][move.getMoveToRow()] = null;
+        pieceArray[move.getMoveFromColumn()][move.getMoveFromRow()] = pieceAlreadyMoved;
+        
+        allPiecesToCoordinates.updatePieceWithNewCoordinates(pieceAlreadyMoved, move.getMoveFromRow(), move.getMoveFromColumn());
     }
 
     public IPiece getPieceBeingMoved(ChessMove move){
@@ -126,7 +136,7 @@ public class ChessBoard implements IChessBoard {
         private int rowCoordinate;
         private int columnCoordinate;
 
-        private Coordinates(int rowCoordinate, int columnCoordinate){
+        public Coordinates(int rowCoordinate, int columnCoordinate){
             this.rowCoordinate = rowCoordinate;
             this.columnCoordinate = columnCoordinate;
         }
