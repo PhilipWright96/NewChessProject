@@ -10,6 +10,11 @@ public class Pawn extends Piece{
     private boolean hasTakenPiece = false;
 
     public boolean moveValid(ChessMove move, IChessBoard chessBoard){
+        if (!isMoving(move)){
+            System.out.println("Pawn not moving anywhere");
+            return false;
+        }
+
         if (correctColumn(move, chessBoard) && correctRow(move)){
             hasMoved = true;
             return true;
