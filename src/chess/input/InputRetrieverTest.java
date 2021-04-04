@@ -16,37 +16,39 @@ public class InputRetrieverTest {
     IChessBoard mockBoard = mock(IChessBoard.class);
     InputChecker mockInputChecker = mock(InputChecker.class);
     ICheckChecker mockCheckChecker = mock(ICheckChecker.class);
+    ScannerWrapper mockScannerWrapper = mock(ScannerWrapper.class);
 
     @Test
     public void getValidInputFromPlayer_withMoveWithCorrectSyntax_constructsANewMove(){
 
         // Given
-        when(mockPlayer.getPlayerInput(any())).thenReturn("dummyInput");
-        when(mockInputChecker.checkPlayerInput("dummyInput", mockPlayer, mockBoard, null)).thenReturn(true);
+        String dummyInput = "dummyInput";
+        when(mockPlayer.getPlayerInput(any())).thenReturn(dummyInput);
+        when(mockInputChecker.checkPlayerInput(dummyInput, mockPlayer, mockBoard, mockCheckChecker)).thenReturn(true);
 
         // When
-        InputRetriever retriever = new InputRetriever(mockInputChecker);
+        InputRetriever retriever = new InputRetriever(mockInputChecker, mockScannerWrapper);
         ChessMove result = retriever.getValidInputFromPlayer(mockPlayer, mockBoard, mockCheckChecker);
 
         // Then
-        verify(mockPlayer).getPlayerInput(any());
+        verify(mockPlayer).getPlayerInput(mockScannerWrapper);
         verify(mockInputChecker).checkPlayerInput("dummyInput", mockPlayer, mockBoard, mockCheckChecker);
         assertNotNull(result);
     }
 
     @Test
     public void getValidInputFromPlayer_withMoveWithIncorrectSyntax_asksThePlayerForInputAgain(){
-
         // Given
-        when(mockPlayer.getPlayerInput(any())).thenReturn("dummyInput");
-        when(mockInputChecker.checkPlayerInput("dummyInput", mockPlayer, mockBoard, null)).thenReturn(false, true);
+        String dummyInput = "dummyInput";
+        when(mockPlayer.getPlayerInput(any())).thenReturn(dummyInput);
+        when(mockInputChecker.checkPlayerInput(dummyInput, mockPlayer, mockBoard, mockCheckChecker)).thenReturn(false, true);
 
         // When
-        InputRetriever retriever = new InputRetriever(mockInputChecker);
+        InputRetriever retriever = new InputRetriever(mockInputChecker, mockScannerWrapper);
         retriever.getValidInputFromPlayer(mockPlayer, mockBoard, mockCheckChecker);
 
         // Then
         verify(mockPlayer, times(2)).getPlayerInput(any());
-        verify(mockInputChecker, times(2)).checkPlayerInput("dummyInput", mockPlayer, mockBoard, mockCheckChecker);
+        verify(mockInputChecker, times(2)).checkPlayerInput(dummyInput, mockPlayer, mockBoard, mockCheckChecker);
     }
 }

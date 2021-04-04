@@ -9,8 +9,8 @@ public class InputRetriever {
     private ScannerWrapper userInputScanner;
     private InputChecker inputChecker;
 
-    public InputRetriever(InputChecker inputChecker){
-        userInputScanner = new ScannerWrapper();
+    public InputRetriever(InputChecker inputChecker, ScannerWrapper scannerWrapper){
+        this.userInputScanner = scannerWrapper;
         this.inputChecker = inputChecker;
     }
 
