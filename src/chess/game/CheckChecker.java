@@ -20,7 +20,7 @@ public class CheckChecker implements ICheckChecker {
         HashMap<IPiece, ChessBoard.Coordinates> otherPlayerPiecesToCoords;
         boolean ownKingInCheck;
 
-        temporaryMovePiece(move, board);
+        board.movePiece(move, false);
         
         if (playerMoving.getTeam() == Teams.SILVER){
             ownKingCoordinates = pieceToCoordinatesMap.silverPieceToCoordinates.get(PieceFactory.constructPiece(Types.KING, Teams.SILVER));
@@ -33,7 +33,8 @@ public class CheckChecker implements ICheckChecker {
 
         ownKingInCheck = kingInCheck(otherPlayerPiecesToCoords, ownKingCoordinates, pathChecker, board);
 
-        undoMovePiece(move, board);
+        board.undoMovePiece(move);
+
         return ownKingInCheck;
     }
 
@@ -82,25 +83,5 @@ public class CheckChecker implements ICheckChecker {
         }
 
         return false;
-    }
-
-    private void temporaryMovePiece(ChessMove move, IChessBoard board){
-        IPiece[][] pieceArray = board.getPieceArray();
-        IPiece pieceBeingMoved = pieceArray[move.getMoveFromColumn()][move.getMoveFromRow()];;
-        pieceArray[move.getMoveFromColumn()][move.getMoveFromRow()] = null;
-        pieceArray[move.getMoveToColumn()][move.getMoveToRow()] = pieceBeingMoved;
-        
-        PieceToCoordinates allPiecesToCoordinates = board.getPieceToCoordinatesMap();
-        allPiecesToCoordinates.updatePieceWithNewCoordinates(pieceBeingMoved, move.getMoveToRow(), move.getMoveToColumn());
-    }
-
-    private void undoMovePiece(ChessMove move, IChessBoard board){
-        IPiece[][] pieceArray = board.getPieceArray();
-        IPiece pieceAlreadyMoved = pieceArray[move.getMoveToColumn()][move.getMoveToRow()];;
-        pieceArray[move.getMoveToColumn()][move.getMoveToRow()] = null;
-        pieceArray[move.getMoveFromColumn()][move.getMoveFromRow()] = pieceAlreadyMoved;
-        
-        PieceToCoordinates allPiecesToCoordinates = board.getPieceToCoordinatesMap();
-        allPiecesToCoordinates.updatePieceWithNewCoordinates(pieceAlreadyMoved, move.getMoveFromRow(), move.getMoveFromColumn());
     }
 }
