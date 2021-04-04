@@ -44,8 +44,8 @@ public class ChessGameTest {
         verify(mockInputRetriever, times(5)).getValidInputFromPlayer(mockPlayerSilver, mockBoard, mockCheckChecker);
         verify(mockInputRetriever, times(5)).getValidInputFromPlayer(mockPlayerGold, mockBoard, mockCheckChecker);
 
-        verify(mockBoard, times(5)).movePiece(mockSilverMove);
-        verify(mockBoard, times(5)).movePiece(mockGoldMove);
+        verify(mockBoard, times(5)).movePiece(mockSilverMove, true);
+        verify(mockBoard, times(5)).movePiece(mockGoldMove, true);
 
         verify(mockCheckChecker, times(5)).opposingKingInCheck(eq(mockPlayerSilver), eq(mockBoard), any(ClearPathChecker.class));
         verify(mockCheckChecker, times(5)).opposingKingInCheck(eq(mockPlayerGold), eq(mockBoard), any(ClearPathChecker.class));

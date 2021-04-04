@@ -94,7 +94,7 @@ public class ChessBoardTest {
 
 
         // When
-        board.movePiece(mockMove);
+        board.movePiece(mockMove, true);
 
         // Then
         verify(mockMove, times(2)).getMoveFromColumn();

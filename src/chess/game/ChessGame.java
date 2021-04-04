@@ -58,7 +58,7 @@ public class ChessGame implements IChessGame{
 
     private void playRound() {
         ChessMove silverMove = inputRetriever.getValidInputFromPlayer(playerSilver, board, checkChecker);
-        board.movePiece(silverMove);
+        board.movePiece(silverMove, true);
         if (checkChecker.opposingKingInCheck(playerSilver, board, new ClearPathChecker())){
             System.out.println("Silver put gold in check");
         };
@@ -66,7 +66,7 @@ public class ChessGame implements IChessGame{
         System.out.println("Player Silver has played " + silverMove.getMoveFromColumn() + " " + silverMove.getMoveFromRow() + " to " + silverMove.getMoveToColumn() + " " + silverMove.getMoveToRow());
 
         ChessMove goldMove = inputRetriever.getValidInputFromPlayer(playerGold, board, checkChecker);
-        board.movePiece(goldMove);
+        board.movePiece(goldMove, true);
         if (checkChecker.opposingKingInCheck(playerGold, board, new ClearPathChecker())){
             System.out.println("Gold put silver in check");
         };
