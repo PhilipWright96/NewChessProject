@@ -3,12 +3,13 @@ package chess.game;
 import java.util.Arrays;
 
 public class ChessMove {
+
     private int moveFromColumn;
     private int moveFromRow;
     private int moveToColumn;
     private int moveToRow;
 
-    public ChessMove(String input){
+    public ChessMove(String input) {
         char[] inputArray = input.toCharArray();
 
         char[] moveFrom = Arrays.copyOfRange(inputArray, 0, 2);
@@ -20,50 +21,55 @@ public class ChessMove {
         moveToRow = Character.getNumericValue(moveTo[1] - 1);
     }
 
-    public ChessMove(int moveFromColumn, int moveFromRow, int moveToColumn, int moveToRow){
+    public ChessMove(
+        int moveFromColumn,
+        int moveFromRow,
+        int moveToColumn,
+        int moveToRow
+    ) {
         this.moveFromColumn = moveFromColumn;
         this.moveFromRow = moveFromRow;
         this.moveToColumn = moveToColumn;
         this.moveToRow = moveToRow;
     }
 
-    public int getMoveFromColumn(){
+    public int getMoveFromColumn() {
         return moveFromColumn;
     }
 
-    public int getMoveFromRow(){
+    public int getMoveFromRow() {
         return moveFromRow;
     }
 
-    public int getMoveToColumn(){
+    public int getMoveToColumn() {
         return moveToColumn;
     }
 
-    public int getMoveToRow(){
+    public int getMoveToRow() {
         return moveToRow;
     }
 
-    public int getRowChangeNum(){
+    public int getRowChangeNum() {
         return Math.abs(moveFromRow - moveToRow);
     }
 
-    public int getColumnChangeNum(){
+    public int getColumnChangeNum() {
         return Math.abs(moveFromColumn - moveToColumn);
     }
 
-    public boolean isMovingToNewSquare(){
-        return moveFromRow != moveToRow || moveFromColumn != moveToColumn;
+    public boolean isMovingToNewSquare() {
+        return (moveFromRow != moveToRow || moveFromColumn != moveToColumn);
     }
 
-    public boolean isStraight(){
-        if (moveFromColumn == moveToColumn || moveFromRow == moveToRow){
+    public boolean isStraight() {
+        if (moveFromColumn == moveToColumn || moveFromRow == moveToRow) {
             return true;
         }
         return false;
     }
 
-    public boolean isHorizontal(){
-        if (moveFromColumn != moveToColumn){
+    public boolean isHorizontal() {
+        if (moveFromColumn != moveToColumn) {
             return true;
         }
         return false;

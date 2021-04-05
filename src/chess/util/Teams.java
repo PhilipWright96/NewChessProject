@@ -1,6 +1,6 @@
 package chess.util;
 
 public enum Teams {
-        SILVER, 
-        GOLD
-    }
+    SILVER,
+    GOLD,
+}

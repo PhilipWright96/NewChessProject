@@ -1,10 +1,9 @@
 package chess.pieces;
 
-import java.util.Objects;
-
 import chess.board.IChessBoard;
 import chess.game.ChessMove;
 import chess.util.Teams;
+import java.util.Objects;
 
 public abstract class Piece implements IPiece {
 
@@ -14,7 +13,7 @@ public abstract class Piece implements IPiece {
         KNIGHT,
         BISHOP,
         QUEEN,
-        KING
+        KING,
     }
 
     private Teams team;
@@ -24,46 +23,47 @@ public abstract class Piece implements IPiece {
         return Objects.hash(this.team, this.type);
     }
 
-    public boolean equals(Object other){
-        if (other == this){
+    public boolean equals(Object other) {
+        if (other == this) {
             return true;
         }
 
-        if (other instanceof Piece){
+        if (other instanceof Piece) {
             Piece otherPiece = (Piece) other;
-            return otherPiece.team == this.team && otherPiece.type == this.type;
+            return (
+                otherPiece.team == this.team && otherPiece.type == this.type
+            );
         }
 
         return false;
     }
 
-    public void setTeam(Teams team){
+    public void setTeam(Teams team) {
         this.team = team;
     }
-    
-    public Teams getTeam(){
-        if (this.team == Teams.SILVER){
+
+    public Teams getTeam() {
+        if (this.team == Teams.SILVER) {
             return Teams.SILVER;
-        }
-        else {
+        } else {
             return Teams.GOLD;
         }
-     }
+    }
 
-     public void setType(Types type){
+    public void setType(Types type) {
         this.type = type;
-     }
+    }
 
-     public Types getType(){
-         return this.type;
-     }
+    public Types getType() {
+        return this.type;
+    }
 
-     protected boolean isMoving(ChessMove move){
-        if (move.getRowChangeNum() == 0 && move.getColumnChangeNum() == 0){
+    protected boolean isMoving(ChessMove move) {
+        if (move.getRowChangeNum() == 0 && move.getColumnChangeNum() == 0) {
             return false;
         }
         return true;
     }
 
-     public abstract boolean moveValid(ChessMove move, IChessBoard chessBoard);
+    public abstract boolean moveValid(ChessMove move, IChessBoard chessBoard);
 }

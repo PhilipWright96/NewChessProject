@@ -1,12 +1,13 @@
 package chess.game;
 
-import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class ChessMoveTest {
-    @Test
-    public void constructor_givenCorrectInputForMove_setsCorrectRowAndColumnMovementNumbers(){
+import org.junit.Test;
 
+public class ChessMoveTest {
+
+    @Test
+    public void constructor_givenCorrectInputForMove_setsCorrectRowAndColumnMovementNumbers() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("c8-e6");
@@ -19,8 +20,7 @@ public class ChessMoveTest {
     }
 
     @Test
-    public void getRowChangeNum_returnsCorrectDifferenceOfRows(){
-
+    public void getRowChangeNum_returnsCorrectDifferenceOfRows() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("c8-e6");
@@ -30,8 +30,7 @@ public class ChessMoveTest {
     }
 
     @Test
-    public void getColumnChangeNum_returnsCorrectDifferenceOfRows(){
-
+    public void getColumnChangeNum_returnsCorrectDifferenceOfRows() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("c8-e6");
@@ -41,8 +40,7 @@ public class ChessMoveTest {
     }
 
     @Test
-    public void moveToNewSquare_withMoveForRowChange_returnsTrue(){
-
+    public void moveToNewSquare_withMoveForRowChange_returnsTrue() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("d7-d5");
@@ -52,8 +50,7 @@ public class ChessMoveTest {
     }
 
     @Test
-    public void isMovingToNewSquare_withMoveForColumnChange_returnsTrue(){
-
+    public void isMovingToNewSquare_withMoveForColumnChange_returnsTrue() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("d7-e7");
@@ -63,8 +60,7 @@ public class ChessMoveTest {
     }
 
     @Test
-    public void isMovingToNewSquare_withMoveToSameLocation_returnsFalse(){
-
+    public void isMovingToNewSquare_withMoveToSameLocation_returnsFalse() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("d7-d7");
@@ -74,8 +70,7 @@ public class ChessMoveTest {
     }
 
     @Test
-    public void isStraight_withHorizontalMove_returnsTrue(){
-
+    public void isStraight_withHorizontalMove_returnsTrue() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("d7-e7");
@@ -85,8 +80,7 @@ public class ChessMoveTest {
     }
 
     @Test
-    public void isStraight_withVerticalMove_returnsTrue(){
-
+    public void isStraight_withVerticalMove_returnsTrue() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("d7-d5");
@@ -96,8 +90,7 @@ public class ChessMoveTest {
     }
 
     @Test
-    public void isStraight_withDiagonalMove_returnsFalse(){
-
+    public void isStraight_withDiagonalMove_returnsFalse() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("d7-f5");
@@ -107,8 +100,7 @@ public class ChessMoveTest {
     }
 
     @Test
-    public void isHorizontal_withHorizontalMove_returnsTrue(){
-
+    public void isHorizontal_withHorizontalMove_returnsTrue() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("d7-e7");
@@ -118,8 +110,7 @@ public class ChessMoveTest {
     }
 
     @Test
-    public void isHorizontal_withVerticalMove_returnsFalse(){
-
+    public void isHorizontal_withVerticalMove_returnsFalse() {
         // Given
         // When
         ChessMove chessMove = new ChessMove("d7-d6");

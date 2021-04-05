@@ -1,19 +1,19 @@
 package chess.pieces;
 
-import org.junit.Test;
-
-import chess.board.ChessBoard;
-import chess.game.ChessMove;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import chess.board.ChessBoard;
+import chess.game.ChessMove;
+import org.junit.Test;
+
 public class RookTest {
+
     ChessBoard mockBoard = mock(ChessBoard.class);
     ChessMove mockMove = mock(ChessMove.class);
 
     @Test
-    public void moveValid_withOnlyColumnMove_returnsTrue(){
-
+    public void moveValid_withOnlyColumnMove_returnsTrue() {
         // Given
         when(mockMove.getMoveFromColumn()).thenReturn(2);
         when(mockMove.getMoveToColumn()).thenReturn(4);
@@ -27,14 +27,13 @@ public class RookTest {
 
         // When
         boolean result = rook.moveValid(mockMove, mockBoard);
-        
+
         // Then
         assertEquals("Valid rook move marked as invalid", true, result);
     }
 
     @Test
-    public void moveValid_withOnlyRowMove_returnsTrue(){
-
+    public void moveValid_withOnlyRowMove_returnsTrue() {
         // Given
         when(mockMove.getMoveFromColumn()).thenReturn(1);
         when(mockMove.getMoveToColumn()).thenReturn(1);
@@ -48,14 +47,13 @@ public class RookTest {
 
         // When
         boolean result = rook.moveValid(mockMove, mockBoard);
-        
+
         // Then
         assertEquals("Valid rook move marked as invalid", true, result);
     }
 
     @Test
-    public void moveValid_withBothRowAndColumnMove_returnsFalse(){
-
+    public void moveValid_withBothRowAndColumnMove_returnsFalse() {
         // Given
         when(mockMove.getMoveFromColumn()).thenReturn(1);
         when(mockMove.getMoveToColumn()).thenReturn(2);
@@ -69,9 +67,8 @@ public class RookTest {
 
         // When
         boolean result = rook.moveValid(mockMove, mockBoard);
-        
+
         // Then
         assertEquals("Invalid rook move marked as valid", false, result);
     }
-    
 }

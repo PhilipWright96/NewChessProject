@@ -1,14 +1,13 @@
 package chess.input;
 
-import org.junit.Test;
-
 import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 public class InputManagerTest {
 
     @Test
-    public void buildRetriever_returnsARetriever(){
-
+    public void buildRetriever_returnsARetriever() {
         // Given
         InputManager inputManager = new InputManager();
 
@@ -18,5 +17,4 @@ public class InputManagerTest {
         // Then
         assertEquals(true, result != null);
     }
-    
 }

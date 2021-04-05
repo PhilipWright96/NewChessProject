@@ -1,20 +1,20 @@
 package chess.player;
 
-import java.util.NoSuchElementException;
-
 import chess.input.ScannerWrapper;
 import chess.util.Teams;
+import java.util.NoSuchElementException;
 
 public class Player {
+
     private String username;
     private Teams team;
 
-    public Player (String username, Teams team){
+    public Player(String username, Teams team) {
         this.username = username;
         this.team = team;
     }
 
-    public Teams getTeam(){
+    public Teams getTeam() {
         return this.team;
     }
 
@@ -26,12 +26,10 @@ public class Player {
                 response = userInputScanner.nextLine();
                 return response;
             }
-        }
-        catch (IllegalStateException | NoSuchElementException e) {
+        } catch (IllegalStateException | NoSuchElementException e) {
             System.out.println("Exception found.");
             e.printStackTrace();
         }
         return null;
     }
-    
 }

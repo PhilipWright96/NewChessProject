@@ -3,29 +3,30 @@ package chess.pieces;
 import chess.util.Teams;
 
 public class PieceFactory {
-    public static Piece constructPiece (Piece.Types type, Teams team) {
-        Piece chosenPiece; 
+
+    public static Piece constructPiece(Piece.Types type, Teams team) {
+        Piece chosenPiece;
         switch (type) {
-            case PAWN : 
+            case PAWN:
                 chosenPiece = (Piece) new Pawn();
                 break;
-            case ROOK : 
-                chosenPiece = (Piece) new Rook(); 
+            case ROOK:
+                chosenPiece = (Piece) new Rook();
                 break;
-            case KNIGHT : 
+            case KNIGHT:
                 chosenPiece = (Piece) new Knight();
                 break;
-            case BISHOP : 
+            case BISHOP:
                 chosenPiece = (Piece) new Bishop();
                 break;
-            case QUEEN :
+            case QUEEN:
                 chosenPiece = (Piece) new Queen();
                 break;
-            case KING : 
+            case KING:
                 chosenPiece = (Piece) new King();
-                break;    
-            default :
-                chosenPiece = null;           
+                break;
+            default:
+                chosenPiece = null;
         }
 
         chosenPiece.setTeam(team);

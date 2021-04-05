@@ -1,20 +1,17 @@
 package chess.board.GUI;
 
-import java.awt.*;
-
-import org.junit.Test;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import org.junit.Test;
 
 public class GUISetterTest {
 
     @Test
-    public void arrangeGUIScreen_setsGUIAndAddsItToChessBoard(){
-
+    public void arrangeGUIScreen_setsGUIAndAddsItToChessBoard() {
         // Given
         JPanel mockGUI = mock((JPanel.class));
         JPanel mockChessBoard = mock((JPanel.class));
@@ -34,8 +31,7 @@ public class GUISetterTest {
     }
 
     @Test
-    public void arrangeButtons_addsButtonsToArrayPassedIn(){
-
+    public void arrangeButtons_addsButtonsToArrayPassedIn() {
         // Given
         JButton[][] mockGUIButtons = new JButton[8][8];
 
@@ -45,13 +41,12 @@ public class GUISetterTest {
         setter.arrangeButtons(mockGUIButtons);
 
         // Then
-        for (int i = 0; i < mockGUIButtons.length; i++){
-            for (int j = 0; j < mockGUIButtons[i].length; j++){
+        for (int i = 0; i < mockGUIButtons.length; i++) {
+            for (int j = 0; j < mockGUIButtons[i].length; j++) {
                 JButton button = mockGUIButtons[i][j];
-                if (( j % 2 == 1 && i % 2 == 1) || (j % 2 == 0 && i % 2 == 0)){
+                if ((j % 2 == 1 && i % 2 == 1) || (j % 2 == 0 && i % 2 == 0)) {
                     assertEquals(Color.WHITE, button.getBackground());
-                }
-                else {
+                } else {
                     assertEquals(Color.BLACK, button.getBackground());
                 }
             }
@@ -59,8 +54,7 @@ public class GUISetterTest {
     }
 
     @Test
-    public void addFrameToBoard(){
-
+    public void addFrameToBoard() {
         // Given
         JPanel mockGUI = mock(JPanel.class);
         JFrame mockFrame = mock(JFrame.class);
@@ -82,5 +76,4 @@ public class GUISetterTest {
         verify(mockFrame).setMinimumSize(mockDimension);
         verify(mockFrame).setVisible(true);
     }
-    
 }

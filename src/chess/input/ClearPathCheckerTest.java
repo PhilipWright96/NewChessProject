@@ -1,18 +1,18 @@
 package chess.input;
 
-import org.junit.Test;
-
-import chess.pieces.Piece;
-import chess.game.ChessMove;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class ClearPathCheckerTest {
-    ChessMove mockMove = mock(ChessMove.class);
-    @Test
-    public void pathForMoveClear_withAStraightHorizontalMoveWhichIsBlocked_returnsFalse(){
+import chess.game.ChessMove;
+import chess.pieces.Piece;
+import org.junit.Test;
 
+public class ClearPathCheckerTest {
+
+    ChessMove mockMove = mock(ChessMove.class);
+
+    @Test
+    public void pathForMoveClear_withAStraightHorizontalMoveWhichIsBlocked_returnsFalse() {
         // Given
         when(mockMove.isStraight()).thenReturn(true);
         when(mockMove.isHorizontal()).thenReturn(true);
@@ -27,12 +27,14 @@ public class ClearPathCheckerTest {
 
         // When
         // Then
-        assertEquals(false, new ClearPathChecker().pathForMoveClear(mockMove, mockBoard));
+        assertEquals(
+            false,
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+        );
     }
 
     @Test
-    public void pathForMoveClear_withAStraightVericalMoveWhichIsBlocked_returnsFalse(){
-
+    public void pathForMoveClear_withAStraightVericalMoveWhichIsBlocked_returnsFalse() {
         // Given
         when(mockMove.isStraight()).thenReturn(true);
         when(mockMove.isHorizontal()).thenReturn(false);
@@ -47,12 +49,14 @@ public class ClearPathCheckerTest {
 
         // When
         // Then
-        assertEquals(false, new ClearPathChecker().pathForMoveClear(mockMove, mockBoard));
+        assertEquals(
+            false,
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+        );
     }
 
     @Test
-    public void pathForMoveClear_withADiagonalMoveWhichIsBlocked_returnsFalse(){
-
+    public void pathForMoveClear_withADiagonalMoveWhichIsBlocked_returnsFalse() {
         // Given
         when(mockMove.isStraight()).thenReturn(false);
 
@@ -66,12 +70,14 @@ public class ClearPathCheckerTest {
 
         // When
         // Then
-        assertEquals(false, new ClearPathChecker().pathForMoveClear(mockMove, mockBoard));
+        assertEquals(
+            false,
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+        );
     }
 
     @Test
-    public void pathForMoveClear_withADiagonalMoveWhichIsNotBlocked_returnsTrue(){
-
+    public void pathForMoveClear_withADiagonalMoveWhichIsNotBlocked_returnsTrue() {
         // Given
         when(mockMove.isStraight()).thenReturn(false);
 
@@ -84,6 +90,9 @@ public class ClearPathCheckerTest {
 
         // When
         // Then
-        assertEquals(true, new ClearPathChecker().pathForMoveClear(mockMove, mockBoard));
+        assertEquals(
+            true,
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+        );
     }
 }

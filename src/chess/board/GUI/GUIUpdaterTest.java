@@ -1,27 +1,21 @@
 package chess.board.GUI;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import chess.game.ChessMove;
 import chess.pieces.IPiece;
 import chess.pieces.Piece;
 import chess.pieces.PieceFactory;
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
 import chess.util.Teams;
-
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+import org.junit.Test;
 
 public class GUIUpdaterTest {
 
     @Test
-    public void updateBoardWithPawns_setsPawnsOnGivenBoardArray(){
-
+    public void updateBoardWithPawns_setsPawnsOnGivenBoardArray() {
         // Given
         JButton[][] mockBoard = new JButton[8][8];
         GUISetter mockSetter = new GUISetter();
@@ -33,7 +27,7 @@ public class GUIUpdaterTest {
         guiUpdater.updateBoardWithPawns(mockBoard);
 
         // Then
-        for (int k = 0; k < mockBoard.length; k++){
+        for (int k = 0; k < mockBoard.length; k++) {
             JButton goldSquare = mockBoard[k][1];
             assertEquals(true, goldSquare.getIcon() != null);
             JButton silverSquare = mockBoard[k][mockBoard.length - 2];
@@ -42,8 +36,7 @@ public class GUIUpdaterTest {
     }
 
     @Test
-    public void updateBoardWithSpecialPieces_setsSpecialPiecesOnGivenBoardArray(){
-
+    public void updateBoardWithSpecialPieces_setsSpecialPiecesOnGivenBoardArray() {
         // Given
         JButton[][] mockBoard = new JButton[8][8];
         GUISetter mockSetter = new GUISetter();
@@ -55,7 +48,7 @@ public class GUIUpdaterTest {
         guiUpdater.updateBoardWithSpecialPieces(mockBoard);
 
         // Then
-        for (int k = 0; k < mockBoard.length; k++){
+        for (int k = 0; k < mockBoard.length; k++) {
             JButton goldSquare = mockBoard[k][0];
             assertEquals(true, goldSquare.getIcon() != null);
             JButton silverSquare = mockBoard[k][mockBoard.length - 1];
@@ -64,8 +57,7 @@ public class GUIUpdaterTest {
     }
 
     @Test
-    public void updateBoardWithNewMove_updatesBoardWithMove(){
-
+    public void updateBoardWithNewMove_updatesBoardWithMove() {
         // Given
         GUISetter mockSetter = new GUISetter();
         JButton[][] mockBoard = new JButton[8][8];
@@ -78,7 +70,10 @@ public class GUIUpdaterTest {
         when(mockMove.getMoveToColumn()).thenReturn(1);
         when(mockMove.getMoveToRow()).thenReturn(1);
 
-        IPiece mockPiece = PieceFactory.constructPiece(Piece.Types.PAWN, Teams.GOLD);
+        IPiece mockPiece = PieceFactory.constructPiece(
+            Piece.Types.PAWN,
+            Teams.GOLD
+        );
 
         GUIUpdater guiUpdater = new GUIUpdater();
 
@@ -93,5 +88,4 @@ public class GUIUpdaterTest {
         assertEquals(true, mockBoard[0][0].getIcon() == null);
         assertEquals(true, mockBoard[1][1].getIcon() != null);
     }
-    
 }
