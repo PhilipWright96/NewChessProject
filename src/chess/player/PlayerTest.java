@@ -1,43 +1,44 @@
 package chess.player;
 
-import org.junit.Test;
-
-import chess.input.ScannerWrapper;
-import chess.util.Teams;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import chess.input.ScannerWrapper;
+import chess.util.Teams;
+import org.junit.Test;
+
 public class PlayerTest {
-    ScannerWrapper mockScannerWrapper = mock(ScannerWrapper.class);
-    Player player = new Player("Username", Teams.SILVER);
 
-    @Test
-    public void getPlayerInput_withTextEntered_returnsText(){
+  ScannerWrapper mockScannerWrapper = mock(ScannerWrapper.class);
+  Player player = new Player("Username", Teams.SILVER);
 
-        // Given
-        when(mockScannerWrapper.nextLine()).thenReturn("abc");
+  @Test
+  public void getPlayerInput_withTextEntered_returnsText() {
+    // Given
+    when(mockScannerWrapper.nextLine()).thenReturn("abc");
 
-        // When
-        String result = player.getPlayerInput(mockScannerWrapper);
-        
-        // Then
-        assertEquals("getPlayerInput returning wrong text", "abc", result);
-    }
+    // When
+    String result = player.getPlayerInput(mockScannerWrapper);
 
-    @Test
-    public void getPlayerInput_withExceptionThrownWhenTextEntered_catchesExceptionAndPrintsStackTrace(){
+    // Then
+    assertEquals("getPlayerInput returning wrong text", "abc", result);
+  }
 
-        // Given
-        IllegalStateException mockException = mock(IllegalStateException.class);
-        when(mockScannerWrapper.nextLine()).thenThrow(mockException);
+  @Test
+  public void getPlayerInput_withExceptionThrownWhenTextEntered_catchesExceptionAndPrintsStackTrace() {
+    // Given
+    IllegalStateException mockException = mock(IllegalStateException.class);
+    when(mockScannerWrapper.nextLine()).thenThrow(mockException);
 
-        // When
-        String result = player.getPlayerInput(mockScannerWrapper);
-        
-        // Then
-        verify(mockException).printStackTrace();
-        assertEquals("getPlayerInput not returning null on exception", null , result);
-    }
-    
+    // When
+    String result = player.getPlayerInput(mockScannerWrapper);
+
+    // Then
+    verify(mockException).printStackTrace();
+    assertEquals(
+      "getPlayerInput not returning null on exception",
+      null,
+      result
+    );
+  }
 }

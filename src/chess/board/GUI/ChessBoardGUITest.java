@@ -1,80 +1,76 @@
 package chess.board.GUI;
 
-import org.junit.Test;
+import static org.mockito.Mockito.*;
 
 import chess.game.ChessMove;
 import chess.pieces.IPiece;
-
-import static org.mockito.Mockito.*;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+import org.junit.Test;
 
 public class ChessBoardGUITest {
-    @Test
-    public void initializeBoardGUI_callsCorrectSetterMethods(){
 
-        // Given
-        GUISetter mockGUISetter = mock(GUISetter.class);
-        GUIUpdater mockGUIUpdater = mock(GUIUpdater.class);
-        ChessBoardGUI boardGUI = new ChessBoardGUI(mockGUISetter, mockGUIUpdater);
+  @Test
+  public void initializeBoardGUI_callsCorrectSetterMethods() {
+    // Given
+    GUISetter mockGUISetter = mock(GUISetter.class);
+    GUIUpdater mockGUIUpdater = mock(GUIUpdater.class);
+    ChessBoardGUI boardGUI = new ChessBoardGUI(mockGUISetter, mockGUIUpdater);
 
-        // When
-        boardGUI.initializeBoardGUI();
+    // When
+    boardGUI.initializeBoardGUI();
 
-        // Then
-        verify(mockGUISetter).arrangeGUIScreen(any(JPanel.class), any(JPanel.class));
-        verify(mockGUISetter).arrangeButtons(any());
-        verify(mockGUISetter).addButtonsToBoard(any(JPanel.class), any());
-        verify(mockGUISetter).addFrameToBoard(any(JPanel.class), any(JFrame.class));
-    }
+    // Then
+    verify(mockGUISetter)
+      .arrangeGUIScreen(any(JPanel.class), any(JPanel.class));
+    verify(mockGUISetter).arrangeButtons(any());
+    verify(mockGUISetter).addButtonsToBoard(any(JPanel.class), any());
+    verify(mockGUISetter).addFrameToBoard(any(JPanel.class), any(JFrame.class));
+  }
 
-    @Test
-    public void updateBoardWithPawns_callsCorrectUpdaterMethod(){
+  @Test
+  public void updateBoardWithPawns_callsCorrectUpdaterMethod() {
+    // Given
+    GUISetter mockGUISetter = mock(GUISetter.class);
+    GUIUpdater mockGUIUpdater = mock(GUIUpdater.class);
+    ChessBoardGUI boardGUI = new ChessBoardGUI(mockGUISetter, mockGUIUpdater);
 
-        // Given
-        GUISetter mockGUISetter = mock(GUISetter.class);
-        GUIUpdater mockGUIUpdater = mock(GUIUpdater.class);
-        ChessBoardGUI boardGUI = new ChessBoardGUI(mockGUISetter, mockGUIUpdater);
+    // When
+    boardGUI.updateBoardWithPawns();
 
-        // When
-        boardGUI.updateBoardWithPawns();
+    // Then
+    verify(mockGUIUpdater).updateBoardWithPawns(any());
+  }
 
-        // Then
-        verify(mockGUIUpdater).updateBoardWithPawns(any());
-    }
+  @Test
+  public void updateBoardWithSpecialPieces_callsCorrectUpdaterMethod() {
+    // Given
+    GUISetter mockGUISetter = mock(GUISetter.class);
+    GUIUpdater mockGUIUpdater = mock(GUIUpdater.class);
+    ChessBoardGUI boardGUI = new ChessBoardGUI(mockGUISetter, mockGUIUpdater);
 
-    @Test
-    public void updateBoardWithSpecialPieces_callsCorrectUpdaterMethod(){
+    // When
+    boardGUI.updateBoardWithSpecialPieces();
 
-        // Given
-        GUISetter mockGUISetter = mock(GUISetter.class);
-        GUIUpdater mockGUIUpdater = mock(GUIUpdater.class);
-        ChessBoardGUI boardGUI = new ChessBoardGUI(mockGUISetter, mockGUIUpdater);
+    // Then
+    verify(mockGUIUpdater).updateBoardWithSpecialPieces(any());
+  }
 
-        // When
-        boardGUI.updateBoardWithSpecialPieces();
+  @Test
+  public void updateBoardWithNewMove_callsCorrectUpdaterMethod() {
+    // Given
+    GUISetter mockGUISetter = mock(GUISetter.class);
+    GUIUpdater mockGUIUpdater = mock(GUIUpdater.class);
+    ChessBoardGUI boardGUI = new ChessBoardGUI(mockGUISetter, mockGUIUpdater);
 
-        // Then
-        verify(mockGUIUpdater).updateBoardWithSpecialPieces(any());
-    }
+    ChessMove mockMove = mock(ChessMove.class);
+    IPiece mockPiece = mock(IPiece.class);
 
-    @Test
-    public void updateBoardWithNewMove_callsCorrectUpdaterMethod(){
+    // When
+    boardGUI.updateBoardWithNewMove(mockMove, mockPiece);
 
-        // Given
-        GUISetter mockGUISetter = mock(GUISetter.class);
-        GUIUpdater mockGUIUpdater = mock(GUIUpdater.class);
-        ChessBoardGUI boardGUI = new ChessBoardGUI(mockGUISetter, mockGUIUpdater);
-
-        ChessMove mockMove = mock(ChessMove.class);
-        IPiece mockPiece = mock(IPiece.class);
-
-        // When
-        boardGUI.updateBoardWithNewMove(mockMove, mockPiece);
-
-        // Then
-        verify(mockGUIUpdater).updateBoardWithNewMove(any(), eq(mockMove), eq(mockPiece));
-    }
+    // Then
+    verify(mockGUIUpdater)
+      .updateBoardWithNewMove(any(), eq(mockMove), eq(mockPiece));
+  }
 }

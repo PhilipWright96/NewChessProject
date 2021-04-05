@@ -1,69 +1,67 @@
 package chess.pieces;
 
-import java.util.Objects;
-
 import chess.board.IChessBoard;
 import chess.game.ChessMove;
 import chess.util.Teams;
+import java.util.Objects;
 
 public abstract class Piece implements IPiece {
 
-    public enum Types {
-        PAWN,
-        ROOK,
-        KNIGHT,
-        BISHOP,
-        QUEEN,
-        KING
+  public enum Types {
+    PAWN,
+    ROOK,
+    KNIGHT,
+    BISHOP,
+    QUEEN,
+    KING,
+  }
+
+  private Teams team;
+  private Types type;
+
+  public int hashCode() {
+    return Objects.hash(this.team, this.type);
+  }
+
+  public boolean equals(Object other) {
+    if (other == this) {
+      return true;
     }
 
-    private Teams team;
-    private Types type;
-
-    public int hashCode() {
-        return Objects.hash(this.team, this.type);
+    if (other instanceof Piece) {
+      Piece otherPiece = (Piece) other;
+      return otherPiece.team == this.team && otherPiece.type == this.type;
     }
 
-    public boolean equals(Object other){
-        if (other == this){
-            return true;
-        }
+    return false;
+  }
 
-        if (other instanceof Piece){
-            Piece otherPiece = (Piece) other;
-            return otherPiece.team == this.team && otherPiece.type == this.type;
-        }
+  public void setTeam(Teams team) {
+    this.team = team;
+  }
 
-        return false;
+  public Teams getTeam() {
+    if (this.team == Teams.SILVER) {
+      return Teams.SILVER;
+    } else {
+      return Teams.GOLD;
     }
+  }
 
-    public void setTeam(Teams team){
-        this.team = team;
+  public void setType(Types type) {
+    this.type = type;
+  }
+
+  public Types getType() {
+    return this.type;
+  }
+
+  protected boolean isMoving(ChessMove move) {
+    if (move.getRowChangeNum() == 0 && move.getColumnChangeNum() == 0) {
+      return false;
     }
-    
-    public Teams getTeam(){
-        if (this.team == Teams.SILVER){
-            return Teams.SILVER;
-        }
-        else {
-            return Teams.GOLD;
-        }
-     }
+    return true;
+  }
 
-     public void setType(Types type){
-        this.type = type;
-     }
-
-     public Types getType(){
-         return this.type;
-     }
-
-     protected boolean isMoving(ChessMove move){
-        if (move.getRowChangeNum() == 0 && move.getColumnChangeNum() == 0){
-            return false;
-        }
-        return true;
-    }
-
-     public abstract boolean moveValid(ChessMove move, IChessBoard chessBoard);
+  public abstract boolean moveValid(ChessMove move, IChessBoard chessBoard);
 }
