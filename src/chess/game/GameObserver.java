@@ -3,6 +3,7 @@ package chess.game;
 public class GameObserver {
     IChessGame game;
     boolean hasFinished = false;
+    
     public GameObserver(IChessGame game){
         this.game = game;
         this.game.attach(this);
@@ -15,4 +16,6 @@ public class GameObserver {
     public boolean hasFinished() {
         return hasFinished;
     }
+
+    
 }

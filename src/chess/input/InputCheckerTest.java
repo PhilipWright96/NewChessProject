@@ -3,6 +3,8 @@ package chess.input;
 import org.junit.Test;
 
 import chess.board.IChessBoard;
+import chess.game.ChessMove;
+import chess.game.ICheckChecker;
 import chess.pieces.IPiece;
 import chess.pieces.Piece.Types;
 import chess.player.Player;
@@ -18,6 +20,7 @@ public class InputCheckerTest {
     IChessBoard mockBoard = mock(IChessBoard.class);
     IPiece mockPiece = mock(IPiece.class);
     IPiece mockPieceBeingTaken = mock(IPiece.class);
+    ICheckChecker mockCheckChecker = mock(ICheckChecker.class);
   
     String dummyInput = "d7-d5"; 
 
@@ -27,7 +30,7 @@ public class InputCheckerTest {
 
         // When
         InputChecker checker = new InputChecker(mockPathChecker);
-        boolean result = checker.checkPlayerInput("badSyntax", mockPlayer, mockBoard);
+        boolean result = checker.checkPlayerInput("badSyntax", mockPlayer, mockBoard, mockCheckChecker);
 
         // Then
         assertEquals(false, result);
@@ -40,7 +43,7 @@ public class InputCheckerTest {
 
         // When
         InputChecker checker = new InputChecker(mockPathChecker);
-        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
+        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard, mockCheckChecker);
 
         // Then
         assertEquals(false, result);
@@ -55,7 +58,7 @@ public class InputCheckerTest {
 
         // When
         InputChecker checker = new InputChecker(mockPathChecker);
-        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
+        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard, mockCheckChecker);
 
         // Then
         assertEquals(false, result);
@@ -70,7 +73,7 @@ public class InputCheckerTest {
 
         // When
         InputChecker checker = new InputChecker(mockPathChecker);
-        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
+        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard, mockCheckChecker);
 
         // Then
         verify(mockPiece).getTeam();
@@ -88,7 +91,7 @@ public class InputCheckerTest {
 
         // When
         InputChecker checker = new InputChecker(mockPathChecker);
-        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
+        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard, mockCheckChecker);
 
         // Then
         verify(mockPiece).moveValid(any(), eq(mockBoard));
@@ -107,7 +110,7 @@ public class InputCheckerTest {
 
         // When
         InputChecker checker = new InputChecker(mockPathChecker);
-        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
+        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard, mockCheckChecker);
 
         // Then
         verify(mockBoard).getPieceBeingTaken(any());
@@ -131,7 +134,7 @@ public class InputCheckerTest {
 
         // When
         InputChecker checker = new InputChecker(mockPathChecker);
-        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
+        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard, null);
 
         // Then
         verify(mockPiece).getType();
@@ -150,10 +153,11 @@ public class InputCheckerTest {
         when(mockBoard.getPieceBeingTaken(any())).thenReturn(mockPieceBeingTaken);
         when(mockPieceBeingTaken.getTeam()).thenReturn(Teams.GOLD);
         when(mockPiece.getType()).thenReturn(Types.KNIGHT);
+        when(mockCheckChecker.ownKingInCheck(any(ChessMove.class), eq(mockPlayer), eq(mockBoard), any(ClearPathChecker.class))).thenReturn(false);
 
         // When
         InputChecker checker = new InputChecker(mockPathChecker);
-        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard);
+        boolean result = checker.checkPlayerInput(dummyInput, mockPlayer, mockBoard, mockCheckChecker);
 
         // Then
         verify(mockPiece).getType();

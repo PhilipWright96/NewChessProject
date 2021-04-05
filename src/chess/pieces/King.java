@@ -6,6 +6,11 @@ import chess.game.ChessMove;
 public class King extends Piece {
 
     public boolean moveValid(ChessMove move, IChessBoard chessBoard){
+        if (!isMoving(move)){
+            System.out.println("King not moving anywhere");
+            return false;
+        }
+        
         if (rowChangeValid(move) && columnChangeValid(move)){
             return true;
         }

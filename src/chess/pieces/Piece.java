@@ -58,5 +58,12 @@ public abstract class Piece implements IPiece {
          return this.type;
      }
 
+     protected boolean isMoving(ChessMove move){
+        if (move.getRowChangeNum() == 0 && move.getColumnChangeNum() == 0){
+            return false;
+        }
+        return true;
+    }
+
      public abstract boolean moveValid(ChessMove move, IChessBoard chessBoard);
 }

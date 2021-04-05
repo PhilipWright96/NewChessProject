@@ -2,8 +2,10 @@ package chess;
 
 import chess.board.BoardManager;
 import chess.board.ChessBoard;
+import chess.game.CheckChecker;
 import chess.game.ChessGame;
 import chess.game.GameObserver;
+import chess.game.ICheckChecker;
 import chess.game.IChessGame;
 import chess.input.InputRetriever;
 import chess.input.InputManager;
@@ -25,8 +27,9 @@ public class GameManager {
         Player playerGold = new Player("Player 2", Teams.GOLD);
         ChessBoard board = new BoardManager().buildBoard();
         InputRetriever inputRetriever = new InputManager().buildRetriever();
+        ICheckChecker checkChecker = new CheckChecker();
 
-        IChessGame game = new ChessGame(playerSilver, playerGold, board, inputRetriever);
+        IChessGame game = new ChessGame(playerSilver, playerGold, board, inputRetriever, checkChecker);
 
         setObserver(game);
         return game;

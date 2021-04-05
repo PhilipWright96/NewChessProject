@@ -94,15 +94,15 @@ public class ChessBoardTest {
 
 
         // When
-        board.movePiece(mockMove);
+        board.movePiece(mockMove, true);
 
         // Then
         verify(mockMove, times(2)).getMoveFromColumn();
         verify(mockMove, times(2)).getMoveFromRow();
         assertEquals(null, board.getPieceArray()[3][6]);
         
-        verify(mockMove).getMoveToColumn();
-        verify(mockMove).getMoveToRow();
+        verify(mockMove, times(2)).getMoveToColumn();
+        verify(mockMove, times(2)).getMoveToRow();
         assertEquals(pieceBeingMoved, board.getPieceArray()[3][5]);
 
         verify(mockGui).updateBoardWithNewMove(mockMove, pieceBeingMoved);
