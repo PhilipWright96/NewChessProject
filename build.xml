@@ -35,7 +35,7 @@
     </target>
 
     <!--  Group all dependencies into dependency-all.jar -->
-    <target name="copy-dependencies" depends="resolve">
+    <target name="copy-dependencies">
         <mkdir dir="${distlib.dir}" />
         <jar jarfile="${distlib.dir}/dependencies-all.jar">
             <zipgroupfileset dir="${lib.dir}">
