@@ -3,10 +3,16 @@
 <project xmlns:ivy="antlib:org.apache.ivy.ant" name="Chess" basedir="." default="main">
 
     <property name="lib.dir" value="lib"/>
+    <property name="distlib.dir" value="dist-lib"/>
     
-    <property name="main-class" value="chess.GameManager"/>
+    <property name="main-class" value="GameManager"/>
     
-    <property name="src.dir" value="src"/>
+    <property name="src.dir" value="maven/chessapp/src"/>
+    <property name="testgame.dir" value="maven/chessapp/src/test/java/com/philsfakecompany/chessapp/game"/>
+    <property name="testinput.dir" value="maven/chessapp/src/test/java/com/philsfakecompany/chessapp/input"/>
+     <property name="testpieces.dir" value="maven/chessapp/src/test/java/com/philsfakecompany/chessapp/pieces"/>
+     <property name="testplayer.dir" value="maven/chessapp/src/test/java/com/philsfakecompany/chessapp/player"/>
+
     <property name="build.dir" value="build"/>
     
     <property name="classes.dir" value="${build.dir}/classes"/>
@@ -16,13 +22,8 @@
     
     <path id="application" location="${jar.dir}/GameManager.jar"/>
     <path id="classpath">
-        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+        <fileset dir="${distlib.dir}" includes="**/*.jar"/>
     </path>
-
-    <target name="resolve" description="retrieve dependencies with ivy">
-        <ivy:retrieve />
-    </target>
-
 
     <target name="ivy" description="Install ivy">
         <mkdir dir="${user.home}/.ant/lib" />
@@ -30,9 +31,24 @@
              src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.5.0-rc1/ivy-2.5.0-rc1.jar" />
     </target>
 
+    <target name="resolve" description="retrieve dependencies with ivy">
+        <ivy:retrieve />
+    </target>
+
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
+
+    <!--  Group all dependencies into dependency-all.jar -->
+    <target name="copy-dependencies">
+        <mkdir dir="${distlib.dir}" />
+        <jar jarfile="${distlib.dir}/dependencies-all.jar">
+            <zipgroupfileset dir="${lib.dir}">
+                <include name="**/*.jar" />
+            </zipgroupfileset>
+        </jar>
+    </target>
+
 
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
@@ -42,7 +58,8 @@
         </copy>
     </target>
 
-    <target name="jar" depends="compile">
+
+    <target name="jar" depends="copy-dependencies, compile">
         <mkdir dir="${jar.dir}"/>
         <jar destfile="${jar.dir}/${jar-file}" basedir="${classes.dir}">
             <manifest>
@@ -68,7 +85,10 @@
             </classpath>
 
             <batchtest fork="yes">
-                <fileset dir="${src.dir}" includes="**/*Test.java"/>
+                <fileset dir="${testgame.dir}" includes="*Test.java"/>
+                <fileset dir="${testinput.dir}" includes="*Test.java"/>
+                <fileset dir="${testpieces.dir}" includes="*Test.java"/>
+                <fileset dir="${testplayer.dir}" includes="*Test.java"/>
             </batchtest>
         </junit>
     </target>

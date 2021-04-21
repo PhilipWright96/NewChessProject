@@ -1,3 +1,6 @@
 /build
 /lib
 /node_modules
+/maven/chessapp/target
+/dist-lib
+/.settings
