@@ -1,13 +1,13 @@
-package com.philsfakecompany.chessapp.input.InputChecker;
+package input;
 
-import com.philsfakecompany.chessapp.board.IChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.game.ICheckChecker.*;
-import com.philsfakecompany.chessapp.input.ClearPathChecker.*;
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
-import com.philsfakecompany.chessapp.player.Player.*;
+import board.*;
+import game.*;
+import game.*;
+import input.*;
 import java.util.regex.Pattern;
+import pieces.*;
+import pieces.*;
+import player.*;
 
 public class InputChecker {
 

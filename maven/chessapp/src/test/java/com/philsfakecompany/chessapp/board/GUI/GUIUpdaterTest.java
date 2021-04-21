@@ -1,19 +1,13 @@
-package test.java.com.philsfakecompany.chessapp.board.GUI.GUIUpdaterTest;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.board.GUI.ChessSprites.*;
-import com.philsfakecompany.chessapp.board.GUI.GUISetter.*;
-import com.philsfakecompany.chessapp.board.GUI.GUIUpdater.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
-import com.philsfakecompany.chessapp.pieces.PieceFactory.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import board.GUI.*;
+import game.*;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import org.junit.Test;
+import pieces.*;
+import util.*;
 
 public class GUIUpdaterTest {
 

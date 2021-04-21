@@ -1,7 +1,7 @@
-package com.philsfakecompany.chessapp.game.GameObserver;
+package game;
 
-import com.philsfakecompany.chessapp.game.ChessGame.*;
-import com.philsfakecompany.chessapp.game.IChessGame.*;
+import game.ChessGame.*;
+import game.IChessGame.*;
 
 public class GameObserver {
 

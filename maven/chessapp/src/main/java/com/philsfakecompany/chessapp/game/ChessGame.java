@@ -1,14 +1,10 @@
-package com.philsfakecompany.chessapp.game.ChessGame;
+package game;
 
-import com.philsfakecompany.chessapp.board.IChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.game.GameObserver.*;
-import com.philsfakecompany.chessapp.game.ICheckChecker.*;
-import com.philsfakecompany.chessapp.game.IChessGame.*;
-import com.philsfakecompany.chessapp.input.ClearPathChecker.*;
-import com.philsfakecompany.chessapp.input.InputRetriever.*;
-import com.philsfakecompany.chessapp.player.Player.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import board.*;
+import game.*;
+import input.*;
+import player.*;
+import util.*;
 
 public class ChessGame implements IChessGame {
 

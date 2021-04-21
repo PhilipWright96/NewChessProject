@@ -1,4 +1,4 @@
-package com.philsfakecompany.chessapp.game.ChessMove;
+package game;
 
 import java.util.Arrays;
 

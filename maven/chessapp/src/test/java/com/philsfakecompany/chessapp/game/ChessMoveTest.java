@@ -1,8 +1,6 @@
-package test.java.com.philsfakecompany.chessapp.game.ChessMove;
-
 import static org.junit.Assert.*;
 
-import com.philsfakecompany.chessapp.game.ChessMove.*;
+import game.*;
 import org.junit.Test;
 
 public class ChessMoveTest {

@@ -1,4 +1,4 @@
-package com.philsfakecompany.chessapp.input.ScannerWrapper;
+package input;
 
 import java.util.Scanner;
 

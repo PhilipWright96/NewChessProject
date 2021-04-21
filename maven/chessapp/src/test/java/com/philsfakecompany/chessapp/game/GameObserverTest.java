@@ -1,10 +1,7 @@
-package test.java.com.philsfakecompany.chessapp.game.GameObserverTest;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.game.ChessGame.*;
-import com.philsfakecompany.chessapp.game.GameObserver.*;
+import game.*;
 import org.junit.Test;
 
 public class GameObserverTest {

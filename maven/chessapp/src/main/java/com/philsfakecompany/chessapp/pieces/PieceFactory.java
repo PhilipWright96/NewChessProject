@@ -1,13 +1,7 @@
-package com.philsfakecompany.chessapp.pieces.PieceFactory;
+package pieces;
 
-import com.philsfakecompany.chessapp.pieces.Bishop.*;
-import com.philsfakecompany.chessapp.pieces.King.*;
-import com.philsfakecompany.chessapp.pieces.Knight.*;
-import com.philsfakecompany.chessapp.pieces.Pawn.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
-import com.philsfakecompany.chessapp.pieces.Queen.*;
-import com.philsfakecompany.chessapp.pieces.Rook.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import pieces.*;
+import util.*;
 
 public class PieceFactory {
 

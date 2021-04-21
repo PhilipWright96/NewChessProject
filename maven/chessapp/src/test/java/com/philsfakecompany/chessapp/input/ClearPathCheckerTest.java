@@ -1,20 +1,17 @@
-package test.java.com.philsfakecompany.chessapp.input.ClearPathCheckerTest;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.input.ClearPathChecker.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
+import game.*;
+import input.*;
 import org.junit.Test;
+import pieces.*;
 
 public class ClearPathCheckerTest {
 
     ChessMove mockMove = mock(ChessMove.class);
 
     @Test
-    public void pathForMoveClear_withAStraightHorizontalMoveWhichIsBlocked_returnsFalse() {
-        // Given
+    public void pathForMoveClear_withAStraightHorizontalMoveWhichIsBlocked_returnsFalse() { // Given
         when(mockMove.isStraight()).thenReturn(true);
         when(mockMove.isHorizontal()).thenReturn(true);
 

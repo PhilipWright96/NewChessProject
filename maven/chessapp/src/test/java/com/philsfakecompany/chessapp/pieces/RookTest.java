@@ -1,13 +1,10 @@
-package test.com.philsfakecompany.chessapp.pieces.RookTest;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.board.ChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.PieceFactory.*;
-import com.philsfakecompany.chessapp.pieces.Rook.*;
+import board.*;
+import game.*;
 import org.junit.Test;
+import pieces.*;
 
 public class RookTest {
 

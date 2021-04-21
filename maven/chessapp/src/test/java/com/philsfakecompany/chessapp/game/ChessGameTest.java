@@ -1,18 +1,12 @@
-package test.java.com.philsfakecompany.chessapp.game.ChessGame;
-
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.board.ChessBoard.*;
-import com.philsfakecompany.chessapp.board.GUI.ChessBoardGUI.*;
-import com.philsfakecompany.chessapp.board.IChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessGame.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.game.ICheckChecker.*;
-import com.philsfakecompany.chessapp.input.ClearPathChecker.*;
-import com.philsfakecompany.chessapp.input.InputRetriever.*;
-import com.philsfakecompany.chessapp.player.Player.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import board.*;
+import board.GUI.*;
+import game.*;
+import input.*;
 import org.junit.Test;
+import player.*;
+import util.*;
 
 public class ChessGameTest {
 

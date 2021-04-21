@@ -1,7 +1,7 @@
-package com.philsfakecompany.chessapp.input.ClearPathChecker;
+package input;
 
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
+import game.*;
+import pieces.*;
 
 public class ClearPathChecker {
 

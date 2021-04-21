@@ -1,16 +1,11 @@
-package test.java.com.philsfakecompany.chessapp.input.InputRetrieverTest;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.board.IChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.game.ICheckChecker.*;
-import com.philsfakecompany.chessapp.input.InputChecker.*;
-import com.philsfakecompany.chessapp.input.InputRetriever.*;
-import com.philsfakecompany.chessapp.input.ScannerWrapper.*;
-import com.philsfakecompany.chessapp.player.Player.*;
+import board.*;
+import game.*;
+import input.*;
 import org.junit.Test;
+import player.*;
 
 public class InputRetrieverTest {
 

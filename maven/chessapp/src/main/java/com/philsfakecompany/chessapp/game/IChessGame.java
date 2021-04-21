@@ -1,6 +1,6 @@
-package com.philsfakecompany.chessapp.game.IChessGame;
+package game;
 
-import com.philsfakecompany.chessapp.game.GameObserver.*;
+import game.GameObserver.*;
 
 public interface IChessGame {
     public void attach(GameObserver observer);

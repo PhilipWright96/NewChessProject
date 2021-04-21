@@ -1,15 +1,11 @@
-package test.java.com.philsfakecompany.chessapp.pieces.PawnTest;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.board.ChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.Pawn.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
-import com.philsfakecompany.chessapp.pieces.PieceFactory.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import board.*;
+import game.*;
 import org.junit.Test;
+import pieces.*;
+import util.*;
 
 public class PawnTest {
 

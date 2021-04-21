@@ -1,17 +1,14 @@
-package test.java.com.philsfakecompany.chessapp.board.ChessBoardTest;
+package test.java.board.ChessBoardTest;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.board.ChessBoard.*;
-import com.philsfakecompany.chessapp.board.GUI.ChessBoardGUI.*;
-import com.philsfakecompany.chessapp.board.GUI.IChessBoardGUI.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
-import com.philsfakecompany.chessapp.pieces.PieceFactory.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import board.*;
+import board.GUI.*;
+import game.*;
 import org.junit.Test;
+import pieces.*;
+import util.*;
 
 public class ChessBoardTest {
 

@@ -1,4 +1,4 @@
-package com.philsfakecompany.chessapp.board.GUI.GUISetter;
+package board.GUI;
 
 import java.awt.*;
 import javax.swing.*;

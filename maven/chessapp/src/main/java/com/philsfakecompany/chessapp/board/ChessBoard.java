@@ -1,14 +1,14 @@
-package com.philsfakecompany.chessapp.board.ChessBoard;
+package board;
 
-import com.philsfakecompany.chessapp.board.GUI.IChessBoardGUI.*;
-import com.philsfakecompany.chessapp.board.IChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
-import com.philsfakecompany.chessapp.pieces.PieceFactory.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import board.*;
+import board.GUI.*;
+import game.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import pieces.*;
+import pieces.*;
+import pieces.*;
+import util.*;
 
 public class ChessBoard implements IChessBoard {
 

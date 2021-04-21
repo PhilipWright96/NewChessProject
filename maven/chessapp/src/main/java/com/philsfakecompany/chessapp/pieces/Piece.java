@@ -1,10 +1,10 @@
-package com.philsfakecompany.chessapp.pieces.Piece;
+package pieces;
 
-import com.philsfakecompany.chessapp.board.IChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import board.*;
+import game.*;
 import java.util.Objects;
+import pieces.*;
+import util.*;
 
 public abstract class Piece implements IPiece {
 

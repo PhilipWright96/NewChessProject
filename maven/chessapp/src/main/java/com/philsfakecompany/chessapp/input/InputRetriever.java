@@ -1,11 +1,11 @@
-package com.philsfakecompany.chessapp.input.InputRetriever;
+package input;
 
-import com.philsfakecompany.chessapp.board.IChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.game.ICheckChecker.*;
-import com.philsfakecompany.chessapp.input.InputChecker.*;
-import com.philsfakecompany.chessapp.input.ScannerWrapper.*;
-import com.philsfakecompany.chessapp.player.Player.*;
+import board.*;
+import game.*;
+import game.*;
+import input.*;
+import input.*;
+import player.*;
 
 public class InputRetriever {
 

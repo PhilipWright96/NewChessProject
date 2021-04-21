@@ -1,8 +1,8 @@
-package com.philsfakecompany.chessapp.pieces.Rook;
+package pieces;
 
-import com.philsfakecompany.chessapp.board.IChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
+import board.*;
+import game.*;
+import pieces.*;
 
 public class Rook extends Piece {
 

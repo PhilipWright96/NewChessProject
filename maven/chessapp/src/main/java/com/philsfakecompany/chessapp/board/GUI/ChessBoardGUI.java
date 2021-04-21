@@ -1,12 +1,10 @@
-package com.philsfakecompany.chessapp.board.GUI.ChessBoardGUI;
+package board.GUI;
 
-import com.philsfakecompany.chessapp.board.GUI.GUISetter.*;
-import com.philsfakecompany.chessapp.board.GUI.GUIUpdater.*;
-import com.philsfakecompany.chessapp.board.GUI.IChessBoardGUI.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
+import board.GUI.*;
+import game.*;
 import java.awt.*;
 import javax.swing.*;
+import pieces.*;
 
 public class ChessBoardGUI implements IChessBoardGUI {
 

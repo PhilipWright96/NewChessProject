@@ -1,9 +1,6 @@
-package test.java.com.philsfakecompany.chessapp.input.InputManagerTest;
-
 import static org.junit.Assert.*;
 
-import com.philsfakecompany.chessapp.input.InputManager.*;
-import com.philsfakecompany.chessapp.input.InputRetriever.*;
+import input.*;
 import org.junit.Test;
 
 public class InputManagerTest {

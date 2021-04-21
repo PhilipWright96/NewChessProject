@@ -1,18 +1,13 @@
-package test.java.com.philsfakecompany.chessapp.input.InputCheckerTest;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.board.IChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.game.ICheckChecker.*;
-import com.philsfakecompany.chessapp.input.ClearPathChecker.*;
-import com.philsfakecompany.chessapp.input.InputChecker.*;
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
-import com.philsfakecompany.chessapp.player.Player.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import board.*;
+import game.*;
+import input.*;
 import org.junit.Test;
+import pieces.*;
+import player.*;
+import util.*;
 
 public class InputCheckerTest {
 

@@ -1,4 +1,4 @@
-package com.philsfakecompany.chessapp.util.Teams;
+package util;
 
 public enum Teams {
     SILVER,

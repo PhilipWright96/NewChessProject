@@ -1,9 +1,9 @@
-package com.philsfakecompany.chessapp.board.GUI.GUIUpdater;
+package board.GUI;
 
-import com.philsfakecompany.chessapp.board.GUI.ChessSprites.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
+import board.GUI.*;
+import game.*;
 import javax.swing.*;
+import pieces.*;
 
 public class GUIUpdater {
 

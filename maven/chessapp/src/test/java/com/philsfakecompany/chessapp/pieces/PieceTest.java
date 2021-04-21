@@ -1,12 +1,9 @@
-package test.java.com.philsfakecompany.chessapp.pieces.PieceTest;
-
 import static org.junit.Assert.*;
 
-import com.philsfakecompany.chessapp.board.ChessBoard.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
-import com.philsfakecompany.chessapp.pieces.PieceFactory.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import board.*;
 import org.junit.Test;
+import pieces.*;
+import util.*;
 
 public class PieceTest {
 

@@ -1,8 +1,8 @@
-package com.philsfakecompany.chessapp.player.Player;
+package player;
 
-import com.philsfakecompany.chessapp.input.ScannerWrapper.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import input.*;
 import java.util.NoSuchElementException;
+import util.*;
 
 public class Player {
 

@@ -1,14 +1,14 @@
-package com.philsfakecompany.chessapp.board.GUI.ChessSprites;
+package board.GUI;
 
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
-import com.philsfakecompany.chessapp.pieces.Piece.*;
-import com.philsfakecompany.chessapp.pieces.PieceFactory.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
 import java.awt.image.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
 import javax.imageio.*;
+import pieces.*;
+import pieces.*;
+import pieces.*;
+import util.*;
 
 public final class ChessSprites {
 

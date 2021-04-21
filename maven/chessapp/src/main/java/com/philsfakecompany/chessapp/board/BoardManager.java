@@ -1,9 +1,7 @@
-package com.philsfakecompany.chessapp.board.BoardManager;
+package board;
 
-import com.philsfakecompany.chessapp.board.ChessBoard.*;
-import com.philsfakecompany.chessapp.board.GUI.ChessBoardGUI.*;
-import com.philsfakecompany.chessapp.board.GUI.GUISetter.*;
-import com.philsfakecompany.chessapp.board.GUI.GUIUpdater.*;
+import board.*;
+import board.GUI.*;
 
 public class BoardManager {
 

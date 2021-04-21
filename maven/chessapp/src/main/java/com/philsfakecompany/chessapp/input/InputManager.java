@@ -1,9 +1,9 @@
-package com.philsfakecompany.chessapp.input.InputManager;
+package input;
 
-import com.philsfakecompany.chessapp.input.ClearPathChecker.*;
-import com.philsfakecompany.chessapp.input.InputChecker.*;
-import com.philsfakecompany.chessapp.input.InputRetriever.*;
-import com.philsfakecompany.chessapp.input.ScannerWrapper.*;
+import input.ClearPathChecker.*;
+import input.InputChecker.*;
+import input.InputRetriever.*;
+import input.ScannerWrapper.*;
 
 public class InputManager {
 

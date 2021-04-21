@@ -1,12 +1,10 @@
-package test.java.com.philsfakecompany.chessapp.pieces.QueenTest;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.board.ChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.Queen.*;
+import board.*;
+import game.*;
 import org.junit.Test;
+import pieces.*;
 
 public class QueenTest {
 

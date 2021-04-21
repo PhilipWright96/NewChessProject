@@ -1,9 +1,8 @@
-package test.java.com.philsfakecompany.chessapp.board.GUI.GUISetterTest;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.board.GUI.GUISetter.*;
+import board.*;
+import board.GUI.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;

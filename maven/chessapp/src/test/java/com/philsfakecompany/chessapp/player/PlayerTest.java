@@ -1,12 +1,10 @@
-package test.java.com.philsfakecompany.chessapp.player.PlayerTest;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.philsfakecompany.chessapp.input.ScannerWrapper.*;
-import com.philsfakecompany.chessapp.player.Player.*;
-import com.philsfakecompany.chessapp.util.Teams.*;
+import input.*;
 import org.junit.Test;
+import player.*;
+import util.*;
 
 public class PlayerTest {
 

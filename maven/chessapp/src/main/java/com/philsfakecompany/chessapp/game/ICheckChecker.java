@@ -1,9 +1,9 @@
-package com.philsfakecompany.chessapp.game.ICheckChecker;
+package game;
 
-import com.philsfakecompany.chessapp.board.IChessBoard.*;
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.input.ClearPathChecker.*;
-import com.philsfakecompany.chessapp.player.Player.*;
+import board.*;
+import game.*;
+import input.*;
+import player.*;
 
 public interface ICheckChecker {
     public boolean ownKingInCheck(

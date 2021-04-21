@@ -1,7 +1,7 @@
-package com.philsfakecompany.chessapp.board.GUI.IChessBoardGUI;
+package board.GUI;
 
-import com.philsfakecompany.chessapp.game.ChessMove.*;
-import com.philsfakecompany.chessapp.pieces.IPiece.*;
+import game.*;
+import pieces.*;
 
 public interface IChessBoardGUI {
     public void initializeBoardGUI();
