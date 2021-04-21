@@ -5,9 +5,14 @@
     <property name="lib.dir" value="lib"/>
     <property name="distlib.dir" value="dist-lib"/>
     
-    <property name="main-class" value="chess.GameManager"/>
+    <property name="main-class" value="GameManager"/>
     
-    <property name="src.dir" value="src"/>
+    <property name="src.dir" value="maven/chessapp/src"/>
+    <property name="testgame.dir" value="maven/chessapp/src/test/java/com/philsfakecompany/chessapp/game"/>
+    <property name="testinput.dir" value="maven/chessapp/src/test/java/com/philsfakecompany/chessapp/input"/>
+     <property name="testpieces.dir" value="maven/chessapp/src/test/java/com/philsfakecompany/chessapp/pieces"/>
+     <property name="testplayer.dir" value="maven/chessapp/src/test/java/com/philsfakecompany/chessapp/player"/>
+
     <property name="build.dir" value="build"/>
     
     <property name="classes.dir" value="${build.dir}/classes"/>
@@ -80,7 +85,10 @@
             </classpath>
 
             <batchtest fork="yes">
-                <fileset dir="${src.dir}" includes="**/*Test.java"/>
+                <fileset dir="${testgame.dir}" includes="*Test.java"/>
+                <fileset dir="${testinput.dir}" includes="*Test.java"/>
+                <fileset dir="${testpieces.dir}" includes="*Test.java"/>
+                <fileset dir="${testplayer.dir}" includes="*Test.java"/>
             </batchtest>
         </junit>
     </target>
