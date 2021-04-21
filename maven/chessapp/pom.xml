@@ -52,7 +52,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.philsfakecompany.chessapp.GameManager.GameManager</mainClass>
+              <mainClass>GameManager</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -75,11 +75,11 @@
             <goals>
               <goal>report</goal>
             </goals>
-            <configuration>
-              <sourceDirectory>main</sourceDirectory>
-            </configuration>
           </execution>
         </executions>
+        <configuration>
+        </configuration>
+
       </plugin>
 
     </plugins>
