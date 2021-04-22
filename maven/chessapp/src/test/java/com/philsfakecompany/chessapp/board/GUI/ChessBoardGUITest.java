@@ -18,6 +18,7 @@ public class ChessBoardGUITest {
             mockGUISetter,
             mockGUIUpdater
         );
+        JFrame mockFrame = mock(JFrame.class);
 
         // When
         boardGUI.initializeBoardGUI();
