@@ -20,9 +20,5 @@ jobs:
         with:
           java-version: "11"
           distribution: "adopt"
-      - name: Navigate to proper directory
-        run: cd maven/chessapp
-      - name: test
-        run: ls
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: cd maven/chessapp && mvn -B package --file pom.xml
