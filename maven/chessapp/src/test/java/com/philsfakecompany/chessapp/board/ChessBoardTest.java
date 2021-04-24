@@ -1,4 +1,4 @@
-package test.java.board.ChessBoardTest;
+package com.philsfakecompany.chessapp.board;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;

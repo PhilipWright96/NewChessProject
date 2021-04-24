@@ -2,8 +2,6 @@ package pieces;
 
 import board.*;
 import game.*;
-import pieces.*;
-import pieces.*;
 import util.*;
 
 public class Pawn extends Piece {

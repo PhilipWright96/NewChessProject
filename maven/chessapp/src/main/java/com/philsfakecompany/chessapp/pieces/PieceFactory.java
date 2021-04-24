@@ -1,6 +1,5 @@
 package pieces;
 
-import pieces.*;
 import util.*;
 
 public class PieceFactory {

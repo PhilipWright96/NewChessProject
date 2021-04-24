@@ -2,7 +2,6 @@ package pieces;
 
 import board.*;
 import game.*;
-import pieces.*;
 
 public class King extends Piece {
 

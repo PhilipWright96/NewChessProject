@@ -1,7 +1,6 @@
 package game;
 
 import board.*;
-import game.*;
 import input.*;
 import player.*;
 

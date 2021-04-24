@@ -2,10 +2,7 @@ package input;
 
 import board.*;
 import game.*;
-import game.*;
-import input.*;
 import java.util.regex.Pattern;
-import pieces.*;
 import pieces.*;
 import player.*;
 

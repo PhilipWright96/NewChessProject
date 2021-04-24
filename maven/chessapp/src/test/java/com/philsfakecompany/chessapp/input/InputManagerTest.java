@@ -1,3 +1,5 @@
+package com.philsfakecompany.chessapp.input;
+
 import static org.junit.Assert.*;
 
 import input.*;

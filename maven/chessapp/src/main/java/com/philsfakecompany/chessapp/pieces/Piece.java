@@ -3,7 +3,6 @@ package pieces;
 import board.*;
 import game.*;
 import java.util.Objects;
-import pieces.*;
 import util.*;
 
 public abstract class Piece implements IPiece {

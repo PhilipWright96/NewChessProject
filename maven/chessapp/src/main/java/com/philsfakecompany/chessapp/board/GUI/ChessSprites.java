@@ -6,8 +6,6 @@ import java.net.*;
 import java.util.*;
 import javax.imageio.*;
 import pieces.*;
-import pieces.*;
-import pieces.*;
 import util.*;
 
 public final class ChessSprites {

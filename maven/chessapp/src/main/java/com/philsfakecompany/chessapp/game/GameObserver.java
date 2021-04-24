@@ -1,8 +1,5 @@
 package game;
 
-import game.ChessGame.*;
-import game.IChessGame.*;
-
 public class GameObserver {
 
     IChessGame game;

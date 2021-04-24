@@ -1,6 +1,5 @@
 package board;
 
-import board.*;
 import game.*;
 import pieces.*;
 

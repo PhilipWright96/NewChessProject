@@ -1,3 +1,5 @@
+package com.philsfakecompany.chessapp.board.GUI;
+
 import static org.mockito.Mockito.*;
 
 import board.GUI.*;

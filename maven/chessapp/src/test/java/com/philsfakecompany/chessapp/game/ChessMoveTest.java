@@ -1,3 +1,5 @@
+package com.philsfakecompany.chessapp.game;
+
 import static org.junit.Assert.*;
 
 import game.*;

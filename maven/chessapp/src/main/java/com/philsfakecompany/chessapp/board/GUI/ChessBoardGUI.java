@@ -1,6 +1,5 @@
 package board.GUI;
 
-import board.GUI.*;
 import game.*;
 import java.awt.*;
 import javax.swing.*;
