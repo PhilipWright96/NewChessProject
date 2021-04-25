@@ -10,7 +10,6 @@ public class Queen extends Piece {
         final IChessBoard chessBoard
     ) {
         if (!isMoving(move)) {
-            System.out.println("Queen not moving anywhere");
             return false;
         }
         if (move.getRowChangeNum() == move.getColumnChangeNum()) {

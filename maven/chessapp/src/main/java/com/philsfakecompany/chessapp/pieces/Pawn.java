@@ -11,7 +11,6 @@ public class Pawn extends Piece {
 
     public boolean moveValid(ChessMove move, IChessBoard chessBoard) {
         if (!isMoving(move)) {
-            System.out.println("Pawn not moving anywhere");
             return false;
         }
 
@@ -19,7 +18,6 @@ public class Pawn extends Piece {
             hasMoved = true;
             return true;
         }
-        System.out.println("Error: Incorrect move logic for pawn");
         return false;
     }
 
@@ -29,27 +27,11 @@ public class Pawn extends Piece {
         }
         IPiece[][] piecesArray = chessBoard.getPieceArray();
 
-        System.out.println(
-            "Move from col is " +
-            move.getMoveFromColumn() +
-            " Move from row is " +
-            move.getMoveFromRow()
-        );
-        System.out.println(
-            "Move to col is " +
-            move.getMoveToColumn() +
-            " Move to row is " +
-            move.getMoveToRow()
-        );
-
         if (getTeam() == Teams.SILVER) {
-            System.out.println("Silver moving");
             if (move.getMoveFromColumn() - 1 == move.getMoveToColumn()) {
-                System.out.println("Silver moving left");
                 IPiece piece =
                     piecesArray[move.getMoveToColumn()][move.getMoveToRow()];
                 if (piece != null && piece.getTeam() == Teams.GOLD) {
-                    System.out.println("Piece there!");
                     hasTakenPiece = true;
                     return true;
                 }
@@ -57,11 +39,9 @@ public class Pawn extends Piece {
                 move.getMoveFromColumn() + 1 == move.getMoveToColumn() &&
                 move.getMoveFromRow() - 1 == move.getMoveToRow()
             ) {
-                System.out.println("Silver moving right");
                 IPiece piece =
                     piecesArray[move.getMoveToColumn()][move.getMoveToRow()];
                 if (piece != null && piece.getTeam() == Teams.GOLD) {
-                    System.out.println("Piece there!");
                     hasTakenPiece = true;
                     return true;
                 }

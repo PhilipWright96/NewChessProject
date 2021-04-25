@@ -7,14 +7,12 @@ public class King extends Piece {
 
     public boolean moveValid(ChessMove move, IChessBoard chessBoard) {
         if (!isMoving(move)) {
-            System.out.println("King not moving anywhere");
             return false;
         }
 
         if (rowChangeValid(move) && columnChangeValid(move)) {
             return true;
         }
-        System.out.println("Error: Incorrect move logic for king");
         return false;
     }
 
