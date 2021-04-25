@@ -17,4 +17,10 @@ public interface ICheckChecker {
         IChessBoard board,
         ClearPathChecker pathChecker
     );
+
+    public boolean opposingKingInCheckmate(
+        Player playerMoving,
+        IChessBoard board,
+        ClearPathChecker pathChecker
+    );
 }

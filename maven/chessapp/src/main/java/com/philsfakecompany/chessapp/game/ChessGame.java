@@ -68,6 +68,7 @@ public class ChessGame implements IChessGame {
             checkChecker
         );
         board.movePiece(silverMove, true);
+
         if (
             checkChecker.opposingKingInCheck(
                 playerSilver,
@@ -77,16 +78,16 @@ public class ChessGame implements IChessGame {
         ) {
             System.out.println("Silver put gold in check");
         }
-        System.out.println(
-            "Player Silver has played " +
-            silverMove.getMoveFromColumn() +
-            " " +
-            silverMove.getMoveFromRow() +
-            " to " +
-            silverMove.getMoveToColumn() +
-            " " +
-            silverMove.getMoveToRow()
-        );
+
+        if (
+            checkChecker.opposingKingInCheckmate(
+                playerSilver,
+                board,
+                new ClearPathChecker()
+            )
+        ) {
+            System.out.println("Silver put gold in checkmate!");
+        }
 
         ChessMove goldMove = inputRetriever.getValidInputFromPlayer(
             playerGold,
@@ -104,16 +105,6 @@ public class ChessGame implements IChessGame {
         ) {
             System.out.println("Gold put silver in check");
         }
-        System.out.println(
-            "Player Gold has played " +
-            goldMove.getMoveFromColumn() +
-            " " +
-            goldMove.getMoveFromRow() +
-            " to " +
-            goldMove.getMoveToColumn() +
-            " " +
-            goldMove.getMoveToRow()
-        );
         turnsTaken++;
     }
 }
