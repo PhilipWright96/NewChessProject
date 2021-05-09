@@ -35,7 +35,7 @@ public class ClearPathChecker {
 
         // If moving right
         if (moveFromCol < moveToCol) {
-            for (int col = moveFromCol + 1; col < moveToCol; col++) {
+            for (int col = moveFromCol + 1; col <= moveToCol; col++) {
                 if (chessBoard[col][moveFromRow] != null) {
                     return true;
                 }
@@ -43,7 +43,7 @@ public class ClearPathChecker {
         }
         // Else moving left
         else {
-            for (int col = moveFromCol - 1; col > moveToCol; col--) {
+            for (int col = moveFromCol - 1; col >= moveToCol; col--) {
                 if (chessBoard[col][moveFromRow] != null) {
                     return true;
                 }
@@ -63,7 +63,7 @@ public class ClearPathChecker {
 
         // If moving down
         if (moveFromRow < moveToRow) {
-            for (int row = moveFromRow + 1; row < moveToRow; row++) {
+            for (int row = moveFromRow + 1; row <= moveToRow; row++) {
                 if (chessBoard[moveFromCol][row] != null) {
                     return true;
                 }
@@ -71,7 +71,7 @@ public class ClearPathChecker {
         }
         // Else moving up
         else {
-            for (int row = moveFromRow - 1; row > moveToRow; row--) {
+            for (int row = moveFromRow - 1; row >= moveToRow; row--) {
                 if (chessBoard[moveFromCol][row] != null) {
                     return true;
                 }
@@ -123,7 +123,7 @@ public class ClearPathChecker {
             if (moveFromCol < moveToCol) {
                 for (
                     int row = moveFromRow + 1, col = moveFromCol + 1;
-                    row < moveToRow;
+                    row <= moveToRow;
                     row++, col++
                 ) {
                     if (chessBoard[col][row] != null) {
