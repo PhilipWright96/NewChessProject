@@ -152,6 +152,7 @@ public class CheckChecker implements ICheckChecker {
             movingPlayerPiecesToCoords =
                 pieceToCoordinatesMap.goldPieceToCoordinates;
         }
+        IPiece threatenedKing = board.getPieceArray()[opposingKingCoordinates.getColumnCoordinate()][opposingKingCoordinates.getRowCoordinate()];
 
         for (int row = -1; row < 2; row++) {
             for (int col = -1; col < 2; col++) {
@@ -170,9 +171,27 @@ public class CheckChecker implements ICheckChecker {
                     newRow
                 );
 
+                boolean kingMoveValid = threatenedKing.moveValid(
+                    potentialKingMove,
+                    board
+                );
+                boolean pathForPotentialKingMoveClear = false;
+
+                if (kingMoveValid) {
+                    pathForPotentialKingMoveClear =
+                        pathChecker.pathForMoveClear(
+                            potentialKingMove,
+                            board.getPieceArray()
+                        );
+                }
+                if (!kingMoveValid || !pathForPotentialKingMoveClear) {
+                    System.out.println("King move not valid!");
+                    continue;
+                }
+
                 board.movePiece(potentialKingMove, false);
 
-                boolean spaceIsSafe = true;
+                boolean kingCanEscape = true;
 
                 for (Map.Entry<IPiece, ChessBoard.Coordinates> entry : movingPlayerPiecesToCoords.entrySet()) {
                     IPiece piece = entry.getKey();
@@ -202,18 +221,25 @@ public class CheckChecker implements ICheckChecker {
                         }
                     }
                     if (potentialMoveValid && pathForPotentialMoveClear) {
-                        spaceIsSafe = false;
+                        System.out.println(
+                            "Marking space as not safe! Breaking - no point checking other pieces"
+                        );
+                        kingCanEscape = false;
+                        break;
                     }
                 }
 
                 board.undoMovePiece(potentialKingMove);
 
-                if (spaceIsSafe) {
+                if (kingCanEscape) {
+                    System.out.println(
+                        "Returning false because king can escape"
+                    );
                     return false;
                 }
             }
         }
-
+        System.out.println("Returning true because king can't escape!");
         return true;
     }
 }
