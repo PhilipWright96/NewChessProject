@@ -95,9 +95,6 @@ public class CheckChecker implements ICheckChecker {
             IPiece piece = entry.getKey();
             ChessBoard.Coordinates coordinates = entry.getValue();
 
-            boolean potentialMoveValid = false;
-            boolean pathForPotentialMoveClear = false;
-
             ChessMove potentialMove = new ChessMove(
                 coordinates.getColumnCoordinate(),
                 coordinates.getRowCoordinate(),
@@ -105,21 +102,7 @@ public class CheckChecker implements ICheckChecker {
                 kingCoords.getRowCoordinate()
             );
 
-            potentialMoveValid = piece.moveValid(potentialMove, board);
-
-            if (potentialMoveValid) {
-                if (piece.getType() == Piece.Types.KNIGHT) {
-                    pathForPotentialMoveClear = true;
-                } else {
-                    pathForPotentialMoveClear =
-                        pathChecker.pathForMoveClear(
-                            potentialMove,
-                            board.getPieceArray()
-                        );
-                }
-            }
-
-            if (potentialMoveValid && pathForPotentialMoveClear) {
+            if (moveValid(piece, potentialMove, board, pathChecker)) {
                 System.out.println("Piece threatening is " + piece.getType());
                 return true;
             }
@@ -171,21 +154,15 @@ public class CheckChecker implements ICheckChecker {
                     newRow
                 );
 
-                boolean kingMoveValid = threatenedKing.moveValid(
-                    potentialKingMove,
-                    board
-                );
-                boolean pathForPotentialKingMoveClear = false;
-
-                if (kingMoveValid) {
-                    pathForPotentialKingMoveClear =
-                        pathChecker.pathForMoveClear(
-                            potentialKingMove,
-                            board.getPieceArray()
-                        );
-                }
-                if (!kingMoveValid || !pathForPotentialKingMoveClear) {
-                    System.out.println("King move not valid!");
+                if (
+                    !moveValid(
+                        threatenedKing,
+                        potentialKingMove,
+                        board,
+                        pathChecker
+                    )
+                ) {
+                    System.out.println("Not valid!");
                     continue;
                 }
 
@@ -195,8 +172,6 @@ public class CheckChecker implements ICheckChecker {
 
                 for (Map.Entry<IPiece, ChessBoard.Coordinates> entry : movingPlayerPiecesToCoords.entrySet()) {
                     IPiece piece = entry.getKey();
-                    boolean potentialMoveValid = false;
-                    boolean pathForPotentialMoveClear = false;
                     ChessBoard.Coordinates coordinates = entry.getValue();
 
                     ChessMove potentialPieceMove = new ChessMove(
@@ -206,24 +181,9 @@ public class CheckChecker implements ICheckChecker {
                         newRow
                     );
 
-                    potentialMoveValid =
-                        piece.moveValid(potentialPieceMove, board);
-
-                    if (potentialMoveValid) {
-                        if (piece.getType() == Piece.Types.KNIGHT) {
-                            pathForPotentialMoveClear = true;
-                        } else {
-                            pathForPotentialMoveClear =
-                                pathChecker.pathForMoveClear(
-                                    potentialPieceMove,
-                                    board.getPieceArray()
-                                );
-                        }
-                    }
-                    if (potentialMoveValid && pathForPotentialMoveClear) {
-                        System.out.println(
-                            "Marking space as not safe! Breaking - no point checking other pieces"
-                        );
+                    if (
+                        moveValid(piece, potentialPieceMove, board, pathChecker)
+                    ) {
                         kingCanEscape = false;
                         break;
                     }
@@ -241,5 +201,21 @@ public class CheckChecker implements ICheckChecker {
         }
         System.out.println("Returning true because king can't escape!");
         return true;
+    }
+
+    private boolean moveValid(
+        IPiece pieceMoving,
+        ChessMove move,
+        IChessBoard board,
+        ClearPathChecker pathChecker
+    ) {
+        boolean moveValid = pieceMoving.moveValid(move, board);
+        boolean pathForPotentialMoveClear = false;
+
+        if (moveValid) {
+            pathForPotentialMoveClear =
+                pathChecker.pathForMoveClear(move, board.getPieceArray());
+        }
+        return (moveValid && pathForPotentialMoveClear);
     }
 }
