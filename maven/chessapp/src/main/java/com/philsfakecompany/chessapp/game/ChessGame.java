@@ -77,16 +77,15 @@ public class ChessGame implements IChessGame {
             )
         ) {
             System.out.println("Silver put gold in check");
-        }
-
-        if (
-            checkChecker.opposingKingInCheckmate(
-                playerSilver,
-                board,
-                new ClearPathChecker()
-            )
-        ) {
-            System.out.println("Silver put gold in checkmate!");
+            if (
+                checkChecker.opposingKingInCheckmate(
+                    playerSilver,
+                    board,
+                    new ClearPathChecker()
+                )
+            ) {
+                System.out.println("Silver put gold in checkmate!");
+            }
         }
 
         ChessMove goldMove = inputRetriever.getValidInputFromPlayer(
