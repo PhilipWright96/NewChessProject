@@ -103,6 +103,15 @@ public class ChessGame implements IChessGame {
             )
         ) {
             System.out.println("Gold put silver in check");
+            if (
+                checkChecker.opposingKingInCheckmate(
+                    playerGold,
+                    board,
+                    new ClearPathChecker()
+                )
+            ) {
+                System.out.println("Gold put silver in checkmate!");
+            }
         }
         turnsTaken++;
     }
