@@ -160,7 +160,13 @@ public class InputCheckerTest {
             .thenReturn(mockPieceBeingTaken);
         when(mockPieceBeingTaken.getTeam()).thenReturn(Teams.GOLD);
         when(mockBoard.getPieceArray()).thenReturn(mockPieceBoard);
-        when(mockPathChecker.pathForMoveClear(any(), eq(mockPieceBoard), false))
+        when(
+            mockPathChecker.pathForMoveClear(
+                any(),
+                eq(mockPieceBoard),
+                eq(false)
+            )
+        )
             .thenReturn(false);
 
         // When
@@ -176,7 +182,7 @@ public class InputCheckerTest {
         verify(mockPiece).getType();
         verify(mockBoard).getPieceArray();
         verify(mockPathChecker)
-            .pathForMoveClear(any(), eq(mockPieceBoard), false);
+            .pathForMoveClear(any(), eq(mockPieceBoard), eq(false));
         assertEquals(false, result);
     }
 
