@@ -102,7 +102,7 @@ public class CheckChecker implements ICheckChecker {
                 kingCoords.getRowCoordinate()
             );
 
-            if (moveValid(piece, potentialMove, board, pathChecker)) {
+            if (moveValid(piece, potentialMove, board, pathChecker, false)) {
                 System.out.println("Piece threatening is " + piece.getType());
                 return true;
             }
@@ -144,6 +144,7 @@ public class CheckChecker implements ICheckChecker {
                     opposingKingCoordinates.getColumnCoordinate() + col;
 
                 if (newRow < 0 || newRow > 7 || newCol < 0 || newCol > 7) {
+                    System.out.println("Not valid - out of bounds!");
                     continue;
                 }
 
@@ -159,10 +160,11 @@ public class CheckChecker implements ICheckChecker {
                         threatenedKing,
                         potentialKingMove,
                         board,
-                        pathChecker
+                        pathChecker,
+                        true
                     )
                 ) {
-                    System.out.println("Not valid!");
+                    System.out.println("Not valid - move invalid!");
                     continue;
                 }
 
@@ -182,7 +184,13 @@ public class CheckChecker implements ICheckChecker {
                     );
 
                     if (
-                        moveValid(piece, potentialPieceMove, board, pathChecker)
+                        moveValid(
+                            piece,
+                            potentialPieceMove,
+                            board,
+                            pathChecker,
+                            false
+                        )
                     ) {
                         kingCanEscape = false;
                         break;
@@ -207,14 +215,19 @@ public class CheckChecker implements ICheckChecker {
         IPiece pieceMoving,
         ChessMove move,
         IChessBoard board,
-        ClearPathChecker pathChecker
+        ClearPathChecker pathChecker,
+        boolean checkMoveTargetSpace
     ) {
         boolean moveValid = pieceMoving.moveValid(move, board);
         boolean pathForPotentialMoveClear = false;
 
         if (moveValid) {
             pathForPotentialMoveClear =
-                pathChecker.pathForMoveClear(move, board.getPieceArray());
+                pathChecker.pathForMoveClear(
+                    move,
+                    board.getPieceArray(),
+                    checkMoveTargetSpace
+                );
         }
         return (moveValid && pathForPotentialMoveClear);
     }
