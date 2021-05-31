@@ -1,3 +1,5 @@
+package com.philsfakecompany.chessapp.input;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -158,7 +160,13 @@ public class InputCheckerTest {
             .thenReturn(mockPieceBeingTaken);
         when(mockPieceBeingTaken.getTeam()).thenReturn(Teams.GOLD);
         when(mockBoard.getPieceArray()).thenReturn(mockPieceBoard);
-        when(mockPathChecker.pathForMoveClear(any(), eq(mockPieceBoard)))
+        when(
+            mockPathChecker.pathForMoveClear(
+                any(),
+                eq(mockPieceBoard),
+                eq(false)
+            )
+        )
             .thenReturn(false);
 
         // When
@@ -173,7 +181,8 @@ public class InputCheckerTest {
         // Then
         verify(mockPiece).getType();
         verify(mockBoard).getPieceArray();
-        verify(mockPathChecker).pathForMoveClear(any(), eq(mockPieceBoard));
+        verify(mockPathChecker)
+            .pathForMoveClear(any(), eq(mockPieceBoard), eq(false));
         assertEquals(false, result);
     }
 

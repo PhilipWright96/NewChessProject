@@ -1,3 +1,5 @@
+package com.philsfakecompany.chessapp.input;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -27,7 +29,7 @@ public class ClearPathCheckerTest {
         // Then
         assertEquals(
             false,
-            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard, false)
         );
     }
 
@@ -49,7 +51,7 @@ public class ClearPathCheckerTest {
         // Then
         assertEquals(
             false,
-            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard, false)
         );
     }
 
@@ -70,7 +72,7 @@ public class ClearPathCheckerTest {
         // Then
         assertEquals(
             false,
-            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard, false)
         );
     }
 
@@ -90,7 +92,7 @@ public class ClearPathCheckerTest {
         // Then
         assertEquals(
             true,
-            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard, false)
         );
     }
 }

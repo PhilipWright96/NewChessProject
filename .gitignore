@@ -2,5 +2,8 @@
 /lib
 /node_modules
 /maven/chessapp/target
+/maven/chessapp/.settings
+/maven/chessapp/.classpath
+/maven/chessapp/.project
 /dist-lib
 /.settings

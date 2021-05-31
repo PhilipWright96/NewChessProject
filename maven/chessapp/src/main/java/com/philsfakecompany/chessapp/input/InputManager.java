@@ -1,10 +1,5 @@
 package input;
 
-import input.ClearPathChecker.*;
-import input.InputChecker.*;
-import input.InputRetriever.*;
-import input.ScannerWrapper.*;
-
 public class InputManager {
 
     public InputRetriever buildRetriever() {

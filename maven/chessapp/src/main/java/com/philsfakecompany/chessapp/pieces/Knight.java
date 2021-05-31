@@ -2,13 +2,11 @@ package pieces;
 
 import board.*;
 import game.*;
-import pieces.*;
 
 public class Knight extends Piece {
 
     public boolean moveValid(ChessMove move, IChessBoard board) {
         if (!isMoving(move)) {
-            System.out.println("Knight not moving anywhere");
             return false;
         }
 
@@ -19,7 +17,6 @@ public class Knight extends Piece {
         ) {
             return true;
         }
-        System.out.println("Incorrect move logic for knight");
         return false;
     }
 }

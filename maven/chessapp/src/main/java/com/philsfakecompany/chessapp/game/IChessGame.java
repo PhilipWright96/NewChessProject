@@ -1,7 +1,5 @@
 package game;
 
-import game.GameObserver.*;
-
 public interface IChessGame {
     public void attach(GameObserver observer);
 

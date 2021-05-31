@@ -1,12 +1,9 @@
 package board;
 
-import board.*;
 import board.GUI.*;
 import game.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import pieces.*;
-import pieces.*;
 import pieces.*;
 import util.*;
 

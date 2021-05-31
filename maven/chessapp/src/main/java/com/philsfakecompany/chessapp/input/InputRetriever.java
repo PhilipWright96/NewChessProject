@@ -2,9 +2,6 @@ package input;
 
 import board.*;
 import game.*;
-import game.*;
-import input.*;
-import input.*;
 import player.*;
 
 public class InputRetriever {

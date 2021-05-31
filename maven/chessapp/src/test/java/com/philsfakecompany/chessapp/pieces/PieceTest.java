@@ -1,6 +1,7 @@
+package com.philsfakecompany.chessapp.pieces;
+
 import static org.junit.Assert.*;
 
-import board.*;
 import org.junit.Test;
 import pieces.*;
 import util.*;

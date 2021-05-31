@@ -1,3 +1,5 @@
+package com.philsfakecompany.chessapp.player;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 

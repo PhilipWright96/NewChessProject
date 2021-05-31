@@ -2,12 +2,10 @@ package input;
 
 import board.*;
 import game.*;
-import game.*;
-import input.*;
 import java.util.regex.Pattern;
 import pieces.*;
-import pieces.*;
 import player.*;
+import util.Colours;
 
 public class InputChecker {
 
@@ -35,9 +33,11 @@ public class InputChecker {
         boolean result = Pattern.matches(VALID_CHESS_MOVE, input);
         if (result == false) {
             System.out.println(
+                Colours.TEXT_RED +
                 "Input : " +
                 input +
-                " is a invalid move. Correct input format is (for example) a1-a3. Please try again"
+                " is a invalid move. Correct input format is (for example) a1-a3. Please try again" +
+                Colours.TEXT_RESET
             );
         }
         return result;
@@ -53,31 +53,53 @@ public class InputChecker {
         IPiece pieceBeingMoved = board.getPieceBeingMoved(attemptedMove);
 
         if (pieceBeingMoved == null) {
-            System.out.println("No piece found to move");
+            System.out.println(
+                Colours.TEXT_RED + "No piece found to move" + Colours.TEXT_RESET
+            );
             return false;
         }
         if (!attemptedMove.isMovingToNewSquare()) {
-            System.out.println("You must move your piece to a new square");
+            System.out.println(
+                Colours.TEXT_RED +
+                "You must move your piece to a new square" +
+                Colours.TEXT_RESET
+            );
             return false;
         }
 
         if (pieceBeingMoved.getTeam() != player.getTeam()) {
-            System.out.println("You may only move your own pieces");
+            System.out.println(
+                Colours.TEXT_RED +
+                "You may only move your own pieces" +
+                Colours.TEXT_RESET
+            );
             return false;
         }
 
         if (!pieceBeingMoved.moveValid(attemptedMove, board)) {
-            System.out.println("You cannot move this piece in that way");
+            System.out.println(
+                Colours.TEXT_RED +
+                "You cannot move this piece in that way" +
+                Colours.TEXT_RESET
+            );
             return false;
         }
 
         if (moveTakingPieceOfSameTeam(attemptedMove, player, board)) {
-            System.out.println("You cannot take a piece of the same team");
+            System.out.println(
+                Colours.TEXT_RED +
+                "You cannot take a piece of the same team" +
+                Colours.TEXT_RESET
+            );
             return false;
         }
 
         if (!pathForAttemptedMoveClear(attemptedMove, board, pieceBeingMoved)) {
-            System.out.println("You cannot move through a piece");
+            System.out.println(
+                Colours.TEXT_RED +
+                "You cannot move through a piece" +
+                Colours.TEXT_RESET
+            );
             return false;
         }
 
@@ -90,7 +112,9 @@ public class InputChecker {
             )
         ) {
             System.out.println(
-                "You cannot make a move that puts your king in check"
+                Colours.TEXT_RED +
+                "You cannot make a move that puts your king in check" +
+                Colours.TEXT_RESET
             );
             return false;
         }
@@ -121,7 +145,7 @@ public class InputChecker {
         if (piece.getType() == Piece.Types.KNIGHT) {
             return true;
         }
-        return pathChecker.pathForMoveClear(move, board.getPieceArray());
+        return pathChecker.pathForMoveClear(move, board.getPieceArray(), false);
     }
 
     private boolean movePuttingOwnKingInCheck(
