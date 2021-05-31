@@ -49,7 +49,7 @@ public class ChessGame implements IChessGame {
         turnsTaken = 0;
         isRunning = true;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             playRound();
         }
 
