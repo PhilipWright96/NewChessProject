@@ -29,7 +29,7 @@ public class ClearPathCheckerTest {
         // Then
         assertEquals(
             false,
-            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard, false)
         );
     }
 
@@ -51,7 +51,7 @@ public class ClearPathCheckerTest {
         // Then
         assertEquals(
             false,
-            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard, false)
         );
     }
 
@@ -72,7 +72,7 @@ public class ClearPathCheckerTest {
         // Then
         assertEquals(
             false,
-            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard, false)
         );
     }
 
@@ -92,7 +92,7 @@ public class ClearPathCheckerTest {
         // Then
         assertEquals(
             true,
-            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard)
+            new ClearPathChecker().pathForMoveClear(mockMove, mockBoard, false)
         );
     }
 }

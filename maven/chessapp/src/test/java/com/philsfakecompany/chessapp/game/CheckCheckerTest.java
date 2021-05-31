@@ -25,7 +25,8 @@ public class CheckCheckerTest {
         IChessBoard mockBoard = mock(IChessBoard.class);
 
         ClearPathChecker mockPathChecker = mock(ClearPathChecker.class);
-        when(mockPathChecker.pathForMoveClear(any(), any())).thenReturn(true);
+        when(mockPathChecker.pathForMoveClear(any(), any(), false))
+            .thenReturn(true);
 
         IPiece silverKing = PieceFactory.constructPiece(
             Piece.Types.KING,
@@ -85,7 +86,8 @@ public class CheckCheckerTest {
         IChessBoard mockBoard = mock(IChessBoard.class);
 
         ClearPathChecker mockPathChecker = mock(ClearPathChecker.class);
-        when(mockPathChecker.pathForMoveClear(any(), any())).thenReturn(true);
+        when(mockPathChecker.pathForMoveClear(any(), any(), false))
+            .thenReturn(true);
 
         IPiece silverKing = PieceFactory.constructPiece(
             Piece.Types.KING,
@@ -143,7 +145,8 @@ public class CheckCheckerTest {
         IChessBoard mockBoard = mock(IChessBoard.class);
 
         ClearPathChecker mockPathChecker = mock(ClearPathChecker.class);
-        when(mockPathChecker.pathForMoveClear(any(), any())).thenReturn(true);
+        when(mockPathChecker.pathForMoveClear(any(), any(), false))
+            .thenReturn(true);
 
         IPiece goldKing = PieceFactory.constructPiece(
             Piece.Types.KING,
@@ -199,7 +202,8 @@ public class CheckCheckerTest {
         IChessBoard mockBoard = mock(IChessBoard.class);
 
         ClearPathChecker mockPathChecker = mock(ClearPathChecker.class);
-        when(mockPathChecker.pathForMoveClear(any(), any())).thenReturn(true);
+        when(mockPathChecker.pathForMoveClear(any(), any(), false))
+            .thenReturn(true);
 
         IPiece goldKing = PieceFactory.constructPiece(
             Piece.Types.KING,

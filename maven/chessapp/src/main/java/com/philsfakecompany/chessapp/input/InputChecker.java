@@ -145,7 +145,7 @@ public class InputChecker {
         if (piece.getType() == Piece.Types.KNIGHT) {
             return true;
         }
-        return pathChecker.pathForMoveClear(move, board.getPieceArray());
+        return pathChecker.pathForMoveClear(move, board.getPieceArray(), false);
     }
 
     private boolean movePuttingOwnKingInCheck(
