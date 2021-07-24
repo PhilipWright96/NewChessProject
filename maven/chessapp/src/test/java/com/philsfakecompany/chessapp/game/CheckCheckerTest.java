@@ -32,21 +32,19 @@ public class CheckCheckerTest {
             Piece.Types.KING,
             Teams.SILVER
         );
-        ChessBoard.Coordinates mockKingCoordinates = new ChessBoard(null)
-            .new Coordinates(1, 1);
+        Coordinates mockKingCoordinates = new Coordinates(1, 1);
 
         IPiece goldPawn = mock(IPiece.class);
-        ChessBoard.Coordinates mockPawnCoordinates = new ChessBoard(null)
-            .new Coordinates(2, 2);
+        Coordinates mockPawnCoordinates = new Coordinates(2, 2);
         when(goldPawn.moveValid(any(), eq(mockBoard))).thenReturn(true);
         when(goldPawn.getType()).thenReturn(Piece.Types.PAWN);
 
-        HashMap<IPiece, ChessBoard.Coordinates> silverPieceToCoordinates = new HashMap<IPiece, ChessBoard.Coordinates>() {
+        HashMap<IPiece, Coordinates> silverPieceToCoordinates = new HashMap<IPiece, Coordinates>() {
             {
                 put(silverKing, mockKingCoordinates);
             }
         };
-        HashMap<IPiece, ChessBoard.Coordinates> goldPieceToCoordinates = new HashMap<IPiece, ChessBoard.Coordinates>() {
+        HashMap<IPiece, Coordinates> goldPieceToCoordinates = new HashMap<IPiece, Coordinates>() {
             {
                 put(goldPawn, mockPawnCoordinates);
             }
@@ -93,21 +91,19 @@ public class CheckCheckerTest {
             Piece.Types.KING,
             Teams.SILVER
         );
-        ChessBoard.Coordinates mockKingCoordinates = new ChessBoard(null)
-            .new Coordinates(1, 1);
+        Coordinates mockKingCoordinates = new Coordinates(1, 1);
 
         IPiece goldPawn = mock(IPiece.class);
-        ChessBoard.Coordinates mockPawnCoordinates = new ChessBoard(null)
-            .new Coordinates(2, 2);
+        Coordinates mockPawnCoordinates = new Coordinates(2, 2);
         when(goldPawn.moveValid(any(), eq(mockBoard))).thenReturn(false);
         when(goldPawn.getType()).thenReturn(Piece.Types.PAWN);
 
-        HashMap<IPiece, ChessBoard.Coordinates> silverPieceToCoordinates = new HashMap<IPiece, ChessBoard.Coordinates>() {
+        HashMap<IPiece, Coordinates> silverPieceToCoordinates = new HashMap<IPiece, Coordinates>() {
             {
                 put(silverKing, mockKingCoordinates);
             }
         };
-        HashMap<IPiece, ChessBoard.Coordinates> goldPieceToCoordinates = new HashMap<IPiece, ChessBoard.Coordinates>() {
+        HashMap<IPiece, Coordinates> goldPieceToCoordinates = new HashMap<IPiece, Coordinates>() {
             {
                 put(goldPawn, mockPawnCoordinates);
             }
@@ -152,21 +148,19 @@ public class CheckCheckerTest {
             Piece.Types.KING,
             Teams.GOLD
         );
-        ChessBoard.Coordinates mockKingCoordinates = new ChessBoard(null)
-            .new Coordinates(1, 1);
+        Coordinates mockKingCoordinates = new Coordinates(1, 1);
 
         IPiece silverPawn = mock(IPiece.class);
-        ChessBoard.Coordinates mockPawnCoordinates = new ChessBoard(null)
-            .new Coordinates(2, 2);
+        Coordinates mockPawnCoordinates = new Coordinates(2, 2);
         when(silverPawn.moveValid(any(), eq(mockBoard))).thenReturn(true);
         when(silverPawn.getType()).thenReturn(Piece.Types.PAWN);
 
-        HashMap<IPiece, ChessBoard.Coordinates> silverPieceToCoordinates = new HashMap<IPiece, ChessBoard.Coordinates>() {
+        HashMap<IPiece, Coordinates> silverPieceToCoordinates = new HashMap<IPiece, Coordinates>() {
             {
                 put(silverPawn, mockPawnCoordinates);
             }
         };
-        HashMap<IPiece, ChessBoard.Coordinates> goldPieceToCoordinates = new HashMap<IPiece, ChessBoard.Coordinates>() {
+        HashMap<IPiece, Coordinates> goldPieceToCoordinates = new HashMap<IPiece, Coordinates>() {
             {
                 put(goldKing, mockKingCoordinates);
             }
@@ -209,21 +203,19 @@ public class CheckCheckerTest {
             Piece.Types.KING,
             Teams.GOLD
         );
-        ChessBoard.Coordinates mockKingCoordinates = new ChessBoard(null)
-            .new Coordinates(1, 1);
+        Coordinates mockKingCoordinates = new Coordinates(1, 1);
 
         IPiece silverPawn = mock(IPiece.class);
-        ChessBoard.Coordinates mockPawnCoordinates = new ChessBoard(null)
-            .new Coordinates(2, 2);
+        Coordinates mockPawnCoordinates = new Coordinates(2, 2);
         when(silverPawn.moveValid(any(), eq(mockBoard))).thenReturn(false);
         when(silverPawn.getType()).thenReturn(Piece.Types.PAWN);
 
-        HashMap<IPiece, ChessBoard.Coordinates> silverPieceToCoordinates = new HashMap<IPiece, ChessBoard.Coordinates>() {
+        HashMap<IPiece, Coordinates> silverPieceToCoordinates = new HashMap<IPiece, Coordinates>() {
             {
                 put(silverPawn, mockPawnCoordinates);
             }
         };
-        HashMap<IPiece, ChessBoard.Coordinates> goldPieceToCoordinates = new HashMap<IPiece, ChessBoard.Coordinates>() {
+        HashMap<IPiece, Coordinates> goldPieceToCoordinates = new HashMap<IPiece, Coordinates>() {
             {
                 put(goldKing, mockKingCoordinates);
             }

@@ -17,8 +17,8 @@ public class CheckChecker implements ICheckChecker {
         ClearPathChecker pathChecker
     ) {
         ChessBoard.PieceToCoordinates pieceToCoordinatesMap = board.getPieceToCoordinatesMap();
-        ChessBoard.Coordinates ownKingCoordinates;
-        HashMap<IPiece, ChessBoard.Coordinates> otherPlayerPiecesToCoords;
+        Coordinates ownKingCoordinates;
+        HashMap<IPiece, Coordinates> otherPlayerPiecesToCoords;
         boolean ownKingInCheck;
 
         board.movePiece(move, false);
@@ -58,8 +58,8 @@ public class CheckChecker implements ICheckChecker {
         ClearPathChecker pathChecker
     ) {
         ChessBoard.PieceToCoordinates pieceToCoordinatesMap = board.getPieceToCoordinatesMap();
-        ChessBoard.Coordinates opposingKingCoordinates;
-        HashMap<IPiece, ChessBoard.Coordinates> movingPlayerPiecesToCoords;
+        Coordinates opposingKingCoordinates;
+        HashMap<IPiece, Coordinates> movingPlayerPiecesToCoords;
 
         if (playerMoving.getTeam() == Teams.SILVER) {
             opposingKingCoordinates =
@@ -91,8 +91,8 @@ public class CheckChecker implements ICheckChecker {
         ClearPathChecker pathChecker
     ) {
         ChessBoard.PieceToCoordinates pieceToCoordinatesMap = board.getPieceToCoordinatesMap();
-        ChessBoard.Coordinates opposingKingCoordinates;
-        HashMap<IPiece, ChessBoard.Coordinates> movingPlayerPiecesToCoords;
+        Coordinates opposingKingCoordinates;
+        HashMap<IPiece, Coordinates> movingPlayerPiecesToCoords;
 
         if (playerMoving.getTeam() == Teams.SILVER) {
             opposingKingCoordinates =
@@ -146,9 +146,9 @@ public class CheckChecker implements ICheckChecker {
 
                 boolean kingCanEscape = true;
 
-                for (Map.Entry<IPiece, ChessBoard.Coordinates> entry : movingPlayerPiecesToCoords.entrySet()) {
+                for (Map.Entry<IPiece, Coordinates> entry : movingPlayerPiecesToCoords.entrySet()) {
                     IPiece piece = entry.getKey();
-                    ChessBoard.Coordinates coordinates = entry.getValue();
+                    Coordinates coordinates = entry.getValue();
 
                     ChessMove potentialPieceMove = new ChessMove(
                         coordinates.getColumnCoordinate(),
@@ -186,14 +186,14 @@ public class CheckChecker implements ICheckChecker {
     }
 
     private boolean kingInCheck(
-        HashMap<IPiece, ChessBoard.Coordinates> playerPieceToCoords,
-        ChessBoard.Coordinates kingCoords,
+        HashMap<IPiece, Coordinates> playerPieceToCoords,
+        Coordinates kingCoords,
         ClearPathChecker pathChecker,
         IChessBoard board
     ) {
-        for (Map.Entry<IPiece, ChessBoard.Coordinates> entry : playerPieceToCoords.entrySet()) {
+        for (Map.Entry<IPiece, Coordinates> entry : playerPieceToCoords.entrySet()) {
             IPiece piece = entry.getKey();
-            ChessBoard.Coordinates coordinates = entry.getValue();
+            Coordinates coordinates = entry.getValue();
 
             ChessMove potentialMove = new ChessMove(
                 coordinates.getColumnCoordinate(),
