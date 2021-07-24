@@ -85,32 +85,6 @@ public class CheckChecker implements ICheckChecker {
         );
     }
 
-    private boolean kingInCheck(
-        HashMap<IPiece, ChessBoard.Coordinates> playerPieceToCoords,
-        ChessBoard.Coordinates kingCoords,
-        ClearPathChecker pathChecker,
-        IChessBoard board
-    ) {
-        for (Map.Entry<IPiece, ChessBoard.Coordinates> entry : playerPieceToCoords.entrySet()) {
-            IPiece piece = entry.getKey();
-            ChessBoard.Coordinates coordinates = entry.getValue();
-
-            ChessMove potentialMove = new ChessMove(
-                coordinates.getColumnCoordinate(),
-                coordinates.getRowCoordinate(),
-                kingCoords.getColumnCoordinate(),
-                kingCoords.getRowCoordinate()
-            );
-
-            if (moveValid(piece, potentialMove, board, pathChecker, false)) {
-                System.out.println("Piece threatening is " + piece.getType());
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public boolean opposingKingInCheckmate(
         Player playerMoving,
         IChessBoard board,
@@ -209,6 +183,32 @@ public class CheckChecker implements ICheckChecker {
         }
         System.out.println("Returning true because king can't escape!");
         return true;
+    }
+
+    private boolean kingInCheck(
+        HashMap<IPiece, ChessBoard.Coordinates> playerPieceToCoords,
+        ChessBoard.Coordinates kingCoords,
+        ClearPathChecker pathChecker,
+        IChessBoard board
+    ) {
+        for (Map.Entry<IPiece, ChessBoard.Coordinates> entry : playerPieceToCoords.entrySet()) {
+            IPiece piece = entry.getKey();
+            ChessBoard.Coordinates coordinates = entry.getValue();
+
+            ChessMove potentialMove = new ChessMove(
+                coordinates.getColumnCoordinate(),
+                coordinates.getRowCoordinate(),
+                kingCoords.getColumnCoordinate(),
+                kingCoords.getRowCoordinate()
+            );
+
+            if (moveValid(piece, potentialMove, board, pathChecker, false)) {
+                System.out.println("Piece threatening is " + piece.getType());
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private boolean moveValid(
