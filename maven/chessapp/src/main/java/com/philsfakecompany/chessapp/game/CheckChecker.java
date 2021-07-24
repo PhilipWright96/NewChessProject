@@ -2,6 +2,7 @@ package game;
 
 import board.*;
 import input.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import pieces.*;
@@ -93,6 +94,7 @@ public class CheckChecker implements ICheckChecker {
         ChessBoard.PieceToCoordinates pieceToCoordinatesMap = board.getPieceToCoordinatesMap();
         Coordinates opposingKingCoordinates;
         HashMap<IPiece, Coordinates> movingPlayerPiecesToCoords;
+        HashMap<IPiece, Coordinates> nonMovingPlayerPieceToCoords;
 
         if (playerMoving.getTeam() == Teams.SILVER) {
             opposingKingCoordinates =
@@ -101,6 +103,8 @@ public class CheckChecker implements ICheckChecker {
                 );
             movingPlayerPiecesToCoords =
                 pieceToCoordinatesMap.silverPieceToCoordinates;
+            nonMovingPlayerPieceToCoords =
+                pieceToCoordinatesMap.goldPieceToCoordinates;
         } else {
             opposingKingCoordinates =
                 pieceToCoordinatesMap.silverPieceToCoordinates.get(
@@ -108,6 +112,8 @@ public class CheckChecker implements ICheckChecker {
                 );
             movingPlayerPiecesToCoords =
                 pieceToCoordinatesMap.goldPieceToCoordinates;
+            nonMovingPlayerPieceToCoords =
+                pieceToCoordinatesMap.silverPieceToCoordinates;
         }
         IPiece threatenedKing = board.getPieceArray()[opposingKingCoordinates.getColumnCoordinate()][opposingKingCoordinates.getRowCoordinate()];
 
@@ -166,8 +172,20 @@ public class CheckChecker implements ICheckChecker {
                             false
                         )
                     ) {
-                        kingCanEscape = false;
-                        break;
+                        if (
+                            !moveCanBeBlockedByAlliedPiece(
+                                nonMovingPlayerPieceToCoords,
+                                potentialPieceMove,
+                                board,
+                                pathChecker
+                            )
+                        ) {
+                            System.out.println(
+                                "Setting king can escape to false"
+                            );
+                            kingCanEscape = false;
+                            break;
+                        }
                     }
                 }
 
@@ -205,6 +223,53 @@ public class CheckChecker implements ICheckChecker {
             if (moveValid(piece, potentialMove, board, pathChecker, false)) {
                 System.out.println("Piece threatening is " + piece.getType());
                 return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean moveCanBeBlockedByAlliedPiece(
+        HashMap<IPiece, Coordinates> alliedPiecesToCoords,
+        ChessMove move,
+        IChessBoard board,
+        ClearPathChecker pathChecker
+    ) {
+        ArrayList<Coordinates> coordinatesBetweenKingAndCheckerPiece = pathChecker.getCoordinatesBetweenMove(
+            move,
+            false
+        );
+        for (Coordinates targetCoordinates : coordinatesBetweenKingAndCheckerPiece) {
+            for (Map.Entry<IPiece, Coordinates> entry : alliedPiecesToCoords.entrySet()) {
+                IPiece alliedPiece = entry.getKey();
+                Coordinates pieceCoordinates = entry.getValue();
+                ChessMove potentialBlockingMove = new ChessMove(
+                    pieceCoordinates.getColumnCoordinate(),
+                    pieceCoordinates.getRowCoordinate(),
+                    targetCoordinates.getColumnCoordinate(),
+                    targetCoordinates.getRowCoordinate()
+                );
+
+                if (
+                    alliedPiece.getType() == Piece.Types.KING ||
+                    alliedPiece.getType() == Piece.Types.KNIGHT
+                ) {
+                    continue;
+                }
+
+                if (
+                    moveValid(
+                        alliedPiece,
+                        potentialBlockingMove,
+                        board,
+                        pathChecker,
+                        false
+                    )
+                ) {
+                    System.out.println("Move can blocked by a allied piece");
+                    System.out.println("Allied piece is " + alliedPiece);
+                    return true;
+                }
             }
         }
 
