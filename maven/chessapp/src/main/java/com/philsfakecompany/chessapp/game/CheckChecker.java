@@ -89,6 +89,7 @@ public class CheckChecker implements ICheckChecker {
     public boolean opposingKingInCheckmate(
         Player playerMoving,
         IChessBoard board,
+        ChessMove checkMove,
         ClearPathChecker pathChecker
     ) {
         ChessBoard.PieceToCoordinates pieceToCoordinatesMap = board.getPieceToCoordinatesMap();
@@ -172,20 +173,8 @@ public class CheckChecker implements ICheckChecker {
                             false
                         )
                     ) {
-                        if (
-                            !moveCanBeBlockedByAlliedPiece(
-                                nonMovingPlayerPieceToCoords,
-                                potentialPieceMove,
-                                board,
-                                pathChecker
-                            )
-                        ) {
-                            System.out.println(
-                                "Setting king can escape to false"
-                            );
-                            kingCanEscape = false;
-                            break;
-                        }
+                        kingCanEscape = false;
+                        break;
                     }
                 }
 
@@ -199,6 +188,29 @@ public class CheckChecker implements ICheckChecker {
                 }
             }
         }
+
+        // Add allied block or interrupt block check in here?
+        if (
+            threateningPieceCanBeTaken(
+                nonMovingPlayerPieceToCoords,
+                checkMove,
+                board,
+                pathChecker
+            )
+        ) {
+            return false;
+        }
+        if (
+            moveCanBeBlockedByAlliedPiece(
+                nonMovingPlayerPieceToCoords,
+                checkMove,
+                board,
+                pathChecker
+            )
+        ) {
+            return false;
+        }
+
         System.out.println("Returning true because king can't escape!");
         return true;
     }
@@ -229,14 +241,50 @@ public class CheckChecker implements ICheckChecker {
         return false;
     }
 
+    private boolean threateningPieceCanBeTaken(
+        HashMap<IPiece, Coordinates> alliedPiecesToCoords,
+        ChessMove checkMove,
+        IChessBoard board,
+        ClearPathChecker pathChecker
+    ) {
+        for (Map.Entry<IPiece, Coordinates> entry : alliedPiecesToCoords.entrySet()) {
+            IPiece alliedPiece = entry.getKey();
+            Coordinates pieceCoordinates = entry.getValue();
+            ChessMove potentialBlockingMove = new ChessMove(
+                pieceCoordinates.getColumnCoordinate(),
+                pieceCoordinates.getRowCoordinate(),
+                checkMove.getMoveFromColumn(),
+                checkMove.getMoveFromRow()
+            );
+
+            if (
+                moveValid(
+                    alliedPiece,
+                    potentialBlockingMove,
+                    board,
+                    pathChecker,
+                    false
+                )
+            ) {
+                System.out.println(
+                    "Threatening piece can be taken by a allied piece"
+                );
+                System.out.println("Allied piece is " + alliedPiece);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private boolean moveCanBeBlockedByAlliedPiece(
         HashMap<IPiece, Coordinates> alliedPiecesToCoords,
-        ChessMove move,
+        ChessMove checkMove,
         IChessBoard board,
         ClearPathChecker pathChecker
     ) {
         ArrayList<Coordinates> coordinatesBetweenKingAndCheckerPiece = pathChecker.getCoordinatesBetweenMove(
-            move,
+            checkMove,
             false
         );
         for (Coordinates targetCoordinates : coordinatesBetweenKingAndCheckerPiece) {

@@ -21,6 +21,7 @@ public interface ICheckChecker {
     public boolean opposingKingInCheckmate(
         Player playerMoving,
         IChessBoard board,
+        ChessMove checkMove,
         ClearPathChecker pathChecker
     );
 }
