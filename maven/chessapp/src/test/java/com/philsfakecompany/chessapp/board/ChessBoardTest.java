@@ -117,8 +117,8 @@ public class ChessBoardTest {
         board.movePiece(mockMove, true);
 
         // Then
-        verify(mockMove, times(2)).getMoveFromColumn();
-        verify(mockMove, times(2)).getMoveFromRow();
+        verify(mockMove, times(3)).getMoveFromColumn();
+        verify(mockMove, times(3)).getMoveFromRow();
         assertEquals(null, board.getPieceArray()[3][6]);
 
         verify(mockMove, times(2)).getMoveToColumn();
