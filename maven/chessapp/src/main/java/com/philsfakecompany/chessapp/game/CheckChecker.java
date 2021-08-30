@@ -213,6 +213,7 @@ public class CheckChecker implements ICheckChecker {
         // Add allied block or interrupt block check in here?
         if (
             threateningPieceCanBeTaken(
+                opposingKingCoordinates,
                 nonMovingPlayerPieceCoords,
                 checkMove,
                 board,
@@ -261,6 +262,7 @@ public class CheckChecker implements ICheckChecker {
     }
 
     private boolean threateningPieceCanBeTaken(
+        Coordinates kingCoordinates,
         ArrayList<Coordinates> alliedPieceCoordinates,
         ChessMove checkMove,
         IChessBoard board,
@@ -268,7 +270,7 @@ public class CheckChecker implements ICheckChecker {
     ) {
         for (Coordinates pieceCoordinates : alliedPieceCoordinates) {
             IPiece alliedPiece = board.getPieceArray()[pieceCoordinates.getColumnCoordinate()][pieceCoordinates.getRowCoordinate()];
-            ChessMove potentialBlockingMove = new ChessMove(
+            ChessMove potentialTakeMove = new ChessMove(
                 pieceCoordinates.getColumnCoordinate(),
                 pieceCoordinates.getRowCoordinate(),
                 checkMove.getMoveFromColumn(),
@@ -278,7 +280,7 @@ public class CheckChecker implements ICheckChecker {
             if (
                 moveValid(
                     alliedPiece,
-                    potentialBlockingMove,
+                    potentialTakeMove,
                     board,
                     pathChecker,
                     false
@@ -292,6 +294,26 @@ public class CheckChecker implements ICheckChecker {
             }
         }
 
+        IPiece threatenedKing = board.getPieceArray()[kingCoordinates.getColumnCoordinate()][kingCoordinates.getRowCoordinate()];
+        ChessMove potentialKingTakeMove = new ChessMove(
+            kingCoordinates.getColumnCoordinate(),
+            kingCoordinates.getRowCoordinate(),
+            checkMove.getMoveToColumn(),
+            checkMove.getMoveToRow()
+        );
+
+        if (
+            moveValid(
+                threatenedKing,
+                potentialKingTakeMove,
+                board,
+                pathChecker,
+                false
+            )
+        ) {
+            System.out.println("Threatening piece can be taken by king");
+            return true;
+        }
         return false;
     }
 
