@@ -93,7 +93,7 @@ public class ChessBoard implements IChessBoard {
                 Teams.GOLD
             );
             pieceArray[k][1] = goldPawn;
-            allPiecesToCoordinates.storePieceWithCoordinates(goldPawn, k, 1);
+            allPiecesToCoordinates.storePieceWithCoordinates(goldPawn, 1, k);
 
             Piece silverPawn = PieceFactory.constructPiece(
                 Piece.Types.PAWN,
@@ -102,8 +102,8 @@ public class ChessBoard implements IChessBoard {
             pieceArray[k][pieceArray.length - 2] = silverPawn;
             allPiecesToCoordinates.storePieceWithCoordinates(
                 silverPawn,
-                k,
-                pieceArray.length - 2
+                pieceArray.length - 2,
+                k
             );
         }
 
