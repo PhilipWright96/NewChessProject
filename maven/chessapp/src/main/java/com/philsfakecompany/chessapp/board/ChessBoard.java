@@ -4,6 +4,7 @@ import board.GUI.*;
 import game.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import pieces.*;
 import util.*;
 
@@ -51,6 +52,8 @@ public class ChessBoard implements IChessBoard {
 
         allPiecesToCoordinates.updatePieceWithNewCoordinates(
             pieceBeingMoved,
+            inputMove.getMoveFromRow(),
+            inputMove.getMoveFromColumn(),
             inputMove.getMoveToRow(),
             inputMove.getMoveToColumn()
         );
@@ -69,6 +72,8 @@ public class ChessBoard implements IChessBoard {
 
         allPiecesToCoordinates.updatePieceWithNewCoordinates(
             pieceAlreadyMoved,
+            move.getMoveToRow(),
+            move.getMoveToColumn(),
             move.getMoveFromRow(),
             move.getMoveFromColumn()
         );
@@ -93,7 +98,7 @@ public class ChessBoard implements IChessBoard {
                 Teams.GOLD
             );
             pieceArray[k][1] = goldPawn;
-            allPiecesToCoordinates.storePieceWithCoordinates(goldPawn, k, 1);
+            allPiecesToCoordinates.storePieceWithCoordinates(goldPawn, 1, k);
 
             Piece silverPawn = PieceFactory.constructPiece(
                 Piece.Types.PAWN,
@@ -102,8 +107,8 @@ public class ChessBoard implements IChessBoard {
             pieceArray[k][pieceArray.length - 2] = silverPawn;
             allPiecesToCoordinates.storePieceWithCoordinates(
                 silverPawn,
-                k,
-                pieceArray.length - 2
+                pieceArray.length - 2,
+                k
             );
         }
 
@@ -139,9 +144,15 @@ public class ChessBoard implements IChessBoard {
         public HashMap<IPiece, Coordinates> silverPieceToCoordinates;
         public HashMap<IPiece, Coordinates> goldPieceToCoordinates;
 
+        public ArrayList<Coordinates> silverPieceCoordinates;
+        public ArrayList<Coordinates> goldPieceCoordinates;
+
         private PieceToCoordinates() {
             this.silverPieceToCoordinates = new HashMap<IPiece, Coordinates>();
             this.goldPieceToCoordinates = new HashMap<IPiece, Coordinates>();
+
+            this.silverPieceCoordinates = new ArrayList<Coordinates>();
+            this.goldPieceCoordinates = new ArrayList<Coordinates>();
         }
 
         private void storePieceWithCoordinates(
@@ -155,52 +166,95 @@ public class ChessBoard implements IChessBoard {
             );
             if (piece.getTeam() == Teams.SILVER) {
                 silverPieceToCoordinates.put(piece, coordinates);
+                silverPieceCoordinates.add(coordinates);
             } else {
                 goldPieceToCoordinates.put(piece, coordinates);
+                goldPieceCoordinates.add(coordinates);
             }
         }
 
         public void updatePieceWithNewCoordinates(
             IPiece piece,
-            int rowCoordinate,
-            int columnCoordinate
+            int oldRowCoordinate,
+            int oldColumnCoordinate,
+            int newRowCoordinate,
+            int newColumnCoordinate
         ) {
             Coordinates newCoordinates = new Coordinates(
-                rowCoordinate,
-                columnCoordinate
+                newRowCoordinate,
+                newColumnCoordinate
             );
+
             if (piece.getTeam() == Teams.SILVER) {
+                List<Coordinates> oldSilverCoordsToRemove = new ArrayList<Coordinates>();
+                for (Coordinates silverCoordinate : silverPieceCoordinates) {
+                    if (
+                        (
+                            silverCoordinate.getRowCoordinate() ==
+                            oldRowCoordinate &&
+                            silverCoordinate.getColumnCoordinate() ==
+                            oldColumnCoordinate
+                        ) ||
+                        (
+                            silverCoordinate.getRowCoordinate() ==
+                            newRowCoordinate &&
+                            silverCoordinate.getColumnCoordinate() ==
+                            newColumnCoordinate
+                        )
+                    ) {
+                        oldSilverCoordsToRemove.add(silverCoordinate);
+                    }
+                }
+                List<Coordinates> oldGoldCoordsToRemove = new ArrayList<Coordinates>();
+                for (Coordinates goldCoordinate : goldPieceCoordinates) {
+                    if (
+                        goldCoordinate.getRowCoordinate() == newRowCoordinate &&
+                        goldCoordinate.getColumnCoordinate() ==
+                        newColumnCoordinate
+                    ) {
+                        oldGoldCoordsToRemove.add(goldCoordinate);
+                    }
+                }
+
+                silverPieceCoordinates.removeAll(oldSilverCoordsToRemove);
+                goldPieceCoordinates.removeAll(oldGoldCoordsToRemove);
                 silverPieceToCoordinates.put(piece, newCoordinates);
+                silverPieceCoordinates.add(newCoordinates);
             } else {
+                List<Coordinates> oldGoldCoordsToRemove = new ArrayList<Coordinates>();
+                for (Coordinates coordinate : goldPieceCoordinates) {
+                    if (
+                        (
+                            coordinate.getRowCoordinate() == oldRowCoordinate &&
+                            coordinate.getColumnCoordinate() ==
+                            oldColumnCoordinate
+                        ) ||
+                        (
+                            coordinate.getRowCoordinate() == newRowCoordinate &&
+                            coordinate.getColumnCoordinate() ==
+                            newColumnCoordinate
+                        )
+                    ) {
+                        oldGoldCoordsToRemove.add(coordinate);
+                    }
+                }
+
+                List<Coordinates> oldSilverCoordsToRemove = new ArrayList<Coordinates>();
+                for (Coordinates silverCoordinate : silverPieceCoordinates) {
+                    if (
+                        silverCoordinate.getRowCoordinate() ==
+                        newRowCoordinate &&
+                        silverCoordinate.getColumnCoordinate() ==
+                        newColumnCoordinate
+                    ) {
+                        oldSilverCoordsToRemove.add(silverCoordinate);
+                    }
+                }
+                goldPieceCoordinates.removeAll(oldGoldCoordsToRemove);
+                silverPieceCoordinates.removeAll(oldSilverCoordsToRemove);
                 goldPieceToCoordinates.put(piece, newCoordinates);
+                goldPieceCoordinates.add(newCoordinates);
             }
-        }
-    }
-
-    public class Coordinates {
-
-        private int rowCoordinate;
-        private int columnCoordinate;
-
-        public Coordinates(int rowCoordinate, int columnCoordinate) {
-            this.rowCoordinate = rowCoordinate;
-            this.columnCoordinate = columnCoordinate;
-        }
-
-        public int getRowCoordinate() {
-            return this.rowCoordinate;
-        }
-
-        public int getColumnCoordinate() {
-            return this.columnCoordinate;
-        }
-
-        private void setRowAndColumnCoordinates(
-            int rowCoordinate,
-            int columnCoordinate
-        ) {
-            this.rowCoordinate = rowCoordinate;
-            this.columnCoordinate = columnCoordinate;
         }
     }
 }

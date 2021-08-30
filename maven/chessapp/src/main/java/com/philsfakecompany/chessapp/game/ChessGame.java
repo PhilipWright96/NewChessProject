@@ -81,6 +81,7 @@ public class ChessGame implements IChessGame {
                 checkChecker.opposingKingInCheckmate(
                     playerSilver,
                     board,
+                    silverMove,
                     new ClearPathChecker()
                 )
             ) {
@@ -107,6 +108,7 @@ public class ChessGame implements IChessGame {
                 checkChecker.opposingKingInCheckmate(
                     playerGold,
                     board,
+                    goldMove,
                     new ClearPathChecker()
                 )
             ) {
