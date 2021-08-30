@@ -187,23 +187,37 @@ public class ChessBoard implements IChessBoard {
 
             if (piece.getTeam() == Teams.SILVER) {
                 List<Coordinates> oldSilverCoordsToRemove = new ArrayList<Coordinates>();
-                for (Coordinates coordinate : silverPieceCoordinates) {
+                for (Coordinates silverCoordinate : silverPieceCoordinates) {
                     if (
                         (
-                            coordinate.getRowCoordinate() == oldRowCoordinate &&
-                            coordinate.getColumnCoordinate() ==
+                            silverCoordinate.getRowCoordinate() ==
+                            oldRowCoordinate &&
+                            silverCoordinate.getColumnCoordinate() ==
                             oldColumnCoordinate
                         ) ||
                         (
-                            coordinate.getRowCoordinate() == newRowCoordinate &&
-                            coordinate.getColumnCoordinate() ==
+                            silverCoordinate.getRowCoordinate() ==
+                            newRowCoordinate &&
+                            silverCoordinate.getColumnCoordinate() ==
                             newColumnCoordinate
                         )
                     ) {
-                        oldSilverCoordsToRemove.add(coordinate);
+                        oldSilverCoordsToRemove.add(silverCoordinate);
                     }
                 }
+                List<Coordinates> oldGoldCoordsToRemove = new ArrayList<Coordinates>();
+                for (Coordinates goldCoordinate : goldPieceCoordinates) {
+                    if (
+                        goldCoordinate.getRowCoordinate() == newRowCoordinate &&
+                        goldCoordinate.getColumnCoordinate() ==
+                        newColumnCoordinate
+                    ) {
+                        oldGoldCoordsToRemove.add(goldCoordinate);
+                    }
+                }
+
                 silverPieceCoordinates.removeAll(oldSilverCoordsToRemove);
+                goldPieceCoordinates.removeAll(oldGoldCoordsToRemove);
                 silverPieceToCoordinates.put(piece, newCoordinates);
                 silverPieceCoordinates.add(newCoordinates);
             } else {
@@ -224,7 +238,20 @@ public class ChessBoard implements IChessBoard {
                         oldGoldCoordsToRemove.add(coordinate);
                     }
                 }
+
+                List<Coordinates> oldSilverCoordsToRemove = new ArrayList<Coordinates>();
+                for (Coordinates silverCoordinate : silverPieceCoordinates) {
+                    if (
+                        silverCoordinate.getRowCoordinate() ==
+                        newRowCoordinate &&
+                        silverCoordinate.getColumnCoordinate() ==
+                        newColumnCoordinate
+                    ) {
+                        oldSilverCoordsToRemove.add(silverCoordinate);
+                    }
+                }
                 goldPieceCoordinates.removeAll(oldGoldCoordsToRemove);
+                silverPieceCoordinates.removeAll(oldSilverCoordsToRemove);
                 goldPieceToCoordinates.put(piece, newCoordinates);
                 goldPieceCoordinates.add(newCoordinates);
             }
